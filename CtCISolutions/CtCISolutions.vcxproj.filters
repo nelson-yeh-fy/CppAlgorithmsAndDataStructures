@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\DS">
+      <UniqueIdentifier>{08b59d7e-fa80-48cb-a84e-94f70bfe840e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ch01_ArraysAndStrings">
+      <UniqueIdentifier>{0f7ad48c-d414-4753-818a-6ddf8f77d9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ch10_SortingAndSearching">
+      <UniqueIdentifier>{78256097-71e9-420d-934f-633357bef7e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ch02_LinkedLists">
+      <UniqueIdentifier>{e0f38b35-c4b3-4531-9a84-099939ab941b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CtCISolutions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bubbleSort_1_ptr.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="bubbleSort_2_vector.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="insertionSort_1.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="insertionSort_2.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="mergeSort_1.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="MaxHeap.cpp">
+      <Filter>Source Files\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="MinHeap.cpp">
+      <Filter>Source Files\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="PriorityQueue.cpp">
+      <Filter>Source Files\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="quickSort_1.cpp">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClCompile>
+    <ClCompile Include="reversePrint.cpp">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClCompile>
+    <ClCompile Include="reverseString_1_ptr.cpp">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClCompile>
+    <ClCompile Include="reverseString_2_linkedlist.cpp">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClCompile>
+    <ClCompile Include="ch1_myVectorChar.cpp">
+      <Filter>Source Files\ch01_ArraysAndStrings</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="swap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bubbleSort_1_ptr.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="bubbleSort_2_vector.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="insertionSort_1.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="insertionSort_2.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="mergeSort_1.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxHeap.h">
+      <Filter>Source Files\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="MinHeap.h">
+      <Filter>Source Files\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Source Files\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Source Files\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="quickSort_1.h">
+      <Filter>Source Files\ch10_SortingAndSearching</Filter>
+    </ClInclude>
+    <ClInclude Include="reversePrint.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="reverseString_1_ptr.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="reverseString_2_linkedlist.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="ch1_myVectorChar.h">
+      <Filter>Source Files\ch01_ArraysAndStrings</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

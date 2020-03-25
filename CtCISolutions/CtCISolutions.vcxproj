@@ -150,6 +150,7 @@
     <ClCompile Include="bubbleSort_1_ptr.cpp" />
     <ClCompile Include="bubbleSort_2_vector.cpp" />
     <ClCompile Include="ch1_myVectorChar.cpp" />
+    <ClCompile Include="ch1_strBasics.cpp" />
     <ClCompile Include="CtCISolutions.cpp" />
     <ClCompile Include="insertionSort_1.cpp" />
     <ClCompile Include="insertionSort_2.cpp" />

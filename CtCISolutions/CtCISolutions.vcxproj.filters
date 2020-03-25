@@ -69,6 +69,9 @@
     <ClCompile Include="ch1_myVectorChar.cpp">
       <Filter>Source Files\ch01_ArraysAndStrings</Filter>
     </ClCompile>
+    <ClCompile Include="ch1_strBasics.cpp">
+      <Filter>Source Files\ch01_ArraysAndStrings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">

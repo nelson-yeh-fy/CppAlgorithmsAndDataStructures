@@ -72,6 +72,9 @@
     <ClCompile Include="ch1_strBasics.cpp">
       <Filter>Source Files\ch01_ArraysAndStrings</Filter>
     </ClCompile>
+    <ClCompile Include="ch2_LinkdedList.cpp">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">
@@ -118,6 +121,18 @@
     </ClInclude>
     <ClInclude Include="ch1_myVectorChar.h">
       <Filter>Source Files\ch01_ArraysAndStrings</Filter>
+    </ClInclude>
+    <ClInclude Include="ch2_DoubleNode.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="ch2_SinglyNode.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="ch1_strBasics.h">
+      <Filter>Source Files\ch01_ArraysAndStrings</Filter>
+    </ClInclude>
+    <ClInclude Include="ch2_LinkdedList.h">
+      <Filter>Source Files\ch02_LinkedLists</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

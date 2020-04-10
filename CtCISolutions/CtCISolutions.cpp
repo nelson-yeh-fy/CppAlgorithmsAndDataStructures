@@ -16,32 +16,11 @@
 //#include "mergeSort_1.h"
 //#include "insertionSort_1.h"
 //#include "insertionSort_2.h"
-#include "ch1_myVectorChar.h"
-
+//#include "ch1_myVectorChar.h"
+//#include "ch1_strBasics.h"
+#include "ch2_LinkdedList.h"
 using namespace std;
 
-void ch1_test1() {
-	int ascii_set[128];
-	
-	int img[4][4] = { {0,0,0,0}, {1,1,1,1}, {2,2,2,2}, {3,3,3,3} };
-	std::cout << "." << 'A' % 128 << "." << std::endl;
-
-	std::vector<int> v1(5, 1); //vector with 5 items, all of them are 7,
-	for (int i : v1) {
-		std::cout << i << ",";
-	}
-	std::cout << std::endl;
-
-	std::vector<vector<int>> vv2(5, v1);
-	for (vector<int> v : vv2) {
-		for (int i : v) {
-			std::cout << i << ",";
-		}
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;
-
-}
 int main()
 {
 	//bubbleSort_1_main();
@@ -55,6 +34,8 @@ int main()
 	//demo_maxHeap();
 	//demo_pq();
 	//demoMyVectorChar1();
-	ch1_test1();
+	//ch1_test0();
+	//isStringRotation("waterbottle", "erbottlewat");
+	ch2_demo1();
 }
 

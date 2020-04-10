@@ -151,6 +151,7 @@
     <ClCompile Include="bubbleSort_2_vector.cpp" />
     <ClCompile Include="ch1_myVectorChar.cpp" />
     <ClCompile Include="ch1_strBasics.cpp" />
+    <ClCompile Include="ch2_LinkdedList.cpp" />
     <ClCompile Include="CtCISolutions.cpp" />
     <ClCompile Include="insertionSort_1.cpp" />
     <ClCompile Include="insertionSort_2.cpp" />
@@ -167,6 +168,10 @@
     <ClInclude Include="bubbleSort_1_ptr.h" />
     <ClInclude Include="bubbleSort_2_vector.h" />
     <ClInclude Include="ch1_myVectorChar.h" />
+    <ClInclude Include="ch1_strBasics.h" />
+    <ClInclude Include="ch2_DoubleNode.h" />
+    <ClInclude Include="ch2_LinkdedList.h" />
+    <ClInclude Include="ch2_SinglyNode.h" />
     <ClInclude Include="insertionSort_1.h" />
     <ClInclude Include="insertionSort_2.h" />
     <ClInclude Include="MaxHeap.h" />

@@ -18,7 +18,8 @@
 //#include "insertionSort_2.h"
 //#include "ch1_myVectorChar.h"
 //#include "ch1_strBasics.h"
-#include "ch2_LinkdedList.h"
+#include "ch2_SinglyLinkdedList.h"
+#include "ch2_DoubleLinkdedList.h"
 using namespace std;
 
 int main()
@@ -36,6 +37,8 @@ int main()
 	//demoMyVectorChar1();
 	//ch1_test0();
 	//isStringRotation("waterbottle", "erbottlewat");
-	ch2_demo1();
+	//ch2_SinglyDemo1();
+
+	ch2_DoubleDemo1();
 }
 

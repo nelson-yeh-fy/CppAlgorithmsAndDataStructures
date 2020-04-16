@@ -1,14 +1,14 @@
-#ifndef CH2_LINKEDLIST_H
-#define CH2_LINKEDLIST_H
+#ifndef CH2_SINGLYLINKEDLIST_H
+#define CH2_SINGLYLINKEDLIST_H
 #include <cstddef>
 #include "ch2_SinglyNode.h"
 
-class ch2_LinkdedList {
+class ch2_SinglyLinkdedList {
 public:
 	ch2_SinglyNode* head;
 	ch2_SinglyNode* tail;
 
-	ch2_LinkdedList() {
+	ch2_SinglyLinkdedList() {
 		head = NULL;
 		tail = NULL;
 	}
@@ -18,5 +18,5 @@ public:
 	void popNode(ch2_SinglyNode** head);
 	void printCh2Node(ch2_SinglyNode* ptr);
 };
-void ch2_demo1();
+void ch2_SinglyDemo1();
 #endif

@@ -9,7 +9,6 @@
 
 */Debug/*
 */Release/*
-/.vs/*
 */x64/*
 */x32/*
 
@@ -36,5 +35,6 @@
 *.exe
 *.out
 *.app
-/SortingSolution/SortingSolution/Debug
+/.vs/CtCISolutions/v16
+/.vs/slnx.sqlite
 /Debug

@@ -76,3 +76,59 @@ void ch2_SinglyDemo1()
 	ll.popNode(&ll.head);
 	ll.printCh2Node(ll.head);
 }
+
+
+void ch2_SinglyDemo2()
+{
+	ch2_SinglyLinkdedList ll;
+	ll.pushNode(&ll.head, 1);
+	ll.pushNode(&ll.head, 2);
+	ll.pushNode(&ll.head, 3);
+	ll.pushNode(&ll.head, 3);
+	ll.pushNode(&ll.head, 2);
+	ll.pushNode(&ll.head, 1);
+	ll.printCh2Node(ll.head);
+
+	bool result = isPalindrome(ll.head);
+	std::cout << "isPalindrome:" << result << std::endl;
+}
+
+bool isPalindrome(ch2_SinglyNode* head)
+{
+	if (head == NULL)
+		return false;
+
+	bool resultVerified = false;
+	bool result = false;
+	isPalindrome(&head, head, resultVerified, result);
+	return result;
+}
+
+void isPalindrome(ch2_SinglyNode** head, ch2_SinglyNode* runnerPtr, bool &resultVerified, bool &result)
+{
+	if (runnerPtr == NULL)
+		return;
+
+	isPalindrome(head, runnerPtr->next, resultVerified, result);
+
+	if (resultVerified == true)
+		return;
+
+	if (*head == runnerPtr) {
+		resultVerified = true;
+		result = true;
+		return;
+	}
+
+	if ((*head)->data == runnerPtr->data) {
+		*head = (*head)->next;
+	}
+	else {
+		resultVerified = true;
+		result = false;
+		return;
+	}
+
+	result = true;
+	return;
+}

@@ -37,8 +37,8 @@ int main()
 	//demoMyVectorChar1();
 	//ch1_test0();
 	//isStringRotation("waterbottle", "erbottlewat");
-	//ch2_SinglyDemo1();
+	ch2_SinglyDemo2();
 
-	ch2_DoubleDemo1();
+	//ch2_DoubleDemo1();
 }
 

@@ -19,4 +19,7 @@ public:
 	void printCh2Node(ch2_SinglyNode* ptr);
 };
 void ch2_SinglyDemo1();
+void ch2_SinglyDemo2();
+bool isPalindrome(ch2_SinglyNode* head);
+void isPalindrome(ch2_SinglyNode** head, ch2_SinglyNode* runnerPtr, bool &resultVerified, bool &result);
 #endif

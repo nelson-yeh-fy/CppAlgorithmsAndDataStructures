@@ -23,17 +23,30 @@ void ch2_SinglyLinkdedList::insertNode(ch2_SinglyNode* ptr, int data)
 
 void ch2_SinglyLinkdedList::appendNode(ch2_SinglyNode** head, int data)
 {
-	if (*head == NULL)
-		return;
+	ch2_SinglyNode* new_node = new ch2_SinglyNode();
+	new_node->data = data;
+	new_node->next = NULL;
 
+	if ((*head) == NULL) {
+		*head = new_node;
+		return;
+	}
+
+	ch2_SinglyNode* last = (*head);
+	while (last->next != NULL) {
+		last = last->next;
+	}
+	last->next = new_node;
+	last = new_node;
+}
+
+void ch2_SinglyLinkdedList::appendNode(ch2_SinglyNode** head, ch2_SinglyNode* new_node)
+{
 	ch2_SinglyNode* last = *head;
 	while (last->next != NULL) {
 		last = last->next;
 	}
 
-	ch2_SinglyNode* new_node = new ch2_SinglyNode();
-	new_node->data = data;
-	new_node->next = NULL;
 	last->next = new_node;
 	last = new_node;
 }
@@ -76,7 +89,6 @@ void ch2_SinglyDemo1()
 	ll.popNode(&ll.head);
 	ll.printCh2Node(ll.head);
 }
-
 
 void ch2_SinglyDemo2()
 {
@@ -131,4 +143,78 @@ void isPalindrome(ch2_SinglyNode** head, ch2_SinglyNode* runnerPtr, bool &result
 
 	result = true;
 	return;
+}
+
+ch2_SinglyNode* findIntersectedNode(ch2_SinglyNode* aHead, ch2_SinglyNode* bHead)
+{
+	if (aHead == NULL || bHead == NULL)
+		return nullptr;
+
+	int aLen = 0, bLen = 0;
+	ch2_SinglyNode* aTail = findLastAndLength(aHead, aLen);
+	ch2_SinglyNode* bTail = findLastAndLength(bHead, bLen);
+	
+	if (aTail != bTail)
+		return NULL;
+
+	if (aLen > bLen) {
+		int forward = aLen - bLen;
+		while (forward > 0) {
+			aHead = aHead->next;
+			forward--;
+		}
+	}
+
+	if (bLen > aLen) {
+		int forward = bLen - aLen;
+		while (forward > 0) {
+			bHead = bHead->next;
+			forward--;
+		}
+	}
+
+	while (aHead != NULL) {
+		if (aHead == bHead)
+			return aHead;
+
+		aHead = aHead->next;
+		bHead = bHead->next;
+	}
+
+	return nullptr;
+}
+
+ch2_SinglyNode* findLastAndLength(ch2_SinglyNode* head, int& length)
+{
+	ch2_SinglyNode* last = head;
+	while (last->next != NULL) {
+		last = last->next;
+		length++;
+	}
+	return last;
+}
+
+void ch2_SinglyDemo3()
+{
+	//L1
+	ch2_SinglyLinkdedList ll;
+	ll.appendNode(&ll.head, 1);
+	ll.appendNode(&ll.head, 2);
+	ch2_SinglyNode* n4 = new ch2_SinglyNode();
+	n4->data = 4;
+	n4->next = NULL;
+	ll.appendNode(&ll.head, n4);
+	ch2_SinglyNode* n5 = new ch2_SinglyNode();
+	n5->data = 5;
+	n5->next = NULL;
+	ll.appendNode(&ll.head, n5);
+	ll.printCh2Node(ll.head);
+
+	//L2
+	ch2_SinglyLinkdedList ll2;
+	ll2.appendNode(&ll2.head, 7);
+	ll2.appendNode(&ll2.head, n4);
+	ll2.printCh2Node(ll2.head);
+
+	ch2_SinglyNode* intersectedNode = findIntersectedNode(ll.head, ll2.head);
 }

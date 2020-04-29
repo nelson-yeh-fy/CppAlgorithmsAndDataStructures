@@ -20,6 +20,8 @@
 //#include "ch1_strBasics.h"
 #include "ch2_SinglyLinkdedList.h"
 #include "ch2_DoubleLinkdedList.h"
+#include "ch3_Stack.h"
+#include "ch3_Queue.h"
 using namespace std;
 
 int main()
@@ -37,8 +39,9 @@ int main()
 	//demoMyVectorChar1();
 	//ch1_test0();
 	//isStringRotation("waterbottle", "erbottlewat");
-	ch2_SinglyDemo2();
-
+	//ch2_SinglyDemo3();
 	//ch2_DoubleDemo1();
+	//ch3_stack_demo1();
+	ch3_queue_demo1();
 }
 

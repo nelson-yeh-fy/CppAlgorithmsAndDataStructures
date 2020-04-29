@@ -25,6 +25,9 @@
     <Filter Include="Source Files\ch02_LinkedLists">
       <UniqueIdentifier>{e0f38b35-c4b3-4531-9a84-099939ab941b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ch03_StacksAndQueues">
+      <UniqueIdentifier>{ffdeec34-c980-4276-885b-77637869f0f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CtCISolutions.cpp">
@@ -77,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="ch2_DoubleLinkdedList.cpp">
       <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClCompile>
+    <ClCompile Include="ch3_Stack.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
+    <ClCompile Include="ch3_Queue.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +148,15 @@
     </ClInclude>
     <ClInclude Include="ch2_DoubleLinkdedList.h">
       <Filter>Source Files\ch02_LinkedLists</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_Node.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_Stack.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_Queue.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

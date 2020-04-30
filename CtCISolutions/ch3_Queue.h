@@ -5,47 +5,54 @@
 template <typename K = int>
 class ch3_Queue {
 private:
-	ch3_Node<K>* top;
+	ch3_Node<K>* front;
+	ch3_Node<K>* rear;
+	int size;
 	K value;
 public:
-	//ch3_Queue() {
-	//	top = NULL;
-	//}
-	//~ch3_Queue() {
-	//	if (top != NULL)
-	//		delete top;
-	//}
-
 	const ch3_Node<K>* pop() {
-		if (top == NULL)
+		if (front == NULL)
 			return NULL;
 
-		ch3_Node<K>* last = top;
-		while (last->next != NULL) {
-			last = last->next;
-		}
+		ch3_Node<K>* temp = front;
+		front = front->next;
 
-		ch3_Node<K>* toBeRemoved = new ch3_Node<K>;
-		toBeRemoved->data = last->data;
-		toBeRemoved->next = last->next;
-		last = NULL;
-		return toBeRemoved;
+		if (front == NULL)
+			rear == NULL;
+
+		size--;
+		return temp;
 	}
 
 	void push(ch3_Node<K>* new_node) {
-		new_node->next = top;
-		top = new_node;
+		if (rear == NULL)
+		{
+			front = rear = new_node;
+			return;
+		}
+
+		rear->next = new_node;
+		rear = new_node;
+		size++;
+		return;
 	}
 
 	void push(const K& new_value) {
-		ch3_Node<K>* new_node = new ch3_Node<K>;
-		new_node->data = new_value;
-		new_node->next = top;
-		top = new_node;
+		ch3_Node<K>* new_node = new ch3_Node<K>(new_value);
+		if (rear == NULL)
+		{
+			front = rear = new_node;
+			return;
+		}
+
+		rear->next = new_node;
+		rear = new_node;
+		size++;
+		return;
 	}
 
 	void printQueue() {
-		ch3_Node<K>* temp = top;
+		ch3_Node<K>* temp = front;
 		while (temp != NULL) {
 			std::cout << temp->data << ",";
 			temp = temp->next;
@@ -62,7 +69,7 @@ public:
 	}
 
 	ch3_Queue(const K& ini_value)
-		:value(ini_value), top(NULL) {
+		:value(ini_value), front(NULL), rear(NULL), size(0) {
 		std::cout << "constructor is invoked" << std::endl;
 	};
 
@@ -71,6 +78,14 @@ public:
 		if (value != NULL) {
 			std::cout << "destructor(if value!=NULL) is invoked" << std::endl;
 			value = 0;
+		}
+		if (front != NULL) {
+			std::cout << "destructor(if front!=NULL) is invoked" << std::endl;
+			delete front;
+		}
+		if (rear != NULL) {
+			std::cout << "destructor(if rear!=NULL) is invoked" << std::endl;
+			delete rear;
 		}
 	}
 

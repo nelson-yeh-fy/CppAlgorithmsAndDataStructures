@@ -31,9 +31,7 @@ public:
 	}
 
 	void push(const K& new_value) {
-		ch3_Node<K>* new_node = new ch3_Node<K>;
-		new_node->data = new_value;
-		new_node->next = top;
+		ch3_Node<K>* new_node = new ch3_Node<K>(new_value);
 		top = new_node;
 	}
 

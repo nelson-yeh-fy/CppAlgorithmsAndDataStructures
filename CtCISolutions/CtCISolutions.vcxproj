@@ -150,11 +150,14 @@
     <ClCompile Include="bubbleSort_1_ptr.cpp" />
     <ClCompile Include="bubbleSort_2_vector.cpp" />
     <ClCompile Include="ch3_Queue.cpp" />
+    <ClCompile Include="ch3_SetOfStack.cpp" />
     <ClCompile Include="ch3_Stack.cpp" />
     <ClCompile Include="ch1_myVectorChar.cpp" />
     <ClCompile Include="ch1_strBasics.cpp" />
     <ClCompile Include="ch2_DoubleLinkdedList.cpp" />
     <ClCompile Include="ch2_SinglyLinkdedList.cpp" />
+    <ClCompile Include="ch3_StackNode.cpp" />
+    <ClCompile Include="ch3_StackWithMin.cpp" />
     <ClCompile Include="CtCISolutions.cpp" />
     <ClCompile Include="insertionSort_1.cpp" />
     <ClCompile Include="insertionSort_2.cpp" />
@@ -179,6 +182,7 @@
     <ClInclude Include="ch3_Node.h" />
     <ClInclude Include="ch3_Queue.h" />
     <ClInclude Include="ch3_Stack.h" />
+    <ClInclude Include="ch3_StackWithMin.h" />
     <ClInclude Include="insertionSort_1.h" />
     <ClInclude Include="insertionSort_2.h" />
     <ClInclude Include="MaxHeap.h" />

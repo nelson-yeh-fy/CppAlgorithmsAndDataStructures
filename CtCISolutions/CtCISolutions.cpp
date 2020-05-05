@@ -22,6 +22,8 @@
 #include "ch2_DoubleLinkdedList.h"
 #include "ch3_Stack.h"
 #include "ch3_Queue.h"
+#include "ch3_StackWithMin.h"
+#include "ch3_SetOfStack.cpp"
 using namespace std;
 
 int main()
@@ -42,6 +44,8 @@ int main()
 	//ch2_SinglyDemo3();
 	//ch2_DoubleDemo1();
 	//ch3_stack_demo1();
-	ch3_queue_demo1();
+	//ch3_queue_demo1();
+	//ch3_stack_with_min_demo1();
+	//ch3_SetOfStack_demo1();
 }
 

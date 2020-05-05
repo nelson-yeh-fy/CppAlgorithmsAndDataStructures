@@ -87,6 +87,15 @@
     <ClCompile Include="ch3_Queue.cpp">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClCompile>
+    <ClCompile Include="ch3_StackWithMin.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
+    <ClCompile Include="ch3_StackNode.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
+    <ClCompile Include="ch3_SetOfStack.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">
@@ -156,6 +165,9 @@
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
     <ClInclude Include="ch3_Queue.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_StackWithMin.h">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
   </ItemGroup>

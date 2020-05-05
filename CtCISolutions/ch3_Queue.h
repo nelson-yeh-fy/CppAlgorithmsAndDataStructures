@@ -8,7 +8,6 @@ private:
 	ch3_Node<K>* front;
 	ch3_Node<K>* rear;
 	int size;
-	K value;
 public:
 	const ch3_Node<K>* pop() {
 		if (front == NULL)
@@ -18,7 +17,7 @@ public:
 		front = front->next;
 
 		if (front == NULL)
-			rear == NULL;
+			rear = NULL;
 
 		size--;
 		return temp;
@@ -60,25 +59,13 @@ public:
 		std::cout << std::endl;
 	}
 
-	void setValue(const K& new_value) {
-		value = new_value;
-	}
-
-	const K& getValue() const {
-		return value;
-	}
-
-	ch3_Queue(const K& ini_value)
-		:value(ini_value), front(NULL), rear(NULL), size(0) {
+	ch3_Queue()
+		:front(NULL), rear(NULL), size(0) {
 		std::cout << "constructor is invoked" << std::endl;
 	};
 
 	~ch3_Queue() {
 		std::cout << "destructor is invoked" << std::endl;
-		if (value != NULL) {
-			std::cout << "destructor(if value!=NULL) is invoked" << std::endl;
-			value = 0;
-		}
 		if (front != NULL) {
 			std::cout << "destructor(if front!=NULL) is invoked" << std::endl;
 			delete front;

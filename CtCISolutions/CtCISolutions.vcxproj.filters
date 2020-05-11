@@ -170,5 +170,11 @@
     <ClInclude Include="ch3_StackWithMin.h">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
+    <ClInclude Include="ch3_SetOfStack.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_StackNode.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

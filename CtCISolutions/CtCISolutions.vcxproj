@@ -181,7 +181,9 @@
     <ClInclude Include="ch2_SinglyNode.h" />
     <ClInclude Include="ch3_Node.h" />
     <ClInclude Include="ch3_Queue.h" />
+    <ClInclude Include="ch3_SetOfStack.h" />
     <ClInclude Include="ch3_Stack.h" />
+    <ClInclude Include="ch3_StackNode.h" />
     <ClInclude Include="ch3_StackWithMin.h" />
     <ClInclude Include="insertionSort_1.h" />
     <ClInclude Include="insertionSort_2.h" />

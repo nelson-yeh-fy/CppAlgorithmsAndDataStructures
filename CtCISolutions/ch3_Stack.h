@@ -10,7 +10,7 @@ private:
 	K value;
 	unsigned short int size;
 public:
-	const ch3_Node<K>* pop() {
+	ch3_Node<K>* pop() {
 		if (Top == NULL)
 			return NULL;
 

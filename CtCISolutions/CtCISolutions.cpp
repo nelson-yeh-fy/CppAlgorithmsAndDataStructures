@@ -18,12 +18,12 @@
 //#include "insertionSort_2.h"
 //#include "ch1_myVectorChar.h"
 //#include "ch1_strBasics.h"
-#include "ch2_SinglyLinkdedList.h"
-#include "ch2_DoubleLinkdedList.h"
-#include "ch3_Stack.h"
-#include "ch3_Queue.h"
-#include "ch3_StackWithMin.h"
-#include "ch3_SetOfStack.cpp"
+//#include "ch2_SinglyLinkdedList.h"
+//#include "ch2_DoubleLinkdedList.h"
+//#include "ch3_Stack.h"
+//#include "ch3_Queue.h"
+//#include "ch3_StackWithMin.h"
+#include "ch3_SetOfStack.h"
 using namespace std;
 
 int main()
@@ -46,6 +46,6 @@ int main()
 	//ch3_stack_demo1();
 	//ch3_queue_demo1();
 	//ch3_stack_with_min_demo1();
-	//ch3_SetOfStack_demo1();
+	ch3_SetOfStack_demo1();
 }
 

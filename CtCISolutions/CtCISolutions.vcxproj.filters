@@ -96,6 +96,9 @@
     <ClCompile Include="ch3_SetOfStack.cpp">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClCompile>
+    <ClCompile Include="ch3_QueueAnimalShelter.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">
@@ -174,6 +177,9 @@
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
     <ClInclude Include="ch3_StackNode.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch3_QueueAnimalShelter.h">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
   </ItemGroup>

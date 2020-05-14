@@ -150,6 +150,7 @@
     <ClCompile Include="bubbleSort_1_ptr.cpp" />
     <ClCompile Include="bubbleSort_2_vector.cpp" />
     <ClCompile Include="ch3_Queue.cpp" />
+    <ClCompile Include="ch3_QueueAnimalShelter.cpp" />
     <ClCompile Include="ch3_SetOfStack.cpp" />
     <ClCompile Include="ch3_Stack.cpp" />
     <ClCompile Include="ch1_myVectorChar.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="ch2_SinglyNode.h" />
     <ClInclude Include="ch3_Node.h" />
     <ClInclude Include="ch3_Queue.h" />
+    <ClInclude Include="ch3_QueueAnimalShelter.h" />
     <ClInclude Include="ch3_SetOfStack.h" />
     <ClInclude Include="ch3_Stack.h" />
     <ClInclude Include="ch3_StackNode.h" />

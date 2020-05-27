@@ -1,21 +1,31 @@
 #ifndef CH4_NODE_H
 #define CH4_NODE_H
-#include <vector>
+#include <list>
+#include <deque>
 
 template <typename T=int>
 class ch4_Node {
 public:
 	T data;
-	bool visisted = false;
-	std::vector<ch4_Node<T>*> adjacentNodes;
+	bool visited = false;
+	std::list<ch4_Node<T>*> adjacents;
 
 	ch4_Node(T value)
 		:data(value) {}
-	ch4_Node(T value, std::vector<ch4_Node<T>*> nodes)
-		:data(value), adjacentNodes(nodes){}
+	ch4_Node(T value, std::list<ch4_Node<T>*> nodes)
+		:data(value), adjacents(nodes) {}
 
-	void DFS(ch4_Node<T>* rootNode);
-	void BFS(ch4_Node<T>* rootNode);
+
+	void printNode();
+	void addAdj(ch4_Node<T>* node);
 };
+
+
+void DFS_traversal(ch4_Node<int>* root);
+bool DFS_search(ch4_Node<int>* root, int target);
+
+void BFS_traversal(ch4_Node<int>* root);
+
+void ch4_graph_demo1();
 #endif
 

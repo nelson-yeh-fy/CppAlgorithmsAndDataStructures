@@ -51,15 +51,6 @@
     <ClCompile Include="mergeSort_1.cpp">
       <Filter>Source Files\ch10_SortingAndSearching</Filter>
     </ClCompile>
-    <ClCompile Include="MaxHeap.cpp">
-      <Filter>Source Files\DS</Filter>
-    </ClCompile>
-    <ClCompile Include="MinHeap.cpp">
-      <Filter>Source Files\DS</Filter>
-    </ClCompile>
-    <ClCompile Include="PriorityQueue.cpp">
-      <Filter>Source Files\DS</Filter>
-    </ClCompile>
     <ClCompile Include="quickSort_1.cpp">
       <Filter>Source Files\ch10_SortingAndSearching</Filter>
     </ClCompile>
@@ -105,6 +96,15 @@
     <ClCompile Include="ch4_Node.cpp">
       <Filter>Source Files\ch04_TreesAndGraphs</Filter>
     </ClCompile>
+    <ClCompile Include="MaxHeap.cpp">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
+    </ClCompile>
+    <ClCompile Include="MinHeap.cpp">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
+    </ClCompile>
+    <ClCompile Include="PriorityQueue.cpp">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">
@@ -125,16 +125,7 @@
     <ClInclude Include="mergeSort_1.h">
       <Filter>Source Files\ch10_SortingAndSearching</Filter>
     </ClInclude>
-    <ClInclude Include="MaxHeap.h">
-      <Filter>Source Files\DS</Filter>
-    </ClInclude>
-    <ClInclude Include="MinHeap.h">
-      <Filter>Source Files\DS</Filter>
-    </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Source Files\DS</Filter>
-    </ClInclude>
-    <ClInclude Include="PriorityQueue.h">
       <Filter>Source Files\DS</Filter>
     </ClInclude>
     <ClInclude Include="quickSort_1.h">
@@ -190,6 +181,15 @@
     </ClInclude>
     <ClInclude Include="ch4_Node.h">
       <Filter>Source Files\ch04_TreesAndGraphs</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxHeap.h">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
+    </ClInclude>
+    <ClInclude Include="MinHeap.h">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -48,5 +48,6 @@ int main()
 	//ch3_queue_demo1();
 	//ch3_stack_with_min_demo1();
 	//ch3_SetOfStack_demo1();
+	ch4_graph_demo1();
 }
 

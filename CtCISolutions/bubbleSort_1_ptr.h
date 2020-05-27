@@ -1,6 +1,6 @@
 #ifndef BUBBLESORT_PTR_H
 #define BUBBLESORT_PTR_H
-#pragma once
+
 void bubbleSort_1_main();
 void bubbleSort(int* items, int size);
 void print1(int* ptr);

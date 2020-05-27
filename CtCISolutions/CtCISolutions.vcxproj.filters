@@ -28,6 +28,9 @@
     <Filter Include="Source Files\ch03_StacksAndQueues">
       <UniqueIdentifier>{ffdeec34-c980-4276-885b-77637869f0f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ch04_TreesAndGraphs">
+      <UniqueIdentifier>{4327e356-0cd6-4f0d-9b4e-e63742ccfe40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CtCISolutions.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="ch3_QueueAnimalShelter.cpp">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClCompile>
+    <ClCompile Include="ch4_Node.cpp">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="ch3_QueueAnimalShelter.h">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="ch4_Node.h">
+      <Filter>Source Files\ch04_TreesAndGraphs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

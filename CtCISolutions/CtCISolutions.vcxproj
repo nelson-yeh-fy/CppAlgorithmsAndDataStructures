@@ -159,6 +159,7 @@
     <ClCompile Include="ch2_SinglyLinkdedList.cpp" />
     <ClCompile Include="ch3_StackNode.cpp" />
     <ClCompile Include="ch3_StackWithMin.cpp" />
+    <ClCompile Include="ch4_Node.cpp" />
     <ClCompile Include="CtCISolutions.cpp" />
     <ClCompile Include="insertionSort_1.cpp" />
     <ClCompile Include="insertionSort_2.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="ch3_Stack.h" />
     <ClInclude Include="ch3_StackNode.h" />
     <ClInclude Include="ch3_StackWithMin.h" />
+    <ClInclude Include="ch4_Node.h" />
     <ClInclude Include="insertionSort_1.h" />
     <ClInclude Include="insertionSort_2.h" />
     <ClInclude Include="MaxHeap.h" />

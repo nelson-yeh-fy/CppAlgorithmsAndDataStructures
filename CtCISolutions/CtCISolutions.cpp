@@ -23,7 +23,8 @@
 //#include "ch3_Stack.h"
 //#include "ch3_Queue.h"
 //#include "ch3_StackWithMin.h"
-#include "ch3_SetOfStack.h"
+//#include "ch3_SetOfStack.h"
+#include "ch4_Node.h"
 using namespace std;
 
 int main()
@@ -46,6 +47,6 @@ int main()
 	//ch3_stack_demo1();
 	//ch3_queue_demo1();
 	//ch3_stack_with_min_demo1();
-	ch3_SetOfStack_demo1();
+	//ch3_SetOfStack_demo1();
 }
 

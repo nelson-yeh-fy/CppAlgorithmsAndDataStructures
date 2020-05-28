@@ -25,6 +25,8 @@ void DFS_traversal(ch4_Node<int>* root);
 bool DFS_search(ch4_Node<int>* root, int target);
 
 void BFS_traversal(ch4_Node<int>* root);
+bool BFS_areTwoNodesConnected(ch4_Node<int>* nA, ch4_Node<int>* nB);
+bool BidirectionalBFS_areTwoNodesConnected(ch4_Node<int>* nA, ch4_Node<int>* nB);
 
 void ch4_graph_demo1();
 #endif

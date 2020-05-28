@@ -29,5 +29,6 @@ bool BFS_areTwoNodesConnected(ch4_Node<int>* nA, ch4_Node<int>* nB);
 bool BidirectionalBFS_areTwoNodesConnected(ch4_Node<int>* nA, ch4_Node<int>* nB);
 
 void ch4_graph_demo1();
+void ch4_graph_demo2();
 #endif
 

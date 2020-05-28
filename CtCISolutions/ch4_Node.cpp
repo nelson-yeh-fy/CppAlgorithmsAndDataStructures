@@ -147,3 +147,14 @@ void ch4_graph_demo1()
 	//std::cout << "BFS nodes connected?" << BFS_areTwoNodesConnected(n10, n99) << std::endl;
 	std::cout << "BFS nodes connected?" << BidirectionalBFS_areTwoNodesConnected(n10, n23) << std::endl;
 }
+
+
+void ch4_graph_demo2()
+{
+	//Write an algorithm to build a binary search tree from a sorted arrary (small to big, unique integer)
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+
+	//Brute Force
+	//Since BST means all left descendents <= n < all right descendents, we can simply separate it.
+	//Top node would be in arr[arr.length/2-1]
+}

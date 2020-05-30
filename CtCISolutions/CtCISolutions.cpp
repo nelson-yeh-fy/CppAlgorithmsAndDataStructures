@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 //#include "Node.h"
-//#include "MinHeap.h"
+#include "MinHeap.h"
 //#include "MaxHeap.h"
 //#include "PriorityQueue.h"
 //#include "bubblesort_1_ptr.h"
@@ -48,6 +48,8 @@ int main()
 	//ch3_queue_demo1();
 	//ch3_stack_with_min_demo1();
 	//ch3_SetOfStack_demo1();
-	ch4_graph_demo1();
+	//ch4_graph_demo1();
+	//ch4_createListsPerBTdepth_BFS();
+	ch4_createListsPerBTdepth_DFS();
 }
 

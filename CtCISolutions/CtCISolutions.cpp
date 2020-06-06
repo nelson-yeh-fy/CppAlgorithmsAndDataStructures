@@ -52,6 +52,6 @@ int main()
 	//ch4_graph_demo1();
 	//ch4_createListsPerBTdepth_BFS();
 	//ch4_createListsPerBTdepth_DFS();
-	ldemo_q1_b();
+	ldemo_q1_c();
 }
 

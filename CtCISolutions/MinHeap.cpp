@@ -167,7 +167,7 @@ void ch4_createListsPerBTdepth_BFS()
 			Lists.push_back(depth_list);
 		}
 		else {
-			Lists[depth - 1].push_back(mp1.getValue(pos));
+			Lists.at(static_cast<size_t>(depth)- 1).push_back(mp1.getValue(pos));
 		}
 		
 		//enqueue left node and right node, and their depth.

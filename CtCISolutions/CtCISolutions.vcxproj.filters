@@ -105,6 +105,9 @@
     <ClCompile Include="PriorityQueue.cpp">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
     </ClCompile>
+    <ClCompile Include="lc_sample20.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="PriorityQueue.h">
       <Filter>Source Files\ch03_StacksAndQueues</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_sample20.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

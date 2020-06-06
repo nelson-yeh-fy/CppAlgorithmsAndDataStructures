@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include <vector>
+//#include <vector>
 //#include "Node.h"
-#include "MinHeap.h"
+//#include "MinHeap.h"
 //#include "MaxHeap.h"
 //#include "PriorityQueue.h"
 //#include "bubblesort_1_ptr.h"
@@ -24,7 +24,8 @@
 //#include "ch3_Queue.h"
 //#include "ch3_StackWithMin.h"
 //#include "ch3_SetOfStack.h"
-#include "ch4_Node.h"
+//#include "ch4_Node.h"
+#include "lc_sample20.h"
 using namespace std;
 
 int main()
@@ -50,6 +51,7 @@ int main()
 	//ch3_SetOfStack_demo1();
 	//ch4_graph_demo1();
 	//ch4_createListsPerBTdepth_BFS();
-	ch4_createListsPerBTdepth_DFS();
+	//ch4_createListsPerBTdepth_DFS();
+	ldemo_q1_b();
 }
 

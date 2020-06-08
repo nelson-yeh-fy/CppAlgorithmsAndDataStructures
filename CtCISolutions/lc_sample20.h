@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
+#include <algorithm>
 
 // This solution changes the original vector, doesn't fit leetcode's requirement.
 class Solution_q1_a {
@@ -151,7 +153,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
-class Solution_q2 {
+class Solution_q2_a {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
@@ -159,7 +161,7 @@ public:
         ListNode* head = result;
         int sum = 0;
 
-        //traver l1 and l2 at the same time, the order start from the beginging.
+        //traverse l1 and l2 at the same time, the order start from the beginging.
         while (l1 != nullptr || l2 != nullptr) {
 
             sum = sum / 10;
@@ -191,4 +193,72 @@ public:
         return result->next;
     }
 };
+//concise version but worse performance
+class Solution_q2_b {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+        ListNode* result = new ListNode(0), * ptr = result;
+        int carry = 0;
+
+        //traverse l1 and l2 at the same time, the order start from the beginging.
+        while (l1 || l2 || carry != 0) {
+            int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
+            carry = sum / 10;
+            ListNode* n = new ListNode(sum % 10);
+            ptr->next = n;
+            ptr = n;
+
+            l1 = (l1 ? l1->next : nullptr); //check nullptr again, drag performance
+            l2 = (l2 ? l2->next : nullptr);
+        }
+        return result->next;
+    }
+};
+
+//looks correct, but somehow leetcode test "pwwkew" shows 4 (expected:3)
+class Solution_q3_a {
+public:
+    int lengthOfLongestSubstring(std::string s) {
+
+        std::unordered_set<char> uset;
+        int maxLen = 0; //the longest substring length
+
+        for (auto it = s.cbegin(); it != s.cend(); ++it) { //traverse characters in the string
+            auto find = uset.find(*it);
+            if (find != uset.cend()) { //found
+                uset.erase(uset.cbegin(), ++find);
+            }
+            uset.insert(*it);
+            maxLen = std::max(maxLen, static_cast<int>(uset.size()));
+        }
+        return maxLen;
+    }
+};
+
+class Solution_q3_b {
+public:
+    int lengthOfLongestSubstring(std::string s) {
+
+        std::unordered_set<char> uset;
+        int maxLen = 0; //the longest substring length
+        int i = 0, j = 0, n = s.size(), ans = 0;
+
+        while (i < n && j < n){
+            if (uset.find(s[j]) == uset.end()) //If the character does not in the set
+            {
+                uset.insert(s[j++]); //Insert the character in set and update the j counter
+                maxLen = std::max(maxLen, j - i); //Check if the new distance is longer than the current answer
+            }
+            else
+            {
+                uset.erase(s[i++]);
+                /*If character does exist in the set, ie. it is a repeated character,
+                we update the left side counter i, and continue with the checking for substring. */
+            }
+        }
+        return maxLen;
+    }
+};
+void ldemo_q3_a();
 #endif

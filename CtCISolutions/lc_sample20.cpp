@@ -47,3 +47,14 @@ void ldemo_q1_c() {
 
     vector<int> indices = s.twoSum(nums, target);
 }
+
+void ldemo_q3_a() {
+
+    Solution_q3_a s;
+    std::string str = "advcdek";
+    str = "pwwkew";
+    str = "wkewi";
+    //str = "adbcvd";
+    
+    std::cout << s.lengthOfLongestSubstring(str) << std::endl;
+}

@@ -302,29 +302,26 @@ public:
 //if we're not allowed to use additional vector to store merged sorted array.
 class Solution_q4_b {
 public:
-    double findMedianSortedArrays(std::forward_list<int>& nums1, std::forward_list<int>& nums2) {
+    double findMedianSortedArrays(std::list<int>& nums1, std::list<int>& nums2) {
 
         if (nums1.front() > nums2.front())
             return findMedianSortedArrays(nums2, nums1);
 
-        int size = 0;
-        auto i = nums1.cbefore_begin(), j = nums2.cbefore_begin();
+        int size = 1;
+        auto i = nums1.cbegin(), j = nums2.cbegin();
         while (i != nums1.cend() || j != nums2.cend())
         {
             if (i == nums1.cend()) {
-                //nums1.insert_after(i, j, nums2.cend());
-                //break;
-                nums1.insert_after(i, *(j++));
+                nums1.push_back(*(j++));
             }
             else if (j == nums2.cend()) {
                 //Do nothing
             }
             else if (*i <= *j) {
-                //Do nothing
                 i++;
             }
             else if (*j < *i) {
-                nums1.insert_after(i-1, *(j++));
+                nums1.insert(i++, *(j++));
             }
             size++;
         }
@@ -339,12 +336,12 @@ public:
         }
         return median;
     }
-    int findNth(std::forward_list<int>& list, int n) {
+    int findNth(std::list<int>& list, int n) {
         for (auto it = list.cbegin(); it != list.cend(); ++it) {
-            n--;
             if (n == 0) {
                 return *it;
             }
+            n--;
         }
         return INT_MIN;
     }
@@ -352,4 +349,52 @@ public:
 
 void ldemo_q4_a();
 void ldemo_q4_b();
+
+class Solution_q5_a {
+public:
+    std::string longestPalindrome(std::string s) {
+
+        switch (s.size()) {
+        case 0: return "";
+        case 1: return s;
+        case 2:
+            return s[0] == s[1] ? s : "";
+            /*if (s[0] == s[1]) { return s; }
+            else { return ""; }*/
+        }
+        std::unordered_map<int, int> PRanges; //Record Palindrome ranges
+        int maxkey = 0, max = 0, len = 0;
+
+        for (std::size_t i = 2; i < s.size(); ++i)
+        {
+            std::size_t R = i;
+            len = 0;
+            if (PRanges.count(R - 1) > 0) {
+                int L = PRanges[R - 1] - 1;
+                if (L > -1 && s[R] == s[L]) {
+                    PRanges.erase(R - 1);
+                    PRanges[R] = L;
+                    len = R - L;
+                }
+            }
+            else {
+                if (s[R] == s[R - 1]) {
+                    PRanges[R] = R - 1;
+                    len = 2;
+                }
+                else if (s[R] == s[R - 2]) {
+                    PRanges[R] = R - 2;
+                    len = 3;
+                }
+            }
+
+            if (len >= max) {
+                max = len;
+                maxkey = R;
+            }
+        }
+        return s.substr(PRanges[maxkey], maxkey);
+    }
+};
+void ldemo_q5_a();
 #endif

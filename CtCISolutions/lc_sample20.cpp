@@ -70,7 +70,15 @@ void ldemo_q4_a()
 void ldemo_q4_b()
 {
     Solution_q4_b q4;
-    std::forward_list<int> n1 = { 1,3 };
-    std::forward_list<int> n2 = { 2,4 };
+    std::list<int> n1 = { 1,3 };
+    std::list<int> n2 = { 2,4 };
     std::cout << q4.findMedianSortedArrays(n1, n2);
 }
+
+void ldemo_q5_a()
+{
+    Solution_q5_a q;
+    std::string s = "babad";
+    std::cout << q.longestPalindrome(s);
+}
+

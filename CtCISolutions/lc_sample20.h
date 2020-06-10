@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <algorithm>
+#include <forward_list>
 
 // This solution changes the original vector, doesn't fit leetcode's requirement.
 class Solution_q1_a {
@@ -236,6 +237,7 @@ public:
     }
 };
 
+//basically the same with q3_a, but don't know why leetcode doesn't take q3_a.
 class Solution_q3_b {
 public:
     int lengthOfLongestSubstring(std::string s) {
@@ -261,4 +263,93 @@ public:
     }
 };
 void ldemo_q3_a();
+
+class Solution_q4_a {
+public:
+    double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
+
+        std::vector<int> newSorted;
+        auto i = nums1.cbegin(), j = nums2.cbegin();
+        while (i != nums1.cend() ||  j != nums2.cend())
+        {
+            if (i == nums1.cend()) {
+                newSorted.push_back(*(j++));
+            }
+            else if (j == nums2.cend()) {
+                newSorted.push_back(*(i++));
+            }
+            else if (*i <= *j) {
+                newSorted.push_back(*(i++));
+            }
+            else if (*j < *i) {
+                newSorted.push_back(*(j++));
+            }
+        }
+
+        int size = newSorted.size();
+        double median = 0;
+        if (size % 2 == 1) {
+            median = newSorted[(size/2)];
+        }
+        else if (size % 2 == 0) {
+            median = newSorted[(size/2)-1] + newSorted[size/2];
+            median /= 2;
+        }
+
+        return median;
+    }
+};
+//if we're not allowed to use additional vector to store merged sorted array.
+class Solution_q4_b {
+public:
+    double findMedianSortedArrays(std::forward_list<int>& nums1, std::forward_list<int>& nums2) {
+
+        if (nums1.front() > nums2.front())
+            return findMedianSortedArrays(nums2, nums1);
+
+        int size = 0;
+        auto i = nums1.cbefore_begin(), j = nums2.cbefore_begin();
+        while (i != nums1.cend() || j != nums2.cend())
+        {
+            if (i == nums1.cend()) {
+                //nums1.insert_after(i, j, nums2.cend());
+                //break;
+                nums1.insert_after(i, *(j++));
+            }
+            else if (j == nums2.cend()) {
+                //Do nothing
+            }
+            else if (*i <= *j) {
+                //Do nothing
+                i++;
+            }
+            else if (*j < *i) {
+                nums1.insert_after(i-1, *(j++));
+            }
+            size++;
+        }
+
+        double median = 0;
+        if (size % 2 == 1) {
+            median = findNth(nums1, (size / 2));
+        }
+        else if (size % 2 == 0) {
+            median = findNth(nums1, (size /2)-1) + findNth(nums1, (size / 2));
+            median /= 2;
+        }
+        return median;
+    }
+    int findNth(std::forward_list<int>& list, int n) {
+        for (auto it = list.cbegin(); it != list.cend(); ++it) {
+            n--;
+            if (n == 0) {
+                return *it;
+            }
+        }
+        return INT_MIN;
+    }
+};
+
+void ldemo_q4_a();
+void ldemo_q4_b();
 #endif

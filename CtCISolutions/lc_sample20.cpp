@@ -58,3 +58,19 @@ void ldemo_q3_a() {
     
     std::cout << s.lengthOfLongestSubstring(str) << std::endl;
 }
+
+void ldemo_q4_a()
+{
+    Solution_q4_a q4;
+    std::vector<int> n1 = { 1,3 };
+    std::vector<int> n2 = { 2,4 };
+    std::cout << q4.findMedianSortedArrays(n1, n2);
+}
+
+void ldemo_q4_b()
+{
+    Solution_q4_b q4;
+    std::forward_list<int> n1 = { 1,3 };
+    std::forward_list<int> n2 = { 2,4 };
+    std::cout << q4.findMedianSortedArrays(n1, n2);
+}

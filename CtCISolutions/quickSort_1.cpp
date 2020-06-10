@@ -32,6 +32,20 @@ int QS1::partition(int* items, int i, int j) {
 		else {
 			j--;
 		}
+		//Another way:
+		/*while (i < j) {
+			if (nums[j] > privot_value) {
+				j--;
+			}
+			else if (nums[i] < privot_value) {
+				i++;
+			}
+			else {
+				int tmp = nums[i];
+				nums[i] = nums[j];
+				nums[j] = tmp;
+			}
+		}*/
 	}
 	// Swap k (base number) with items[j], so everything on k's left is now smaller than k.
 	// and everthing on k's right is bigger than k.

@@ -357,35 +357,29 @@ public:
         switch (s.size()) {
         case 0: return "";
         case 1: return s;
-        case 2:
-            return s[0] == s[1] ? s : "";
-            /*if (s[0] == s[1]) { return s; }
-            else { return ""; }*/
         }
-        std::unordered_map<int, int> PRanges; //Record Palindrome ranges
+
+        std::unordered_map<int, int> PRs; //Record Palindrome ranges
         int maxkey = 0, max = 0, len = 0;
 
-        for (std::size_t i = 2; i < s.size(); ++i)
+        for (int R = 2; R < s.size(); ++R)
         {
-            std::size_t R = i;
             len = 0;
-            if (PRanges.count(R - 1) > 0) {
-                int L = PRanges[R - 1] - 1;
-                if (L > -1 && s[R] == s[L]) {
-                    PRanges.erase(R - 1);
-                    PRanges[R] = L;
-                    len = R - L;
+            if (PRs.count(R - 1) > 0) {
+                int L = PRs[R - 1] - 1;
+                if (L >= 0 && s[R] == s[L]) {
+                    //PRs.erase(R - 1);
+                    PRs[R] = L;
+                    len = R - L + 1;
                 }
             }
-            else {
-                if (s[R] == s[R - 1]) {
-                    PRanges[R] = R - 1;
-                    len = 2;
-                }
-                else if (s[R] == s[R - 2]) {
-                    PRanges[R] = R - 2;
-                    len = 3;
-                }
+            else if (R - 2 >= 0 && s[R] == s[R - 2]) {
+                PRs[R] = R - 2;
+                len = 3;
+            }
+            else if (R - 1 >= 0 && s[R] == s[R - 1]) {
+                PRs[R] = R - 1;
+                len = 2;
             }
 
             if (len >= max) {
@@ -393,7 +387,15 @@ public:
                 maxkey = R;
             }
         }
-        return s.substr(PRanges[maxkey], maxkey);
+
+        if (max < 2) {
+            if (s[0] == s[1]) {
+                PRs[1] = 0;
+                max = 2;
+                maxkey = 1;
+            }
+        }
+        return s.substr(PRs[maxkey], maxkey - PRs[maxkey] + 1);
     }
 };
 void ldemo_q5_a();

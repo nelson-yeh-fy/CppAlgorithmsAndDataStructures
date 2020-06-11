@@ -357,27 +357,33 @@ public:
         switch (s.size()) {
         case 0: return "";
         case 1: return s;
+        case 2:
+            return s[0] == s[1] ? s : std::string(1, s[0]);
         }
 
         std::unordered_map<int, int> PRs; //Record Palindrome ranges
         int maxkey = 0, max = 0, len = 0;
 
-        for (int R = 2; R < s.size(); ++R)
+        for (int R = 1; R < s.size(); ++R)
         {
             len = 0;
             if (PRs.count(R - 1) > 0) {
                 int L = PRs[R - 1] - 1;
                 if (L >= 0 && s[R] == s[L]) {
-                    //PRs.erase(R - 1);
                     PRs[R] = L;
                     len = R - L + 1;
                 }
+                else if (isPalindrome(s, L+1, R)) {
+                    PRs[R] = L+1;
+                    len = R - L + 1+1;
+                }
             }
-            else if (R - 2 >= 0 && s[R] == s[R - 2]) {
+
+            else if (isPalindrome(s, R - 2, R)) {
                 PRs[R] = R - 2;
                 len = 3;
             }
-            else if (R - 1 >= 0 && s[R] == s[R - 1]) {
+            else if (isPalindrome(s, R - 1, R)) {
                 PRs[R] = R - 1;
                 len = 2;
             }
@@ -387,15 +393,18 @@ public:
                 maxkey = R;
             }
         }
-
-        if (max < 2) {
-            if (s[0] == s[1]) {
-                PRs[1] = 0;
-                max = 2;
-                maxkey = 1;
-            }
-        }
         return s.substr(PRs[maxkey], maxkey - PRs[maxkey] + 1);
+    }
+
+    bool isPalindrome(std::string& s, int L, int R) {
+        if (L < 0) {
+            return false;
+        }
+        while (L < R) {
+            if (s[L++] != s[R--])
+                return false;
+        }
+        return true;
     }
 };
 void ldemo_q5_a();

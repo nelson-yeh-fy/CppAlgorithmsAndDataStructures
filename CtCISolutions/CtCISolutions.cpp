@@ -52,9 +52,9 @@ int main()
 	//ch4_graph_demo1();
 	//ch4_createListsPerBTdepth_BFS();
 	//ch4_createListsPerBTdepth_DFS();
-	//ldemo_q1_c();
-	//ldemo_q3_a();
-	//ldemo_q4_b();
-	ldemo_q5_a();
+	//ldemo_q1();
+	//ldemo_q3();
+	//ldemo_q4();
+	ldemo_q5();
 }
 

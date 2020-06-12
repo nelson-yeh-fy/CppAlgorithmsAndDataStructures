@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{1C38E16F-06E5-4276-A1C9-88FDAC70EFCE}</ProjectGuid>
+    <ProjectGuid>{77E1F275-D9C1-4905-9E4B-A6295534E5A1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CtCISolutions</RootNamespace>
+    <RootNamespace>LcSolutions</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,10 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,20 +82,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>
@@ -103,6 +89,20 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -147,77 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bubbleSort_1_ptr.cpp" />
-    <ClCompile Include="bubbleSort_2_vector.cpp" />
-    <ClCompile Include="ch3_Queue.cpp" />
-    <ClCompile Include="ch3_QueueAnimalShelter.cpp" />
-    <ClCompile Include="ch3_SetOfStack.cpp" />
-    <ClCompile Include="ch3_Stack.cpp" />
-    <ClCompile Include="ch1_myVectorChar.cpp" />
-    <ClCompile Include="ch1_strBasics.cpp" />
-    <ClCompile Include="ch2_DoubleLinkdedList.cpp" />
-    <ClCompile Include="ch2_SinglyLinkdedList.cpp" />
-    <ClCompile Include="ch3_StackNode.cpp" />
-    <ClCompile Include="ch3_StackWithMin.cpp" />
-    <ClCompile Include="ch4_Node.cpp" />
-    <ClCompile Include="CtCISolutions.cpp" />
-    <ClCompile Include="insertionSort_1.cpp" />
-    <ClCompile Include="insertionSort_2.cpp" />
+    <ClCompile Include="LcSolutions.cpp" />
     <ClCompile Include="lc_sample20.cpp" />
-    <ClCompile Include="lc_sample20_Test.cpp" />
-    <ClCompile Include="MaxHeap.cpp" />
-    <ClCompile Include="mergeSort_1.cpp" />
-    <ClCompile Include="MinHeap.cpp" />
-    <ClCompile Include="PriorityQueue.cpp" />
-    <ClCompile Include="quickSort_1.cpp" />
-    <ClCompile Include="reversePrint.cpp" />
-    <ClCompile Include="reverseString_1_ptr.cpp" />
-    <ClCompile Include="reverseString_2_linkedlist.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bubbleSort_1_ptr.h" />
-    <ClInclude Include="bubbleSort_2_vector.h" />
-    <ClInclude Include="ch1_myVectorChar.h" />
-    <ClInclude Include="ch1_strBasics.h" />
-    <ClInclude Include="ch2_DoubleLinkdedList.h" />
-    <ClInclude Include="ch2_DoubleNode.h" />
-    <ClInclude Include="ch2_SinglyLinkdedList.h" />
-    <ClInclude Include="ch2_SinglyNode.h" />
-    <ClInclude Include="ch3_Node.h" />
-    <ClInclude Include="ch3_Queue.h" />
-    <ClInclude Include="ch3_QueueAnimalShelter.h" />
-    <ClInclude Include="ch3_SetOfStack.h" />
-    <ClInclude Include="ch3_Stack.h" />
-    <ClInclude Include="ch3_StackNode.h" />
-    <ClInclude Include="ch3_StackWithMin.h" />
-    <ClInclude Include="ch4_Node.h" />
-    <ClInclude Include="insertionSort_1.h" />
-    <ClInclude Include="insertionSort_2.h" />
     <ClInclude Include="lc_sample20.h" />
-    <ClInclude Include="MaxHeap.h" />
-    <ClInclude Include="mergeSort_1.h" />
-    <ClInclude Include="MinHeap.h" />
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="PriorityQueue.h" />
-    <ClInclude Include="quickSort_1.h" />
-    <ClInclude Include="reversePrint.h" />
-    <ClInclude Include="reverseString_1_ptr.h" />
-    <ClInclude Include="reverseString_2_linkedlist.h" />
-    <ClInclude Include="swap.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets" Condition="Exists('..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets')" />
-    <Import Project="..\packages\googletest.1.8.3\build\native\googletest.targets" Condition="Exists('..\packages\googletest.1.8.3\build\native\googletest.targets')" />
   </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\googletest.1.8.3\build\native\googletest.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\googletest.1.8.3\build\native\googletest.targets'))" />
-  </Target>
 </Project>

@@ -50,3 +50,11 @@ void ldemo_q5(){
     std::cout << q.longestPalindrome(s);
 }
 
+void ldemo_q6() {
+    Solution_q6_b q;
+    std::string s = "PAYPALISHIRING";
+    //s = "cbbd";
+    std::cout << q.convert(s, 3);
+}
+
+

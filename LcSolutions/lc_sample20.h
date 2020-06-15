@@ -501,4 +501,53 @@ public:
     }
 };
 void ldemo_q5();
+
+//using vector to record zigzag, but in fact simply using string* z can save memory
+class Solution_q6_a {
+public:
+    std::string convert(std::string s, int numRows) {
+
+        if (numRows == 1) return s;
+        std::vector<std::vector<char>> zigzags = { static_cast<unsigned int>(numRows), std::vector<char>{} };
+        std::string result = "";
+
+        for (int i = 0; i < s.size(); ++i) {
+            int slicer = i % (numRows * 2 - 2);
+            if (slicer >= numRows) {
+                slicer = numRows - 1 - (slicer % (numRows - 1));
+            }
+            zigzags[slicer].push_back(s[i]);
+        }
+
+        for (int j = 0; j < numRows; j++) {
+            for (auto it = zigzags[j].cbegin(); it != zigzags[j].cend(); ++it) {
+                std::cout << *it;
+                result.push_back(*it);
+            }
+        }
+        return result;
+    }
+};
+class Solution_q6_b {
+public:
+    std::string convert(std::string s, int numRows) {
+        if (numRows <= 1) return s;
+        std::string* z = new std::string[numRows];
+        std::string result = "";
+
+        for (int i = 0; i < s.size(); ++i) {
+            int slicer = i % (numRows * 2 - 2);
+            if (slicer >= numRows) {
+                slicer = numRows - 1 - (slicer % (numRows - 1));
+            }
+            z[slicer].push_back(s[i]);
+        }
+
+        for (int j = 0; j < numRows; j++) {
+            result.append(z[j]);
+        }
+        return result;
+    }
+};
+void ldemo_q6();
 #endif

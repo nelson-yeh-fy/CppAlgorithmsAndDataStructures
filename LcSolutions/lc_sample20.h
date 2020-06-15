@@ -236,11 +236,11 @@ public:
 //basically the same with q3_a, but don't know why leetcode doesn't take q3_a.
 class Solution_q3_b {
 public:
-    int lengthOfLongestSubstring(std::string s) {
+    size_t lengthOfLongestSubstring(std::string s) {
 
         std::unordered_set<char> uset;
-        int maxLen = 0; //the longest substring length
-        int i = 0, j = 0, n = s.size(), ans = 0;
+        size_t maxLen = 0; //the longest substring length
+        size_t i = 0, j = 0, n = s.size(), ans = 0;
 
         while (i < n && j < n){
             if (uset.find(s[j]) == uset.end()) //If the character does not in the set
@@ -282,13 +282,13 @@ public:
             }
         }
 
-        int size = newSorted.size();
+        size_t size = newSorted.size();
         double median = 0;
         if (size % 2 == 1) {
             median = newSorted[(size/2)];
         }
         else if (size % 2 == 0) {
-            median = newSorted[(size/2)-1] + newSorted[size/2];
+            median = newSorted[(size/2)- 1] + newSorted[size/2];
             median /= 2;
         }
 
@@ -327,7 +327,7 @@ public:
             median = findNth(nums1, (size / 2));
         }
         else if (size % 2 == 0) {
-            median = findNth(nums1, (size /2)-1) + findNth(nums1, (size / 2));
+            median = findNth(nums1, (size /2)- (__int64)1) + findNth(nums1, (size / 2));
             median /= 2;
         }
         return median;
@@ -403,51 +403,51 @@ public:
     }
 };
 //This one find palindrome seeds first O(N), and then extend seeds to find complete palindrome O(N*N/2)
+struct PalindromeRange {
+    int leftIndex;
+    int rightIndex;
+};
 class Solution_q5_b {
 public:
     std::string longestPalindrome(std::string s) {
 
-        if (s.size() == 0)
-            return "";
+        if (s.size() < 2) return s;
 
         //Record Palindrome ranges [Key]:Right index, [Value]:Left index.
-        std::unordered_map<int, int> pseeds, plist; 
-        int maxkey = INT_MIN, max = INT_MIN;
+        std::vector<PalindromeRange> pseeds;
+        int max = INT_MIN;
+        std::string maxStr = "";
 
         //Screen and find all palindrome seeds;
         for (int i = 1; i < s.size(); ++i)
         {
             if (isPalindrome(s, i - 2, i)) { //isPalindrome(s, i-2, i)); s[i-2]==s[i]
-                pseeds[i] = i - 2;
+                pseeds.push_back({ i, i - 2 });
             }
-            else if (isPalindrome(s, i - 1, i)) {
-                pseeds[i] = i - 1;
+            if (isPalindrome(s, i - 1, i)) { //isPalindrome(s, i - 1, i); s[i-1]==s[i]
+                pseeds.push_back({ i, i - 1 });
             }
         }
 
         //Screen all palindrome seeds, try to extend it and find valid palindromes.
         for (auto it = pseeds.cbegin(); it != pseeds.cend(); ++it) {
 
-            int right = it->first;
-            int left = it->second;
-            while (left >= 0 && right < s.size()) {
-                if (s[left - 1] == s[right + 1]) {
-                    left--;
-                    right++;
-                }
-                else { break; }
+            int left = it->leftIndex;
+            int right = it->rightIndex;
+            while (left - 1 >= 0 && right + 1 < s.size() && s[left - 1] == s[right + 1]) {
+                left--;
+                right++;
             }
-            plist[right] = left;
             if (max < right - left + 1) {
                 max = right - left + 1;
-                maxkey = right;
+                maxStr = s.substr(left, right - left + 1);
             }
         }
         
-        if (maxkey == INT_MIN)
+        if (max == INT_MIN)
             return std::string(1, s[0]);
         else
-            return s.substr(plist[maxkey], maxkey - plist[maxkey] + 1);
+            return maxStr;
     }
     bool isPalindrome(std::string& s, int L, int R) {
         if (L < 0) {
@@ -458,6 +458,46 @@ public:
                 return false;
         }
         return true;
+    }
+};
+class Solution_q5_c {
+public:
+    std::string longestPalindrome(std::string s) {
+
+        if (s.size() < 2) return s;
+        //Record Palindrome ranges [Key]:Right index, [Value]:Left index.
+        std::vector<PalindromeRange> pseeds;
+        std::string maxStr = "";
+        int max = INT_MIN;
+
+        //Screen and find all palindrome seeds;
+        int i = 0;
+        while (i < s.size()) {
+            int left = i;
+            int right = i;
+            while (right < s.size() - 1 && s[right] == s[right+1]) {
+                right++;
+            }
+
+            i = right+1;
+            pseeds.push_back({ left, right });
+        }
+
+        //Screen all palindrome seeds, try to extend it and find valid palindromes.
+        for (auto it = pseeds.cbegin(); it != pseeds.cend(); ++it) {
+
+            int left = it->leftIndex;
+            int right = it->rightIndex;
+            while (left - 1 >= 0 && right + 1 < s.size() && s[left - 1] == s[right + 1]) {
+                left--;
+                right++;
+            }
+            if (max < right - left + 1) {
+                max = right - left + 1;
+                maxStr = s.substr(left, right - left + 1);
+            }
+        }
+        return maxStr;
     }
 };
 void ldemo_q5();

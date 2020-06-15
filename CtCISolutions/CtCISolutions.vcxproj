@@ -163,8 +163,6 @@
     <ClCompile Include="CtCISolutions.cpp" />
     <ClCompile Include="insertionSort_1.cpp" />
     <ClCompile Include="insertionSort_2.cpp" />
-    <ClCompile Include="lc_sample20.cpp" />
-    <ClCompile Include="lc_sample20_Test.cpp" />
     <ClCompile Include="MaxHeap.cpp" />
     <ClCompile Include="mergeSort_1.cpp" />
     <ClCompile Include="MinHeap.cpp" />
@@ -193,7 +191,6 @@
     <ClInclude Include="ch4_Node.h" />
     <ClInclude Include="insertionSort_1.h" />
     <ClInclude Include="insertionSort_2.h" />
-    <ClInclude Include="lc_sample20.h" />
     <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="mergeSort_1.h" />
     <ClInclude Include="MinHeap.h" />
@@ -205,19 +202,6 @@
     <ClInclude Include="reverseString_2_linkedlist.h" />
     <ClInclude Include="swap.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets" Condition="Exists('..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets')" />
-    <Import Project="..\packages\googletest.1.8.3\build\native\googletest.targets" Condition="Exists('..\packages\googletest.1.8.3\build\native\googletest.targets')" />
-  </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\googletest.redist.1.8.3\build\native\googletest.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\googletest.1.8.3\build\native\googletest.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\googletest.1.8.3\build\native\googletest.targets'))" />
-  </Target>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

@@ -25,7 +25,6 @@
 //#include "ch3_StackWithMin.h"
 //#include "ch3_SetOfStack.h"
 //#include "ch4_Node.h"
-#include "lc_sample20.h"
 using namespace std;
 
 int main()
@@ -52,9 +51,5 @@ int main()
 	//ch4_graph_demo1();
 	//ch4_createListsPerBTdepth_BFS();
 	//ch4_createListsPerBTdepth_DFS();
-	//ldemo_q1();
-	//ldemo_q3();
-	//ldemo_q4();
-	ldemo_q5();
 }
 

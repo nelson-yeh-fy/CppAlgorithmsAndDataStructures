@@ -35,17 +35,18 @@ void ldemo_q4(){
 }
 
 void ldemo_q5(){
-    Solution_q5_b q;
+    Solution_q5_c q;
     std::string s = "babad";
     s = "cbbd";
-    s = "abbava";
-    s = "abbavakqweiewqk";
-    s = "ccd";
-    s = "cc";
-    s = "ccc";
-    s = "cccc";
-    s = "ac";
-    s = "a";
+    //s = "abbava";
+    //s = "abbavakqweiewqk";
+    //s = "ccd";
+    //s = "cc";
+    //s = "ccc";
+    //s = "cccc";
+    //s = "ac";
+    //s = "a";
+    s = "aaaa";
     std::cout << q.longestPalindrome(s);
 }
 

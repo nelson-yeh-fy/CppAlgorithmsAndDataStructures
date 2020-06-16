@@ -11,6 +11,7 @@ int main()
 	//ldemo_q3();
 	//ldemo_q4();
 	//ldemo_q5();
-	ldemo_q6();
+	//ldemo_q6();
+	ldemo_q7();
 }
 

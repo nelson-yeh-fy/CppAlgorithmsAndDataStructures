@@ -57,4 +57,11 @@ void ldemo_q6() {
     std::cout << q.convert(s, 3);
 }
 
+void ldemo_q7() {
+    Solution_q7_b q;
+    int t = 123;
+    t = 2147483647;
+    std::cout << "Original:" << t << ",Rev:" << q.reverse(t);
+}
+
 

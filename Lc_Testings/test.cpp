@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "../LcSolutions/lc_sample20.h"
-
 TEST(lc_q5_test, emptyString) {
     Solution_q5_c q;
     EXPECT_EQ(q.longestPalindrome(""), "");
@@ -22,4 +21,11 @@ TEST(lc_q5_test, SameCharStrings) {
     EXPECT_EQ(q.longestPalindrome("aaaa"), "aaaa");
     EXPECT_EQ(q.longestPalindrome("aaaaa"), "aaaaa");
     EXPECT_EQ(q.longestPalindrome("aaaaaa"), "aaaaaa");
+}
+
+TEST(lc_q7_test, NumsTest) {
+    Solution_q7_b q;
+    EXPECT_EQ(q.reverse(123), 321);
+    EXPECT_EQ(q.reverse(-123), -321);
+    EXPECT_EQ(q.reverse(2147483647), 0);
 }

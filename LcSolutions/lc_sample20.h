@@ -6,6 +6,7 @@
 #include <unordered_set>
 #include <algorithm>
 #include <forward_list>
+#include <queue>
 
 // This solution changes the original vector, doesn't fit leetcode's requirement.
 class Solution_q1_a {
@@ -550,4 +551,50 @@ public:
     }
 };
 void ldemo_q6();
+
+class Solution_q7_a {
+public:
+    int reverse(int x) {
+        std::queue<int> rev;
+        int result = 0;
+        bool neg = x < 0 ? true : false;
+        x = abs(x);
+            
+        while (x > 0) {
+            rev.push(x % 10);
+            x = x / 10;
+        }
+
+        int i = rev.size();
+        while (i > 0) {
+            result += rev.front() * pow(10, --i);
+            rev.pop(); 
+        }
+
+        result = neg ? result * -1 : result;
+        if (result > INT32_MAX || result < INT32_MIN) {
+            return 0;
+        }
+        else {
+            return result;
+        }
+    }
+};
+
+class Solution_q7_b {
+public:
+    int reverse(int x) {
+        
+        long long rev = 0;
+        while (x) {
+            int checkOverflow = rev;
+            rev = rev * 10 + x % 10;
+            if (checkOverflow != rev / 10) 
+                return 0;
+            x = x / 10;
+        }
+        return (rev > INT32_MAX || rev < INT32_MIN) ? 0 : rev;
+    }
+};
+void ldemo_q7();
 #endif

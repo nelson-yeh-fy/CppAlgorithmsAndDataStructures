@@ -68,7 +68,7 @@ void ldemo_q8() {
     Solution_q8_b q;
     std::string s = "-123";
     s = "+123";
-    s = "2147483648";
+    s = "2147483646";
     std::cout << "Original:" << s << ",atoi:" << q.myAtoi(s);
 }
 

@@ -632,19 +632,25 @@ public:
 class Solution_q8_b {
 public:
     int myAtoi(std::string s) {
-        int sign = 1;
-        long long result = 0;
         int i = s.find_first_not_of(' ');
+        if (s.empty() || i < 0)
+            return 0;
+
+        int sign = 1, ret = 0;
         if (s[i] == '-' || s[i] == '+') {
             sign = s[i++] == '+' ? 1 : -1;
         }
 
-        while (i < s.length() && isdigit(s[i])) {
-            result = result * 10 + (s[i++] - '0');
-            if (result * sign < INT_MIN) return INT_MIN;
-            if (result * sign > INT_MAX) return INT_MAX;
+        int base = INT32_MAX / 10;  //Overflow checking base
+        int ovc = INT32_MAX % 10;    //INT32 (2147483647) % 10 = 7, is the last one is bigger than 7, it will overflow
+
+        while (isdigit(s[i])) {
+            if ((ret > base) || ((ret == base) && (s[i] - '0' > ovc))) {
+                return sign == 1 ? INT32_MAX : INT32_MIN;
+            }
+            ret = ret * 10 + (s[i++] - '0');
         }
-        return result * sign;
+        return ret * sign;
     }
 };
 void ldemo_q8();

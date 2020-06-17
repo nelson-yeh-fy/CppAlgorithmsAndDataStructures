@@ -48,5 +48,6 @@ namespace {
         EXPECT_EQ(q.myAtoi("+1"), 1);
         EXPECT_EQ(q.myAtoi("-1"), -1);
         EXPECT_EQ(q.myAtoi("+-1"), 0);
+        EXPECT_EQ(q.myAtoi("2147483646"), 2147483646);
     }
 };

@@ -654,4 +654,29 @@ public:
     }
 };
 void ldemo_q8();
+
+class Solution_q9 {
+public:
+    bool isPalindrome(int number) {
+
+        int x = number;
+        if (x < 0)
+            return false;
+
+        int rev = 0;
+        int base = INT32_MAX/10;
+
+        do {
+            if ((rev > base) || (rev == base && x % 10 > base % 10))
+                return false;
+
+            rev = rev * 10 + x % 10;
+            x = x / 10;
+        } while (x != 0);
+
+        //std::cout<< "number:" << number << "rev:" << rev << std::endl;
+        return (number == rev) ? true : false;
+    }
+};
+void ldemo_q9();
 #endif

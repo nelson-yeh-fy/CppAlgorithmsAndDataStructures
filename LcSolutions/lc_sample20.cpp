@@ -72,4 +72,11 @@ void ldemo_q8() {
     std::cout << "Original:" << s << ",atoi:" << q.myAtoi(s);
 }
 
+void ldemo_q9() {
+    Solution_q9 q;
+    int i = INT32_MAX;
+    std::cout << "Original:" << i << ", isPalindrome?:" << q.isPalindrome(i);
+}
+
+
 

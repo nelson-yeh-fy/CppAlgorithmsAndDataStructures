@@ -597,4 +597,55 @@ public:
     }
 };
 void ldemo_q7();
+
+class Solution_q8_a {
+public:
+    int myAtoi(std::string s) {
+        bool postive = true;
+        long long result = 0;
+
+        for (int i = 0; i < s.size(); ++i) {
+            char c = s[i];
+            if (c == ' ') continue;  //32,space
+            if (c == '+') continue;  //43, '+' detected
+            if (c == '-') {          // 45, '-' detected
+                if (result == 0) {  // number not started yet.
+                    postive = false;
+                    continue;
+                }
+                else {              // number started already
+                    return 0;
+                }
+            }
+            if (c < 48 || c > 57) {
+                break;
+            }else {
+                result = result * 10 + (c - 48);
+            }
+        }
+        result = postive ? result : result * -1;
+        result = result < INT_MIN ? INT_MIN : result;
+        result = result > INT_MAX ? INT_MAX : result;
+        return result;
+    }
+};
+class Solution_q8_b {
+public:
+    int myAtoi(std::string s) {
+        int sign = 1;
+        long long result = 0;
+        int i = s.find_first_not_of(' ');
+        if (s[i] == '-' || s[i] == '+') {
+            sign = s[i++] == '+' ? 1 : -1;
+        }
+
+        while (i < s.length() && isdigit(s[i])) {
+            result = result * 10 + (s[i++] - '0');
+            if (result * sign < INT_MIN) return INT_MIN;
+            if (result * sign > INT_MAX) return INT_MAX;
+        }
+        return result * sign;
+    }
+};
+void ldemo_q8();
 #endif

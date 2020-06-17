@@ -64,4 +64,12 @@ void ldemo_q7() {
     std::cout << "Original:" << t << ",Rev:" << q.reverse(t);
 }
 
+void ldemo_q8() {
+    Solution_q8_b q;
+    std::string s = "-123";
+    s = "+123";
+    s = "2147483648";
+    std::cout << "Original:" << s << ",atoi:" << q.myAtoi(s);
+}
+
 

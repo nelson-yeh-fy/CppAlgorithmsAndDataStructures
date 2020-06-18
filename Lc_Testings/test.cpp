@@ -51,12 +51,11 @@ namespace {
         EXPECT_EQ(q.myAtoi("2147483646"), 2147483646);
     }
 
-    TEST("isPalindrome", "[isPalindrome]") {
-
-        Solution_q9 q;
-        EXPECT_EQ(q.isPalindrome(121) == true);
-        EXPECT_EQ(q.isPalindrome(-121) == false);
-        EXPECT_EQ(q.isPalindrome(10) == false);
+    TEST(isPalindrome, isPalindrome) {
+        Solution_q9_a q;
+        EXPECT_EQ(q.isPalindrome(121), true);
+        EXPECT_EQ(q.isPalindrome(-121), false);
+        EXPECT_EQ(q.isPalindrome(10), false);
     }
 
 };

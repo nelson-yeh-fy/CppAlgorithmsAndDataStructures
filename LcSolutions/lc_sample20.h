@@ -655,7 +655,7 @@ public:
 };
 void ldemo_q8();
 
-class Solution_q9 {
+class Solution_q9_a {
 public:
     bool isPalindrome(int number) {
 
@@ -676,6 +676,20 @@ public:
 
         //std::cout<< "number:" << number << "rev:" << rev << std::endl;
         return (number == rev) ? true : false;
+    }
+};
+//This one reverse till half only, O(N/2), means it's still O(N).
+class Solution_q9_b {
+public:
+    bool isPalindrome(int x) {
+        if (x < 0 || (x != 0 && x % 10 == 0)) return false;
+        int sum = 0;
+        while (x > sum)
+        {
+            sum = sum * 10 + x % 10;
+            x = x / 10;
+        }
+        return (x == sum) || (x == sum / 10);
     }
 };
 void ldemo_q9();

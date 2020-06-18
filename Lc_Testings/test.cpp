@@ -2,12 +2,12 @@
 #include "../LcSolutions/lc_sample20.h"
 namespace {
     TEST(lc_q5_test, emptyString) {
-        Solution_q5_c q;
+        Solution_q5_d q;
         EXPECT_EQ(q.longestPalindrome(""), "");
         //EXPECT_TRUE(true);
     }
     TEST(lc_q5_test, normalStrings) {
-        Solution_q5_c q;
+        Solution_q5_d q;
         EXPECT_EQ(q.longestPalindrome("babad"), "bab");
         EXPECT_EQ(q.longestPalindrome("cbbd"), "bb");
         EXPECT_EQ(q.longestPalindrome("a"), "a");
@@ -17,7 +17,7 @@ namespace {
         EXPECT_EQ(q.longestPalindrome("abaqwejewq"), "qwejewq");
     }
     TEST(lc_q5_test, SameCharStrings) {
-        Solution_q5_c q;
+        Solution_q5_d q;
         EXPECT_EQ(q.longestPalindrome("aaa"), "aaa");
         EXPECT_EQ(q.longestPalindrome("aaaa"), "aaaa");
         EXPECT_EQ(q.longestPalindrome("aaaaa"), "aaaaa");

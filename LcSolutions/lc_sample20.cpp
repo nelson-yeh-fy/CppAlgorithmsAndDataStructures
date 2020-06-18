@@ -35,9 +35,9 @@ void ldemo_q4(){
 }
 
 void ldemo_q5(){
-    Solution_q5_c q;
+    Solution_q5_d q;
     std::string s = "babad";
-    s = "cbbd";
+    //s = "cbbd";
     //s = "abbava";
     //s = "abbavakqweiewqk";
     //s = "ccd";
@@ -46,7 +46,7 @@ void ldemo_q5(){
     //s = "cccc";
     //s = "ac";
     //s = "a";
-    s = "aaaa";
+    //s = "aaaa";
     std::cout << q.longestPalindrome(s);
 }
 

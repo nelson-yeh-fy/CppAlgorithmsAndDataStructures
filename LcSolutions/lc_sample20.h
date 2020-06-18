@@ -501,6 +501,33 @@ public:
         return maxStr;
     }
 };
+class Solution_q5_d {
+public:
+    std::string longestPalindrome(std::string s) {
+        if (s.size() < 2) return s;
+        size_t i = 0, left = 0, right = 0; //runner index, left index, right index
+        std::string maxStr = "";
+
+        while (i < s.size()) {
+            //step1.find palindrome seeds:
+            left = i;
+            right = i;
+            while (right < s.size() - 1 && s[right] == s[right + 1])
+                right++;
+            i = right + 1;
+
+            //step2.extend the palindrome and find its length
+            while (left > 0 && right + 1 < s.size() && s[left - 1] == s[right + 1]) {
+                left--;
+                right++;
+            }
+
+            //step3.get the longest palindrome
+            maxStr = (maxStr.size() < right - left + 1) ? s.substr(left, right - left + 1) : maxStr;
+        }
+        return maxStr;
+    }
+};
 void ldemo_q5();
 
 //using vector to record zigzag, but in fact simply using string* z can save memory

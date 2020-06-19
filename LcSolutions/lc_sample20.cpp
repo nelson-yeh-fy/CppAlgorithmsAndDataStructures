@@ -73,7 +73,7 @@ void ldemo_q8() {
 }
 
 void ldemo_q9() {
-    Solution_q9_a q;
+    Solution_q9_b q;
     int i = INT32_MAX;
     std::cout << "Original:" << i << ", isPalindrome?:" << q.isPalindrome(i);
 }

@@ -196,6 +196,7 @@ class Solution_q15_a {
 public:
     std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
 
+        if (nums.size() < 3) return {};
         //step1. assume this is sorted, if not, we sort it and takes O(NLog(N)) time.
         std::sort(nums.begin(), nums.end());
         std::vector<std::vector<int>> hits;
@@ -213,10 +214,10 @@ public:
                 else if (0 - nums[i] > nums[left] + nums[right]) left++;
                 else {
                     hits.push_back(std::vector<int> { nums[i], nums[left], nums[right] });
-                    while (left+1 < right && nums[left] == nums[left + 1]) left++; //avoid duplilcates
-                    while (left < right-1 && nums[right] == nums[right - 1]) right--; //avoid duplicates
-                    left++;
-                    right--;
+                    ++left;
+                    --right;
+                    while (left < right && nums[left-1] == nums[left]) ++left; //avoid duplilcates
+                    while (left < right && nums[right] == nums[right+1]) --right; //avoid duplicates
                 }
             }
         }

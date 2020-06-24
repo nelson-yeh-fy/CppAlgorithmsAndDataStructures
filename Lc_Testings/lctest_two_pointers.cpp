@@ -19,7 +19,9 @@ namespace {
     }
     TEST(TwoPointers, lc_q15_threeSum) {
         Solution_q15_a q;
-        EXPECT_EQ(q.threeSum(std::vector<int>{1, 0, 3, -3}), std::vector<int>{std::vector<int>{0, -3, 3}});
+        std::vector<std::vector<int>> result;
+        result.push_back(std::vector<int>{-3, 0, 3});
+        EXPECT_EQ(q.threeSum(std::vector<int>{1, 0, 3, -3}), result);
     }
     TEST(TwoPointers, lc_q214_Shortest_Palindrome) {
         Solution_q214_b q;

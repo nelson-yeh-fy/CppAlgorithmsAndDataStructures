@@ -34,22 +34,6 @@ void ldemo_q4(){
     std::cout << q4.findMedianSortedArrays(n1, n2);
 }
 
-void ldemo_q5(){
-    Solution_q5_d q;
-    std::string s = "babad";
-    //s = "cbbd";
-    //s = "abbava";
-    //s = "abbavakqweiewqk";
-    //s = "ccd";
-    //s = "cc";
-    //s = "ccc";
-    //s = "cccc";
-    //s = "ac";
-    //s = "a";
-    //s = "aaaa";
-    std::cout << q.longestPalindrome(s);
-}
-
 void ldemo_q6() {
     Solution_q6_b q;
     std::string s = "PAYPALISHIRING";

@@ -2,27 +2,6 @@
 #include "../LcSolutions/lc_sample20.h"
 #include "../LcSolutions/lc_two_pointers.h"
 namespace {
-    TEST(TwoPointers, lc_q5_Longest_Palindromic_Substring) {
-        Solution_q5_d q;
-        EXPECT_EQ(q.longestPalindrome(""), "");
-        EXPECT_EQ(q.longestPalindrome("babad"), "bab");
-        EXPECT_EQ(q.longestPalindrome("cbbd"), "bb");
-        EXPECT_EQ(q.longestPalindrome("a"), "a");
-        EXPECT_EQ(q.longestPalindrome("ac"), "a");
-        EXPECT_EQ(q.longestPalindrome("ccd"), "cc");
-        EXPECT_EQ(q.longestPalindrome("abaqweewq"), "qweewq");
-        EXPECT_EQ(q.longestPalindrome("abaqwejewq"), "qwejewq");
-        EXPECT_EQ(q.longestPalindrome("aaa"), "aaa");
-        EXPECT_EQ(q.longestPalindrome("aaaa"), "aaaa");
-        EXPECT_EQ(q.longestPalindrome("aaaaa"), "aaaaa");
-        EXPECT_EQ(q.longestPalindrome("aaaaaa"), "aaaaaa");
-    }
-    TEST(TwoPointers, lc_q214_Shortest_Palindrome) {
-        Solution_q214_b q;
-        EXPECT_EQ(q.shortestPalindrome(""), "");
-        EXPECT_EQ(q.shortestPalindrome("aacecaaa"), "aaacecaaa");
-        EXPECT_EQ(q.shortestPalindrome("abcd"), "dcbabcd");
-    }
     TEST(lc_q7_test, NumsTest) {
         Solution_q7_b q;
         EXPECT_EQ(q.reverse(123), 321);

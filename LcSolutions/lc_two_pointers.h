@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include <unordered_set>
 
 //5. Longest Palindromic Substring  [Med]
 //Incorrect, failed at "cc","ccc","cccc","ccccc"
@@ -194,25 +195,28 @@ void ldemo_q5();
 class Solution_q15_a {
 public:
     std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
-        if (nums.size() < 3) return {};
-        //step1. assume this is sorted, if no, we sort it and takes O(NLog(N)) time.
+
+        //step1. assume this is sorted, if not, we sort it and takes O(NLog(N)) time.
         std::sort(nums.begin(), nums.end());
         std::vector<std::vector<int>> hits;
 
         //step2. pick one number each round when we traverse the array, and make this problem reduced to 2Sum.
         for (int i = 0; i < nums.size() - 2; ++i) {
+            
+            //step3. bypass the same i, save time.
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
             int left = i + 1, right = nums.size() - 1;
             while (left < right) {
-                //step3. check if any 2sum combination fits the test. i(a)+b+c == 0  (0-i == b+c)
-                if (0 < nums[i] + nums[left] + nums[right]) {
-                    right--;
-                }
-                else if (0 > nums[i] + nums[left] + nums[right]) {
+                //step4. check if any 2sum combination fits the test. i(a)+b+c == 0  (0-i == b+c)
+                if (0 - nums[i] < nums[left] + nums[right]) right--;
+                else if (0 - nums[i] > nums[left] + nums[right]) left++;
+                else {
+                    hits.push_back(std::vector<int> { nums[i], nums[left], nums[right] });
+                    while (left+1 < right && nums[left] == nums[left + 1]) left++; //avoid duplilcates
+                    while (left < right-1 && nums[right] == nums[right - 1]) right--; //avoid duplicates
                     left++;
-                }
-                else if (0 == nums[i] + nums[left] + nums[right]) {
-                    hits.push_back({nums[i], nums[left], nums[right]});
-                    break;
+                    right--;
                 }
             }
         }

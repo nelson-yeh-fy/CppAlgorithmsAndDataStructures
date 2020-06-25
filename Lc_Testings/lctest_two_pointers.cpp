@@ -23,6 +23,12 @@ namespace {
         result.push_back(std::vector<int>{-3, 0, 3});
         EXPECT_EQ(q.threeSum(std::vector<int>{1, 0, 3, -3}), result);
     }
+    TEST(TwoPointers, lc_q16_threeSumClosest) {
+        Solution_q16 q;
+        EXPECT_EQ(q.threeSumClosest(std::vector<int>{ 0, 0, 0 }, 1), 0);
+        EXPECT_EQ(q.threeSumClosest(std::vector<int>{ -1, 2, 1, 4 }, 1), 2);
+        EXPECT_EQ(q.threeSumClosest(std::vector<int>{ -1, 2, 1, 4 }, 4), 4);
+    }
     TEST(TwoPointers, lc_q214_Shortest_Palindrome) {
         Solution_q214_b q;
         EXPECT_EQ(q.shortestPalindrome(""), "");

@@ -22,6 +22,13 @@ void ldemo_q15() {
     nums = { 0, 0, 0, 0 };
     std::vector<std::vector<int>> results = q.threeSum(nums);
 }
+void ldemo_q16() {
+    Solution_q16 q;
+    std::vector<int> nums = { -1, 0, 1, 2, -1, -4 };
+    nums = { 0, 0, 0, 0 };
+    int target = 2;
+    std::cout << q.threeSumClosest(nums, target);
+}
 void ldemo_q214() {
     Solution_q214_b q;
     std::string s = "aabaaa";

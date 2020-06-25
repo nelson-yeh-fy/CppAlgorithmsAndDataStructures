@@ -225,6 +225,40 @@ public:
     }
 };
 void ldemo_q15();
+//16. 3Sum Closest [Med]
+class Solution_q16 {
+public:
+    int threeSumClosest(std::vector<int>& nums, int target) {
+        //step1. Assume this nums is sorted, if not we take O(N*Log(N)) to sort it.
+        std::sort(nums.begin(), nums.end());
+
+        int min_diff = INT32_MAX, closest = INT32_MAX;
+        //step2. Traverse the array, using index i as a fixed num for each round.
+        //target - nums[i] becomes our new target, thus reduce it to 2 sum problem.
+        for (size_t i = 0; i < nums.size() - 2; ++i) { //nums.size()-2 because we need a triplet
+
+            //step3. Try to find close target, record the closest result.
+            int left = i + 1, right = nums.size() - 1;
+            while (left < right) {
+
+                int diff = target - nums[i] - nums[left] - nums[right];
+                if (std::abs(min_diff) > std::abs(diff)) {
+                    min_diff = diff;
+                    closest = nums[i] + nums[left] + nums[right];
+                }
+
+                if (target - nums[i] < nums[left] + nums[right]) --right;
+                else if (target - nums[i] > nums[left] + nums[right]) ++left;
+                else {
+                    //this is exactly the same, we have answer here.
+                    return target;
+                }
+            }
+        }
+        return closest;
+    }
+};
+void ldemo_q16();
 //214. Shortest Palindrome [Hard]
 //a starts from far right, but will take O(N*N) time worse case for "aaaaaaaa...aaa"
 class Solution_q214_a { 

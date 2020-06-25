@@ -534,4 +534,34 @@ public:
     }
 };
 void ldemo_q9();
+//56. Merge Intervals [Med]
+class Solution_q56_a {
+public:
+    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals) {
+
+        std::vector<std::vector<int>> res;
+        //step1. traverse all interval, use each one as a base to compare.
+        for (auto it = intervals.begin(); it != intervals.end(); ++it) {
+
+            //step2. check if internal's first num is within the scope.
+            for (auto c = intervals.begin(); c != intervals.end(); ++c) {
+                if (c == it) {
+                    //++c; 
+                    continue;
+                }
+                if ((*c)[0] < (*it)[0] && (*c)[1] > (*it)[0]) {
+                    (*it)[0] = (*c)[0];
+                    (*it)[1] = ((*it)[1] < (*c)[1]) ? (*c)[1] : (*it)[1];
+                    intervals.erase(c);
+                    --c;
+                }
+                else {
+                    //++c;
+                }
+            }
+        }
+        return intervals;
+    }
+};
+void ldemo_q56();
 #endif

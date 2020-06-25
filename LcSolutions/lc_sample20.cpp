@@ -62,5 +62,14 @@ void ldemo_q9() {
     std::cout << "Original:" << i << ", isPalindrome?:" << q.isPalindrome(i);
 }
 
+void ldemo_q56() {
+    Solution_q56_a q;
+    std::vector<std::vector<int>> input = { {1,3},{2,6},{8,10},{15,18} };
+
+    std::vector<vector<int>> res = q.merge(input);
+    for (auto it = res.cbegin(); it != res.cend(); ++it) {
+        cout << "[" << (*it)[0] << "," << (*it)[1] << "], ";
+    }
+}
 
 

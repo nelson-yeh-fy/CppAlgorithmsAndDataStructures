@@ -17,13 +17,13 @@ namespace {
         EXPECT_EQ(q.longestPalindrome("aaaaa"), "aaaaa");
         EXPECT_EQ(q.longestPalindrome("aaaaaa"), "aaaaaa");
     }
-    TEST(TwoPointers, lc_q15_threeSum) {
+    TEST(TwoPointers, lc_q015_threeSum) {
         Solution_q15_a q;
         std::vector<std::vector<int>> result;
         result.push_back(std::vector<int>{-3, 0, 3});
         EXPECT_EQ(q.threeSum(std::vector<int>{1, 0, 3, -3}), result);
     }
-    TEST(TwoPointers, lc_q16_threeSumClosest) {
+    TEST(TwoPointers, lc_q016_threeSumClosest) {
         Solution_q16 q;
         EXPECT_EQ(q.threeSumClosest(std::vector<int>{ 0, 0, 0 }, 1), 0);
         EXPECT_EQ(q.threeSumClosest(std::vector<int>{ -1, 2, 1, 4 }, 1), 2);

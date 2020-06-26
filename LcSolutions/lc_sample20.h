@@ -537,30 +537,26 @@ void ldemo_q9();
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:
-    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals) {
+    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& vals) {
+
+        if (vals.size() < 1) return {};
+        //step1. sort the given internvals (by its first number)
+        std::sort(vals.begin(), vals.end(),
+            [](std::vector<int> a, std::vector<int> b) { return a[0] < b[0]; });
 
         std::vector<std::vector<int>> res;
-        //step1. traverse all interval, use each one as a base to compare.
-        for (auto it = intervals.begin(); it != intervals.end(); ++it) {
-
-            //step2. check if internal's first num is within the scope.
-            for (auto c = intervals.begin(); c != intervals.end(); ++c) {
-                if (c == it) {
-                    //++c; 
-                    continue;
-                }
-                if ((*c)[0] < (*it)[0] && (*c)[1] > (*it)[0]) {
-                    (*it)[0] = (*c)[0];
-                    (*it)[1] = ((*it)[1] < (*c)[1]) ? (*c)[1] : (*it)[1];
-                    intervals.erase(c);
-                    --c;
-                }
-                else {
-                    //++c;
-                }
+        res.push_back(vals[0]);
+        //step2. traverse all interval, use each one as a base to compare.
+        for (auto it = vals.cbegin()+1; it != vals.cend(); ++it) {
+            //step3. check if runner pointer's first num is within res.back()[0]. res.back()[1].
+            if (res.back()[1] >= (*it)[0]) {
+                res.back()[1] = std::max(res.back()[1], (*it)[1]);
+            }
+            else {
+                res.push_back(*it);
             }
         }
-        return intervals;
+        return res;
     }
 };
 void ldemo_q56();

@@ -2,13 +2,13 @@
 #include "../LcSolutions/lc_sample20.h"
 #include "../LcSolutions/lc_two_pointers.h"
 namespace {
-    TEST(lc_q7_test, NumsTest) {
+    TEST(lc_q007_test, NumsTest) {
         Solution_q7_b q;
         EXPECT_EQ(q.reverse(123), 321);
         EXPECT_EQ(q.reverse(-123), -321);
         EXPECT_EQ(q.reverse(2147483647), 0);
     }
-    TEST(lc_q8_test, NumsTest) {
+    TEST(lc_q008_test, NumsTest) {
         Solution_q8_b q;
         EXPECT_EQ(q.myAtoi("123"), 123);
         EXPECT_EQ(q.myAtoi("-123"), -123);
@@ -27,11 +27,31 @@ namespace {
         EXPECT_EQ(q.myAtoi("+-1"), 0);
         EXPECT_EQ(q.myAtoi("2147483646"), 2147483646);
     }
-    TEST(lc_q9_test, isPalindrome) {
+    TEST(lc_q009_test, isPalindrome) {
         Solution_q9_a q;
         EXPECT_EQ(q.isPalindrome(121), true);
         EXPECT_EQ(q.isPalindrome(-121), false);
         EXPECT_EQ(q.isPalindrome(10), false);
+    }
+    TEST(lc_q056_test, mergeIntervals) {
+        Solution_q56_a q;
+        std::vector<std::vector<int>> in1 = { {1,3},{2,6},{8,10},{15,18} };
+        std::vector<std::vector<int>> in2 = { {2,6},{8,10},{1,3},{15,18} };
+        std::vector<std::vector<int>> res2 = { {1,6},{8,10},{15,18} };
+        EXPECT_EQ(q.merge(in1), res2);
+        EXPECT_EQ(q.merge(in2), res2);
+        std::vector<std::vector<int>> in3 = { {1,4},{4,5} };
+        std::vector<std::vector<int>> res3 = { {1,5} };
+        EXPECT_EQ(q.merge(in3), res3);
+        std::vector<std::vector<int>> in4 = { {1,3} };
+        std::vector<std::vector<int>> res4 = { {1,3} };
+        EXPECT_EQ(q.merge(in4), res4);
+        std::vector<std::vector<int>> in5 = { };
+        std::vector<std::vector<int>> res5 = { };
+        EXPECT_EQ(q.merge(in5), res5);
+        std::vector<std::vector<int>> in6 = { {1, 4},{0, 2},{3, 5}};
+        std::vector<std::vector<int>> res6 = { {0, 5} };
+        EXPECT_EQ(q.merge(in6), res6);
     }
 
 };

@@ -534,6 +534,37 @@ public:
     }
 };
 void ldemo_q9();
+// q12 Integer to Roman [Med]
+class Solution_q12 {
+public:
+    std::string intToRoman(int num) {
+        std::string M[4] = { "", "M", "MM", "MMM" };
+        std::string C[10] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+        std::string X[10] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+        std::string I[10] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+
+        return M[num / 1000] + C[(num / 100) % 10] + X[(num / 10) % 10] + I[num % 10];
+    }
+};
+// q13 Roman to integer [Easy]
+class Solution_q13 {
+public:
+    int RomanToInt(std::string s) {
+        if (s.size() <= 0) return 0;
+        std::unordered_map<char, int> table = { { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
+        int result = 0;
+        for (int i = 0; i < s.size() - 1; ++i) {
+            if (s[i] < s[i + 1]) {
+                result += table[s[i + 1]] - table[s[i]];
+                ++i;
+            }
+            else {
+                result += table[s[i]];
+            }
+        }
+        return result + table[s.back()];
+    }
+};
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:

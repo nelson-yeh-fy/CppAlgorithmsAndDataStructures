@@ -17,6 +17,15 @@ namespace {
         EXPECT_EQ(q.longestPalindrome("aaaaa"), "aaaaa");
         EXPECT_EQ(q.longestPalindrome("aaaaaa"), "aaaaaa");
     }
+    TEST(TwoPointers, lc_q011_containerMostWater) {
+        solution_q11 s;
+        std::vector<int> input{ 1,8,6,2,5,4,8,3,7 };
+        EXPECT_EQ(s.maxArea(input), 49);
+        input = { 1,90,90,2,5,4,8,3,7 };
+        EXPECT_EQ(s.maxArea(input), 90);
+        input = { 1,3,1,8,5,4,8,3,7 };
+        EXPECT_EQ(s.maxArea(input), 35);
+    }
     TEST(TwoPointers, lc_q015_threeSum) {
         Solution_q15_a q;
         std::vector<std::vector<int>> result;

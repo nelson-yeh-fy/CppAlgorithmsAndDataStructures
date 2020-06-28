@@ -225,6 +225,29 @@ public:
     }
 };
 void ldemo_q15();
+//11. Container With Most Water [Med]
+class solution_q11 {
+public:
+    int maxArea(std::vector<int>& nums) {
+
+        if (nums.size() <= 1) return 0;
+        //step1. use two pointers (left and right), they'll be used to measure area
+        int left = 0, right = nums.size() - 1, max = 0;
+
+        //step2. traverse nums (left and right), if nums[left] < nums[right], move left toward right, vise versa
+        while (left < right) {
+
+            //step3. calculate and record the max area;
+            int minHeight = std::min(nums[left], nums[right]);
+            max = std::max(max, minHeight * (right - left));
+
+            while (left < right && nums[left] <= minHeight) left++;
+            while (left < right && nums[right] <= minHeight) right--;
+        }
+
+        return max;
+    }
+};
 //16. 3Sum Closest [Med]
 class Solution_q16 {
 public:

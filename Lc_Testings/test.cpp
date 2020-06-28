@@ -33,6 +33,18 @@ namespace {
         EXPECT_EQ(q.isPalindrome(-121), false);
         EXPECT_EQ(q.isPalindrome(10), false);
     }
+    TEST(lc_q014_test, longestCommonPrefix) {
+        Solution_q14 s;
+        std::vector<std::string> words1 = { "flower","flow","flight" };
+        EXPECT_EQ(s.longestCommonPrefix(words1), "fl");
+        std::vector<std::string> words2 = { "", "" };
+        EXPECT_EQ(s.longestCommonPrefix(words2), "");
+        std::vector<std::string> words3 = { "cat", "efft", "tt" };
+        EXPECT_EQ(s.longestCommonPrefix(words3), "");
+        std::vector<std::string> words4 = { "aa", "a" };
+        EXPECT_EQ(s.longestCommonPrefix(words4), "a");
+
+    }
     TEST(lc_q056_test, mergeIntervals) {
         Solution_q56_a q;
         std::vector<std::vector<int>> in1 = { {1,3},{2,6},{8,10},{15,18} };

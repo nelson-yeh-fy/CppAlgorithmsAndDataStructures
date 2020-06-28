@@ -565,6 +565,34 @@ public:
         return result + table[s.back()];
     }
 };
+//14. Longest Common Prefix [Easy]
+class Solution_q14 {
+public:
+    std::string longestCommonPrefix(std::vector<std::string>& strs) {
+
+        if (strs.size() < 1) return "";
+        if (strs.size() == 1) return strs[0];
+        for (size_t i = 0; i < strs.size(); ++i) {
+            if (strs[i].empty()) return "";
+        }
+        size_t idx = 0;
+
+        //step2. Compare one character in all [strs] each time, use strs[0] as a base.
+        while (true) {
+            //step1. Traverse all chars in all strs and compare them.
+            for (size_t i = 1; i < strs.size(); ++i) {
+                //step3. if idx>size, or find any char isn't the same, return result;
+                if (idx > strs[0].size() - 1 || idx > strs[i].size() - 1) {
+                    return strs[0].substr(0, idx);
+                }
+                else if (strs[0][idx] != strs[i][idx]) {
+                    return strs[0].substr(0, idx);
+                }
+            }
+            ++idx;
+        }
+    }
+};
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:

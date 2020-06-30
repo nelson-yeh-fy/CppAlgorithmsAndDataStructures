@@ -62,6 +62,14 @@ void ldemo_q9() {
     std::cout << "Original:" << i << ", isPalindrome?:" << q.isPalindrome(i);
 }
 
+void ldemo_q17() {
+    Solution_q17_b s;
+    std::vector<std::string> words = s.letterCombinations("23");
+    for (const string& word : words) {
+        cout << "{" << word << "},";
+    }
+}
+
 void ldemo_q56() {
     Solution_q56_a q;
     std::vector<std::vector<int>> input = { {1,3},{2,6},{8,10},{15,18} };

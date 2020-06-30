@@ -593,6 +593,71 @@ public:
         }
     }
 };
+//17. Letter Combinations of a Phone Number [Med]
+class Solution_q17_a {
+public:
+    std::vector<std::string> letterCombinations(std::string digits) {
+
+        if (digits.size() < 1) return {};
+        //step1. maintain all digit to string first.
+        std::unordered_map<char, std::string> map = { {'2',"abc"},{'3',"def"},{'4',"ghi"},{'5',"jkl"},{'6',"mno"},{'7',"pqrs"},{'8',"tuv"},{'9',"wxyz"} };
+        std::vector<std::string> res;
+
+        //step2. initialization, push digits[0]'s characters into res.
+        std::string ini = map[digits[0]];
+        for (size_t p = 0; p < ini.size(); ++p) {
+            std::string s(1, ini[p]);
+            res.push_back(s);
+        }
+
+        //step3. traverse the characters in the given string
+        for (size_t i = 1; i < digits.size(); ++i) {
+            //step4. pop_back the result vector, append one candidate and push it back to res.
+            std::vector<std::string> temp = res;
+            res = {};
+            while (!temp.empty()) {
+                //step5. each digit represents some candidates (e.g.: a,b,c)
+                std::string candidates = map[digits[i]];
+                std::string s = temp.back();
+                temp.pop_back();
+                for (size_t j = 0; j < candidates.size(); ++j) {
+                    res.push_back(s + candidates[j]);
+                }
+            }
+        }
+        return res;
+    }
+};
+class Solution_q17_b {
+public:
+    std::vector<std::string> letterCombinations(std::string digits) {
+
+        if (digits.size() < 1) return {};
+        //step1. maintain all digit to string first.
+        std::unordered_map<char, std::string> map = { {'2',"abc"},{'3',"def"},{'4',"ghi"},{'5',"jkl"},{'6',"mno"},{'7',"pqrs"},{'8',"tuv"},{'9',"wxyz"} };
+        std::vector<std::string> res;
+
+        //step2. initialization
+        res.push_back("");
+
+        //step3. traverse the characters in the given string
+        for (size_t i = 0; i < digits.size(); ++i) {
+
+            if (digits[i] - '0' < 2 || digits[i] - '0' > 9) break;
+            //step5. each digit represents some candidates (e.g.: a,b,c)
+            std::string candidates = map[digits[i]];
+            std::vector<std::string> tmp;
+            for (size_t j = 0; j < candidates.size(); ++j) {
+                for (size_t k = 0; k < res.size(); ++k) {
+                    tmp.push_back(res[k] + candidates[j]);
+                }
+            }
+            res.swap(tmp);
+        }
+        return res;
+    }
+};
+void ldemo_q17();
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:

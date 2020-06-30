@@ -43,7 +43,26 @@ namespace {
         EXPECT_EQ(s.longestCommonPrefix(words3), "");
         std::vector<std::string> words4 = { "aa", "a" };
         EXPECT_EQ(s.longestCommonPrefix(words4), "a");
+    }
+    TEST(lc_q017_test, letterCombinations) {
+        Solution_q17_b s;
+        std::vector<std::string> exp1 = { "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf" };
+        std::vector<std::string> res1 = s.letterCombinations("23");
+        std::sort(exp1.begin(), exp1.end());
+        std::sort(res1.begin(), res1.end());
+        EXPECT_EQ(exp1, res1);
 
+        std::vector<std::string> exp2 = { "a","b","c" };
+        std::vector<std::string> res2 = s.letterCombinations("2");
+        std::sort(exp2.begin(), exp2.end());
+        std::sort(res2.begin(), res2.end());
+        EXPECT_EQ(exp2, res2);
+
+        std::vector<std::string> exp3 = { "gcd","gce","gcf","gbd","gbe","gbf","gad","gae","gaf","hcd","hce","hcf","hbd","hbe","hbf","had","hae","haf","icd","ice","icf","ibd","ibe","ibf","iad","iae","iaf" };
+        std::vector<std::string> res3 = s.letterCombinations("423");
+        std::sort(exp3.begin(), exp3.end());
+        std::sort(res3.begin(), res3.end());
+        EXPECT_EQ(exp3, res3);
     }
     TEST(lc_q056_test, mergeIntervals) {
         Solution_q56_a q;

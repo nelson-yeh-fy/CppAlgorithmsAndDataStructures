@@ -45,7 +45,7 @@ namespace {
         EXPECT_EQ(s.longestCommonPrefix(words4), "a");
     }
     TEST(lc_q017_test, letterCombinations) {
-        Solution_q17_b s;
+        Solution_q17_a s;
         std::vector<std::string> exp1 = { "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf" };
         std::vector<std::string> res1 = s.letterCombinations("23");
         std::sort(exp1.begin(), exp1.end());

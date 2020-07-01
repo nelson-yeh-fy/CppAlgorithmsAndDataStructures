@@ -148,10 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LcSolutions.cpp" />
+    <ClCompile Include="lc_BFS.cpp" />
     <ClCompile Include="lc_sample20.cpp" />
     <ClCompile Include="lc_two_pointers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lc_BFS.h" />
     <ClInclude Include="lc_sample20.h" />
     <ClInclude Include="lc_two_pointers.h" />
   </ItemGroup>

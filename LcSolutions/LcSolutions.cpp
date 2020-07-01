@@ -4,6 +4,7 @@
 #include <iostream>
 #include "lc_sample20.h"
 #include "lc_two_pointers.h"
+#include "lc_BFS.h"
 using namespace std;
 
 int main()
@@ -21,6 +22,7 @@ int main()
 	//ldemo_q214();
 	//ldemo_q125();
 	/*ldemo_q259();*/
-	ldemo_q17();
+	//ldemo_q17();
+	ldemo_q994();
 }
 

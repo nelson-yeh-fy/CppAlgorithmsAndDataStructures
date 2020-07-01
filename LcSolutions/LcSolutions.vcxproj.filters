@@ -24,12 +24,18 @@
     <ClCompile Include="lc_two_pointers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lc_BFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lc_sample20.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="lc_two_pointers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_BFS.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

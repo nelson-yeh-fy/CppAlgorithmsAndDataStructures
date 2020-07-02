@@ -13,33 +13,38 @@ struct TreeNode {
      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+//using BFS
+struct ValidBSTRange {
+    TreeNode* node;
+    TreeNode* minNode;
+    TreeNode* maxNode;
+};
 class Solution_q98_a {
 public:
     bool isValidBST(TreeNode* root) {
-
-        //step1. check root
-        if (root == nullptr) return true;
-        std::queue<TreeNode*> q;
-        q.push(root);
-
+        if (!root) return true;
+        //step1. BFS put the root node, and send nullptr as min/max boundary
+        std::queue<ValidBSTRange> q;
+        q.push(ValidBSTRange{ root, nullptr, nullptr });
         //step2. BFS search
         while (!q.empty()) {
-
-            TreeNode* t = q.front();
+            ValidBSTRange t = q.front();
             q.pop();
-            if (t->left != nullptr) {
-                q.push(t->left);
-                if (t->left->val >= t->val) return false;
-            }
 
-            if (t->right != nullptr) {
-                q.push(t->right);
-                if (t->val >= t->right->val) return false;
-            }
+            if (t.maxNode && t.node->val >= t.maxNode->val)
+                return false;
+            if (t.minNode && t.node->val <= t.minNode->val)
+                return false;
+
+            //step3. check left (its maxBoundary is current root, means left->value should be < maxBoundary)
+            if (t.node->left) q.push(ValidBSTRange{ t.node->left, t.minNode, t.node });
+            //step4. check right (its minBoundary is current root, means right->value should be > minBoundary)
+            if (t.node->right) q.push(ValidBSTRange{ t.node->right, t.node, t.maxNode });
         }
         return true;
     }
 };
+//using DFS
 class Solution_q98_b {
 public:
     bool isValidBST(TreeNode* node, TreeNode* minNode, TreeNode* maxNode) {
@@ -55,6 +60,7 @@ public:
         return isValidBST(root, nullptr, nullptr);
     }
 };
+void ldemo_q98();
 //994. Rotting Oranges [Med]
 struct Pos {
     int x;

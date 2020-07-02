@@ -85,17 +85,9 @@ void ldemo_q98();
 //104. Maximum Depth of Binary Tree [Easy]
 class Solution_q104 {
 public:
-    void maxDepth(TreeNode* root, int depth, int& max) {
-        if (!root) return;
-        maxDepth(root->left, depth + 1, max);
-        max = std::max(max, depth);
-        maxDepth(root->right, depth + 1, max);
-        return;
-    }
     int maxDepth(TreeNode* root) {
-        int max = 0;
-        maxDepth(root, 1, max);
-        return max;
+        if (!root) return 0;
+        return std::max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
 };
 //994. Rotting Oranges [Med]

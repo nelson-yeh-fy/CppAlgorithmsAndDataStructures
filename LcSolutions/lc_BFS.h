@@ -60,6 +60,27 @@ public:
         return isValidBST(root, nullptr, nullptr);
     }
 };
+//using in-order traversal
+class Solution_q98_c {
+public:
+    bool isValidBST(TreeNode* node, TreeNode* &prev) {
+        if (!node) return true;
+        //Because in-order traversal (left, root, right) for a BST will be a sorted list,
+        //We can simply traverse it this way, make sure current val is bigger than pre val.
+        
+        //left
+        if (!isValidBST(node->left, prev)) return false;
+        //current
+        if (prev && node->val <= prev->val) return false;
+        prev = node;
+        //right
+        return isValidBST(node->right, prev);
+    }
+    bool isValidBST(TreeNode* root) {
+        TreeNode* prev = nullptr;
+        return isValidBST(root, prev);
+    }
+};
 void ldemo_q98();
 //994. Rotting Oranges [Med]
 struct Pos {

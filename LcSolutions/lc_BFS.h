@@ -90,6 +90,24 @@ public:
         return std::max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
 };
+//230. Kth Smallest Element in a BST [Med]
+//In-order traversal (BST's in-order traversal is a sorted list)
+class Solution_q230 {
+public:
+    int kthSmallest(TreeNode* root, int& k) {
+        if (!root) return -1;
+
+        //left
+        int res = kthSmallest(root->left, k);
+        if (!k) return res;
+
+        //current
+        if (!--k) return root->val;
+
+        //right
+        return kthSmallest(root->right, k);
+    }
+};
 //994. Rotting Oranges [Med]
 struct Pos {
     int x;

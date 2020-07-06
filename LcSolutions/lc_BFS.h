@@ -121,63 +121,49 @@ public:
     Pos top(Pos p) { return Pos{p.x - 1, p.y };}
     Pos bottom(Pos p) { return Pos{ p.x + 1, p.y }; }
 
-    //step3. BFS-like search by checking 4-directions.
-    void rotting(std::queue<Pos>& rotted, std::queue<Pos>& newRotted, 
-        const int max_x, const int max_y, const std::vector<std::vector<int>>& grid) {
-        while (!rotted.empty()) {
-            Pos current = rotted.front();
-            Pos l = left(current);
-            Pos r = right(current);
-            Pos t = top(current);
-            Pos b = bottom(current);
-            rotted.pop();
-
-            if (l.x > -1 && l.y > -1 && l.x < max_x && l.y < max_y) {
-                if (grid[l.x][l.y] == 1) {
-                    newRotted.push(l);
-                }
-            }
-            if (r.x > -1 && r.y > -1 && r.x < max_x && r.y < max_y) {
-                if (grid[r.x][r.y] == 1) {
-                    newRotted.push(r);
-                }
-            }
-            if (t.x > -1 && t.y > -1 && t.x < max_x && t.y < max_y) {
-                if (grid[t.x][t.y] == 1) {
-                    newRotted.push(t);
-                }
-            }
-            if (b.x > -1 && b.y > -1 && b.x < max_x && b.y < max_y) {
-                if (grid[b.x][b.y] == 1) {
-                    newRotted.push(b);
-                }
+    void rotting(Pos c, int& numOfFresh, std::vector<std::vector<int>>& grid, std::queue<Pos>& newRotted){
+        int max_x = grid.size();
+        int max_y = grid[0].size();
+        if (c.x > -1 && c.y > -1 && c.x < max_x && c.y < max_y) {
+            if (grid[c.x][c.y] == 1) {
+                newRotted.push(c);
+                grid[c.x][c.y] = 2;
+                --numOfFresh;
             }
         }
-        return;
     }
 
     int orangesRotting(std::vector<std::vector<int>>& grid) {
-
         if (grid.size() < 1) return 0;
-        int max_x = grid[0].size();
-        int max_y = grid.size();
+        int numOfFresh = 0;
         //step2. screen all oranges to find rotted (2) items, put them into a queue.
         std::queue<Pos> rotted, newRotted;
         for (int i = 0; i < grid.size(); ++i) {
             for (int j = 0; j < grid[i].size(); ++j) {
                 if (grid[i][j] == 2) newRotted.push(Pos{ i, j });
+                if (grid[i][j] == 1) ++numOfFresh;
             }
         }
+        //step3. check fresh count, there is never a fresh orange, just 0;
+        if (numOfFresh == 0) return 0;
 
-        //step4. each round we check all rotted oragnges, put infected into newRotted.
-        int round = 0;
+        //step4. BFS-like search, each round we start from rotted oragnges, put infected into newRotted.
+        int round = -1;
         while (!newRotted.empty()) {
             ++round;
             rotted.swap(newRotted);
-            rotting(rotted, newRotted, max_x, max_y, grid);
+            //step5. checking 4-directions.
+            while (!rotted.empty()) {
+                Pos current = rotted.front();
+                rotted.pop();
+                rotting(left(current), numOfFresh, grid, newRotted);
+                rotting(right(current), numOfFresh, grid, newRotted);
+                rotting(top(current), numOfFresh, grid, newRotted);
+                rotting(bottom(current), numOfFresh, grid, newRotted);
+            }
         }
-
-        return round;
+        //After all rounds of rotting, if there is still a fresh orange, then return -1; otherwise return rounds
+        return numOfFresh>0 ? -1: round;
     }
 };
 void ldemo_q994();

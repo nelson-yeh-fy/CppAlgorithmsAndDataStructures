@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 
 //98. Validate Binary Search Tree [Med]
 struct TreeNode {
@@ -108,6 +109,89 @@ public:
         return kthSmallest(root->right, k);
     }
 };
+
+//200. Number of Islands [Med]
+class Solution_q200_a {
+public:
+    int numIslands(std::vector<std::vector<char>>& grid) {
+        //pre-req. check if grid is empty or boundary test cases.
+        if (grid.size() < 1) return 0;
+        int res = 0;
+        std::stack<std::pair<int, int>> s;
+
+        //step1. find island's land first and then do DFS-like search.
+        for (size_t i = 0; i < grid.size(); ++i) {
+            for (size_t j = 0; j < grid[0].size(); ++j) {
+
+                //step2. if this position is water, mark it as checked.
+                if (grid[i][j] == '0') {
+                    grid[i][j] = '8';
+                    //step3. if this position is island, we entend and mark the whole island checked(2).
+                }
+                else if (grid[i][j] == '1') {
+                    s.push({ i, j });
+                    ++res;
+                    while (!s.empty()) {
+                        int pi = s.top().first;
+                        int pj = s.top().second;
+                        s.pop();
+                        grid[pi][pj] = '9';
+
+                        if (pi > 0 && grid[pi - 1][pj] == '1') {
+                            s.push({ pi - 1, pj });
+                            grid[pi-1][pj] = '9';
+                        }
+                        if (pi < grid.size() - 1 && grid[pi + 1][pj] == '1') {
+                            s.push({ pi + 1, pj });
+                            grid[pi+1][pj] = '9';
+                        }
+                        if (pj > 0 && grid[pi][pj - 1] == '1') {
+                            s.push({ pi, pj - 1 });
+                            grid[pi][pj-1] = '9';
+                        }
+                        if (pj < grid[0].size() - 1 && grid[pi][pj + 1] == '1') {
+                            s.push({ pi, pj + 1 });
+                            grid[pi][pj+1] = '9';
+                        }
+                    }
+                }//end-of-if(grid[i][j] == '1')
+            }
+        }
+        return res;
+    }
+};
+class Solution_q200_b {
+public:
+    void markIslandVisited(std::vector<std::vector<char>>& grid, int i, int j) {
+        if (i<0 || j<0 || i == grid.size() || j == grid[0].size() || grid[i][j] == '0')
+            return;
+
+        grid[i][j] = '0';
+        markIslandVisited(grid, i - 1, j);
+        markIslandVisited(grid, i + 1, j);
+        markIslandVisited(grid, i, j - 1);
+        markIslandVisited(grid, i, j + 1);
+        return;
+    }
+    int numIslands(std::vector<std::vector<char>>& grid) {
+        //pre-req. check if grid is empty or boundary test cases.
+        if (grid.empty()) return 0;
+        int res = 0;
+
+        //step1. find island's land first and then do DFS-like search.
+        for (size_t i = 0; i < grid.size(); ++i) {
+            for (size_t j = 0; j < grid[0].size(); ++j) {
+                //step2. if this position is water, mark it as checked.
+                if (grid[i][j] == '1') {
+                    ++res;
+                    markIslandVisited(grid, i, j);
+                }
+            }
+        }
+        return res;
+    }
+};
+void ldemo_q200();
 //994. Rotting Oranges [Med]
 struct Pos {
     int x;

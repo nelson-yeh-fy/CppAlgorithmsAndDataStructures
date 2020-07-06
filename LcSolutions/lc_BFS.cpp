@@ -9,6 +9,12 @@ void ldemo_q98() {
 	std::cout << s.isValidBST(n1);
 	return;
 }
+void ldemo_q200() {
+	Solution_q200_b s;
+	std::vector<std::vector<char>> grid1 = { {'1','1','1','1','0'},{'1','1','0','1','0'}, {'1','1','0','0','0'}, {'0','0','0','0','0'} };
+	std::vector<std::vector<char>> grid2 = { {'1','1','0','0','0'},{'1','1','0','0','0'},{'0','0','1','0','0'},{'0','0','0','1','1'} };
+	std::cout << "islands:" << s.numIslands(grid2);
+}
 void ldemo_q994() {
 	Solution_q994 s;
 	std::vector<std::vector<int>> oranges = { {2,1,1},{1,1,0},{0,1,1} };

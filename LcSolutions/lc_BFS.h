@@ -192,6 +192,46 @@ public:
     }
 };
 void ldemo_q200();
+
+//305. Number of Islands II [Hard]
+class Solution_q305 {
+public:
+    bool isValidPos(int i, int j, std::vector<std::vector<int>>& grid) {
+        if (i < 0 || j < 0 || i > grid.size() || j > grid[0].size())
+            return false;
+        return true;
+    }
+    std::vector<int> numIslands(int m, int n, std::vector<std::pair<int, int>> ops) {
+        //step1. check boundaries
+        if (!m && !n || ops.empty()) return {};
+        std::vector<std::vector<int>> grid ( n, std::vector<int>(m, 0) );
+        std::vector<int> res;
+
+        //step2. Each step adds one land, that may connect the other islands.
+        for (int i = 0; i < ops.size(); ++i) {
+            int x = ops[i].first, y = ops[i].second;
+            //step3. check the given pos is an valid postition.
+            if (isValidPos(x, y, grid)) {
+                if (grid[x][y] == 0) { //if it's already a land, ignore this operation.
+                    int c = res.empty() ? 1 : res.back() + 1; //current island.
+                    //step4. check 4 dirctions
+                    if (isValidPos(x - 1, y, grid) && grid[x - 1][y] == 1)
+                        --c;
+                    if (isValidPos(x + 1, y, grid) && grid[x + 1][y] == 1)
+                        --c;
+                    if (isValidPos(x, y - 1, grid) && grid[x][y - 1] == 1)
+                        --c;
+                    if (isValidPos(x, y + 1, grid) && grid[x][y + 1] == 1)
+                        --c;
+                    res.push_back(c);
+                }
+            }
+        }
+        return res;
+    }
+};
+void ldemo_q305();
+
 //994. Rotting Oranges [Med]
 struct Pos {
     int x;

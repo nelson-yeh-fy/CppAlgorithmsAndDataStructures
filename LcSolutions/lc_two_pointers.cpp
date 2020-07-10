@@ -33,7 +33,7 @@ void ldemo_q18() {
     Solution_q18 s;
     int target = 0;
     std::vector<int> nums{ -2, -1, 0, 0, 1, 2 };
-    //nums = { 0, 0, 0, 0 };
+    nums = {-3,-2,-1,0,0,1,2,3};
     
     std::vector<std::vector<int>> res;
     res = s.fourSum(nums, target);

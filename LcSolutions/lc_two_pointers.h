@@ -288,30 +288,36 @@ public:
     std::vector<std::vector<int>> fourSum(std::vector<int>& nums, int target) {
         //pre-req
         if (nums.size() < 4) return {};
-
         //step1. Sort the nums, takes O(log(N))
         std::sort(nums.begin(), nums.end());
 
-        int size = nums.size();
+        int n = nums.size();
         std::vector<std::vector<int>> res;
-        //step2. Reduce 4Sum to 3Sum like this: a+b+c+d == target (b+c+d == target-a)
-        for (int a = 0; a < size; ++a) {
-            //step3. Reduce 3Sum to 2Sum: c+d == target-a-b
-            for (int b = a + 1; b < size; ) {
-                int c = b + 1, d = size - 1;
-                //step4. 2Sum question now: approaching to the target
+        //step2 Reduce 4Sum to 3Sum like this: a+b+c+d == target (b+c+d == target-a)
+        for (int a = 0; a < n-3; ++a) {
+            if (a > 0 && nums[a] == nums[a - 1]) continue;
+            //accerlerate
+            if (target < nums[a] + nums[a + 1] + nums[a + 2] + nums[a + 3]) break;
+            if (target > nums[a] + nums[n - 3] + nums[n - 2] + nums[n - 1]) continue;
+
+            //step3 Reduce 3Sum to 2Sum: c+d == target-a-b
+            for (int b = a + 1; b < n-2; ++b) {
+                if (b > a + 1 && nums[b] == nums[b - 1]) continue;
+                //accerlerate
+                if (target < nums[a] + nums[b] + nums[a + 1] + nums[a + 2]) break;
+                if (target > nums[a] + nums[b] + nums[n - 2] + nums[n - 1]) continue;
+
+                int newTarget = target - nums[a] - nums[b];
+                int c = b + 1, d = n - 1;
                 while (c < d) {
-                    int newTarget = target - nums[a] - nums[b];
                     if (newTarget > nums[c] + nums[d]) ++c;
                     else if (newTarget < nums[c] + nums[d]) --d;
-                    else if (newTarget == nums[c] + nums[d]) {
+                    else {
                         res.push_back({ nums[a],nums[b],nums[c],nums[d] });
-                        break;
+                        do { ++c; } while (c<d && nums[c] == nums[c-1]);
+                        do { --d; } while (c<d && nums[d] == nums[d+1]);
                     }
                 }
-                //reduce duplicate if b==b+1
-                ++b;
-                while (b < size - 1 && nums[b] == nums[b + 1]) ++b;
             }
         }
         return res;

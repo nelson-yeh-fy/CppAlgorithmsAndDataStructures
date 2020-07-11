@@ -149,12 +149,16 @@
   <ItemGroup>
     <ClCompile Include="LcSolutions.cpp" />
     <ClCompile Include="lc_BFS.cpp" />
+    <ClCompile Include="lc_DFS.cpp" />
     <ClCompile Include="lc_sample20.cpp" />
+    <ClCompile Include="lc_slow_fast_pointers.cpp" />
     <ClCompile Include="lc_two_pointers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lc_BFS.h" />
+    <ClInclude Include="lc_DFS.h" />
     <ClInclude Include="lc_sample20.h" />
+    <ClInclude Include="lc_slow_fast_pointers.h" />
     <ClInclude Include="lc_two_pointers.h" />
   </ItemGroup>
   <ItemGroup>

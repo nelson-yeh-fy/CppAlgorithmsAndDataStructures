@@ -8,6 +8,8 @@
 #include <forward_list>
 #include <queue>
 
+//1. Two Sum [Easy]
+
 // This solution changes the original vector, doesn't fit leetcode's requirement.
 class Solution_q1_a {
 public:
@@ -142,78 +144,7 @@ public:
 };
 void ldemo_q1();
 
-/**
- * Definition for singly-linked list.
- */ 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
-class Solution_q2_a {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-
-        ListNode* result = new ListNode();
-        ListNode* head = result;
-        int sum = 0;
-
-        //traverse l1 and l2 at the same time, the order start from the beginging.
-        while (l1 != nullptr || l2 != nullptr) {
-
-            sum = sum / 10;
-            if (l1 == nullptr) {
-                sum += l2->val;
-                l2 = l2->next;
-            }
-            else if (l2 == nullptr) {
-                sum += l1->val;
-                l1 = l1->next;
-            }
-            else {
-                sum += l1->val + l2->val;
-                l1 = l1->next;
-                l2 = l2->next;
-            }
-
-            ListNode* n = new ListNode(sum % 10);
-            head->next = n;
-            head = head->next;
-        }
-
-        if (sum / 10 > 0) {
-            ListNode* n = new ListNode(sum / 10);
-            head->next = n;
-            head = head->next;
-        }
-
-        return result->next;
-    }
-};
-//concise version but worse performance
-class Solution_q2_b {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-
-        ListNode* result = new ListNode(0), * ptr = result;
-        int carry = 0;
-
-        //traverse l1 and l2 at the same time, the order start from the beginging.
-        while (l1 || l2 || carry != 0) {
-            int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
-            carry = sum / 10;
-            ListNode* n = new ListNode(sum % 10);
-            ptr->next = n;
-            ptr = n;
-
-            l1 = (l1 ? l1->next : nullptr); //check nullptr again, drag performance
-            l2 = (l2 ? l2->next : nullptr);
-        }
-        return result->next;
-    }
-};
+//3. Longest Substring Without Repeating Characters [Med]
 
 //looks correct, but somehow leetcode test "pwwkew" shows 4 (expected:3)
 class Solution_q3_a {
@@ -261,6 +192,7 @@ public:
 };
 void ldemo_q3();
 
+//4. Median of Two Sorted Arrays [Hard]
 class Solution_q4_a {
 public:
     double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2) {
@@ -344,6 +276,9 @@ public:
     }
 };
 void ldemo_q4();
+
+//6. ZigZag Conversion[Med]
+
 //using vector to record zigzag, but in fact simply using string* z can save memory
 class Solution_q6_a {
 public:
@@ -393,6 +328,7 @@ public:
 };
 void ldemo_q6();
 
+//7. Reverse Integer [Easy]
 class Solution_q7_a {
 public:
     int reverse(int x) {
@@ -439,6 +375,7 @@ public:
 };
 void ldemo_q7();
 
+//8. String to Integer (atoi) [Med]
 class Solution_q8_a {
 public:
     int myAtoi(std::string s) {
@@ -496,6 +433,7 @@ public:
 };
 void ldemo_q8();
 
+//9. Palindrome Number [Easy]
 class Solution_q9_a {
 public:
     bool isPalindrome(int number) {

@@ -5,6 +5,7 @@
 #include "lc_sample20.h"
 #include "lc_two_pointers.h"
 #include "lc_BFS.h"
+#include "lc_slow_fast_pointers.h"
 using namespace std;
 
 int main()
@@ -19,7 +20,7 @@ int main()
 	//ldemo_q9();
 	//ldemo_q15();
 	//ldemo_q17();
-	ldemo_q18();
+	//ldemo_q18();
 	//ldemo_q56();
 	//ldemo_q98();
 	//ldemo_q214();
@@ -28,5 +29,8 @@ int main()
 	/*ldemo_q259();*/
 	//ldemo_q305();
 	//ldemo_q994();
+
+	//SLOW_FAST_POINTERS
+	ldemo_q19();
 }
 

@@ -70,6 +70,13 @@ void ldemo_q17() {
     }
 }
 
+void ldemo_q20()
+{
+    Solution_q20 s;
+    std::string str = "{[]()[()]}";
+    std::cout << s.isValid(str);
+}
+
 void ldemo_q56() {
     Solution_q56_a q;
     std::vector<std::vector<int>> input = { {1,3},{2,6},{8,10},{15,18} };

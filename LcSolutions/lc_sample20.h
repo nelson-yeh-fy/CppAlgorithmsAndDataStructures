@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <forward_list>
 #include <queue>
+#include <stack>
 
 //1. Two Sum [Easy]
 
@@ -562,6 +563,28 @@ public:
     }
 };
 void ldemo_q17();
+//20. Valid Parentheses [Med]
+class Solution_q20 {
+public:
+    bool isValid(std::string s) {
+        //step1. use stack to verify if there is an valid pair
+        std::stack<char> v;
+
+        //step2. check these six different chars
+        for (const auto& c : s) {
+            switch (c) {
+            case '{': v.push('}'); break;
+            case '[': v.push(']'); break;
+            case '(': v.push(')'); break;
+            default:
+                if (v.empty() || c != v.top()) return false;
+                v.pop();
+            }
+        }
+        return v.size() == 0;
+    }
+};
+void ldemo_q20();
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:

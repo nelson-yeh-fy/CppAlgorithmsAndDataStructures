@@ -50,6 +50,9 @@
     <ClInclude Include="lc_DFS.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="ds.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

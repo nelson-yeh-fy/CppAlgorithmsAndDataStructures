@@ -1,6 +1,6 @@
 #include <iostream>
 #include "lc_sample20.h"
-
+#include "ds.h"
 using namespace std;
 
 void ldemo_q1() {
@@ -75,6 +75,24 @@ void ldemo_q20()
     Solution_q20 s;
     std::string str = "{[]()[()]}";
     std::cout << s.isValid(str);
+}
+
+void ldemo_q21()
+{
+    Solution_q21 s;
+    ListNode* n5 = new ListNode(5);
+    ListNode* n3 = new ListNode(3, n5);
+    ListNode* n1 = new ListNode(1, n3);
+
+    ListNode* n6 = new ListNode(6);
+    ListNode* n4 = new ListNode(4, n6);
+    ListNode* n2 = new ListNode(2, n4);
+
+    ListNode* m = s.mergeTwoLists(n1, n2);
+    while (m) {
+        std::cout << m->val << ",";
+        m = m->next;
+    }
 }
 
 void ldemo_q56() {

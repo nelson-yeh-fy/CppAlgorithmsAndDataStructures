@@ -21,6 +21,7 @@ int main()
 	//ldemo_q15();
 	//ldemo_q17();
 	//ldemo_q18();
+	ldemo_q21();
 	//ldemo_q56();
 	//ldemo_q98();
 	//ldemo_q214();
@@ -31,6 +32,6 @@ int main()
 	//ldemo_q994();
 
 	//SLOW_FAST_POINTERS
-	ldemo_q19();
+	//ldemo_q19();
 }
 

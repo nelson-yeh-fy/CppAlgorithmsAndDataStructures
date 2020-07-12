@@ -4,7 +4,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
-#include "lc_BFS.h"
+#include "ds.h"
 
 //In-order traversal (BST's in-order traversal is a sorted list)
 

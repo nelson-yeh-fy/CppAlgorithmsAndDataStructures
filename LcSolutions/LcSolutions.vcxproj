@@ -155,6 +155,7 @@
     <ClCompile Include="lc_two_pointers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ds.h" />
     <ClInclude Include="lc_BFS.h" />
     <ClInclude Include="lc_DFS.h" />
     <ClInclude Include="lc_sample20.h" />

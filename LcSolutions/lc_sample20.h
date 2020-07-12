@@ -8,6 +8,7 @@
 #include <forward_list>
 #include <queue>
 #include <stack>
+#include "ds.h"
 
 //1. Two Sum [Easy]
 
@@ -563,7 +564,7 @@ public:
     }
 };
 void ldemo_q17();
-//20. Valid Parentheses [Med]
+//20. Valid Parentheses [Easy]
 class Solution_q20 {
 public:
     bool isValid(std::string s) {
@@ -585,6 +586,30 @@ public:
     }
 };
 void ldemo_q20();
+
+//21. Merge Two Sorted Lists [Easy]
+class Solution_q21 {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode* head = new ListNode();
+        ListNode* res = head;
+        //step1. traverse l1 and l2. compare values until one of them reaches the end.
+        while (l1 && l2) {
+            if ((l1->val <= l2->val)) {
+                res->next = l1;
+                l1 = l1->next;
+            }
+            else {
+                res->next = l2;
+                l2 = l2->next;
+            }
+            res = res->next;
+        }
+        res->next = (l1) ? l1 : l2;
+        return head->next;
+    }
+};
+void ldemo_q21();
 //56. Merge Intervals [Med]
 class Solution_q56_a {
 public:

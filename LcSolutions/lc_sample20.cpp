@@ -95,6 +95,15 @@ void ldemo_q21()
     }
 }
 
+void ldemo_q22()
+{
+    Solution_q22_b s;
+    std::vector<std::string> res = s.generateParenthesis(2);
+    for (auto& i : res) {
+        std::cout << i << std::endl;
+    }
+}
+
 void ldemo_q56() {
     Solution_q56_a q;
     std::vector<std::vector<int>> input = { {1,3},{2,6},{8,10},{15,18} };

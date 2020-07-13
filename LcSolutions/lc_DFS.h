@@ -6,11 +6,80 @@
 #include <stack>
 #include "ds.h"
 
-//In-order traversal (BST's in-order traversal is a sorted list)
+struct ValidBSTRange {
+    TreeNode* node;
+    TreeNode* minNode;
+    TreeNode* maxNode;
+};
+//98. Validate Binary Search Tree [Med], using BFS
+class Solution_q98_a {
+public:
+    bool isValidBST(TreeNode* root) {
+        if (!root) return true;
+        //step1. BFS put the root node, and send nullptr as min/max boundary
+        std::queue<ValidBSTRange> q;
+        q.push(ValidBSTRange{ root, nullptr, nullptr });
+        //step2. BFS search
+        while (!q.empty()) {
+            ValidBSTRange t = q.front();
+            q.pop();
+
+            if (t.maxNode && t.node->val >= t.maxNode->val)
+                return false;
+            if (t.minNode && t.node->val <= t.minNode->val)
+                return false;
+
+            //step3. check left (its maxBoundary is current root, means left->value should be < maxBoundary)
+            if (t.node->left) q.push(ValidBSTRange{ t.node->left, t.minNode, t.node });
+            //step4. check right (its minBoundary is current root, means right->value should be > minBoundary)
+            if (t.node->right) q.push(ValidBSTRange{ t.node->right, t.node, t.maxNode });
+        }
+        return true;
+    }
+};
+//using DFS
+class Solution_q98_b {
+public:
+    bool isValidBST(TreeNode* node, TreeNode* minNode, TreeNode* maxNode) {
+        if (!node) return true;
+
+        if (minNode && node->val <= minNode->val || maxNode && node->val >= maxNode->val)
+            return false;
+
+        return (isValidBST(node->left, minNode, node) &&
+            isValidBST(node->right, node, maxNode));
+    }
+    bool isValidBST(TreeNode* root) {
+        return isValidBST(root, nullptr, nullptr);
+    }
+};
+//using in-order traversal
+class Solution_q98_c {
+public:
+    bool isValidBST(TreeNode* node, TreeNode*& prev) {
+        if (!node) return true;
+        //Because in-order traversal (left, root, right) for a BST will be a sorted list,
+        //We can simply traverse it this way, make sure current val is bigger than pre val.
+
+        //left
+        if (!isValidBST(node->left, prev)) return false;
+        //current
+        if (prev && node->val <= prev->val) return false;
+        prev = node;
+        //right
+        return isValidBST(node->right, prev);
+    }
+    bool isValidBST(TreeNode* root) {
+        TreeNode* prev = nullptr;
+        return isValidBST(root, prev);
+    }
+};
+void ldemo_q98();
 
 //230. Kth Smallest Element in a BST [Med]
 class Solution_q230 {
 public:
+    //In-order traversal (BST's in-order traversal is a sorted list)
     int kthSmallest(TreeNode* root, int& k) {
         if (!root) return -1;
 
@@ -25,6 +94,66 @@ public:
         return kthSmallest(root->right, k);
     }
 };
+
+
+//22. Generate Parentheses [Med]
+class Solution_q22_a {
+public:
+    void addParenthesis(std::vector<std::string>& res, std::string s,
+        int stackCounter, int left, int right) {
+        if (stackCounter < 0)
+            return;
+        if (left == 0 && right == 0) {
+            res.push_back(s);
+            return;
+        }
+
+        //two decision, either add another '(' or ')', depends on remaining left/right can be used
+        if (left) {
+            addParenthesis(res, s + "(", stackCounter + 1, left - 1, right);
+        }
+        if (left < right) {
+            addParenthesis(res, s + ")", stackCounter - 1, left, right - 1);
+        }
+    }
+    std::vector<std::string> generateParenthesis(int n) {
+        std::vector<std::string> res;
+        addParenthesis(res, "", 0, n, n); //number of chars to be added: 2*n
+        return res;
+    }
+};
+class Solution_q22_b {
+public:
+    void addParenthesis(std::vector<std::string>& res, std::string& s,
+        int stackCounter, int left, int right) {
+        if (stackCounter < 0)
+            return;
+        if (left == 0 && right == 0) {
+            res.push_back(s);
+            return;
+        }
+
+        //two decision, either add another '(' or ')', depends on remaining left/right can be used
+        if (left) {
+            s.push_back('(');
+            addParenthesis(res, s, stackCounter + 1, left - 1, right);
+            s.pop_back();
+        }
+        if (left < right) {
+            s.push_back(')');
+            addParenthesis(res, s, stackCounter - 1, left, right - 1);
+            s.pop_back();
+        }
+    }
+    std::vector<std::string> generateParenthesis(int n) {
+        std::vector<std::string> res;
+        std::string strdancing;
+        addParenthesis(res, strdancing, 0, n, n); //number of chars to be added (left and right): n
+        return res;
+    }
+};
+void ldemo_q22();
+
 //200. Number of Islands [Med]
 class Solution_q200_a {
 public:

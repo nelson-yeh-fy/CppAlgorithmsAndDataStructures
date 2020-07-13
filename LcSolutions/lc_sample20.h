@@ -611,63 +611,6 @@ public:
 };
 void ldemo_q21();
 
-//22. Generate Parentheses [Med]
-class Solution_q22_a {
-public:
-    void addParenthesis(std::vector<std::string>& res, std::string s,
-        int stackCounter, int left, int right) {
-        if (stackCounter < 0)
-            return;
-        if (left==0 && right==0) {
-            res.push_back(s);
-            return;
-        }
-
-        //two decision, either add another '(' or ')', depends on remaining left/right can be used
-        if (left) {
-            addParenthesis(res, s + "(", stackCounter + 1, left-1, right);
-        }
-        if (left < right) {
-            addParenthesis(res, s + ")", stackCounter - 1, left, right-1);
-        }
-    }
-    std::vector<std::string> generateParenthesis(int n) {
-        std::vector<std::string> res;
-        addParenthesis(res, "", 0, n, n); //number of chars to be added: 2*n
-        return res;
-    }
-};
-class Solution_q22_b {
-public:
-    void addParenthesis(std::vector<std::string>& res, std::string& s,
-        int stackCounter, int left, int right) {
-        if (stackCounter < 0)
-            return;
-        if (left == 0 && right == 0) {
-            res.push_back(s);
-            return;
-        }
-
-        //two decision, either add another '(' or ')', depends on remaining left/right can be used
-        if (left) {
-            s.push_back('(');
-            addParenthesis(res, s, stackCounter + 1, left - 1, right);
-            s.pop_back();
-        }
-        if (left < right) {
-            s.push_back(')');
-            addParenthesis(res, s, stackCounter - 1, left, right - 1);
-            s.pop_back();
-        }
-    }
-    std::vector<std::string> generateParenthesis(int n) {
-        std::vector<std::string> res;
-        std::string strdancing;
-        addParenthesis(res, strdancing, 0, n, n); //number of chars to be added (left and right): n
-        return res;
-    }
-};
-void ldemo_q22();
 
 //56. Merge Intervals [Med]
 class Solution_q56_a {

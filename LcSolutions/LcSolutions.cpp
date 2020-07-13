@@ -4,8 +4,10 @@
 #include <iostream>
 #include "lc_sample20.h"
 #include "lc_two_pointers.h"
-#include "lc_BFS.h"
 #include "lc_slow_fast_pointers.h"
+#include "lc_BFS.h"
+#include "lc_DFS.h"
+
 using namespace std;
 
 int main()

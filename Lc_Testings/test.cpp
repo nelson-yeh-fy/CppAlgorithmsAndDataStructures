@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "../LcSolutions/lc_sample20.h"
 #include "../LcSolutions/lc_two_pointers.h"
+#include "../LcSolutions/lc_merge_k_ways.h"
+
 namespace {
     TEST(lc_q007_test, NumsTest) {
         Solution_q7_b q;

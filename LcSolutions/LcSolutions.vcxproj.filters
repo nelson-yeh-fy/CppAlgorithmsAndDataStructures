@@ -33,6 +33,9 @@
     <ClCompile Include="lc_DFS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lc_merge_k_ways.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lc_sample20.h">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ds.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_merge_k_ways.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -611,6 +611,36 @@ public:
 };
 void ldemo_q21();
 
+//23. Merge k sorted list [Hard]
+class Solution_q23 {
+public:
+    ListNode* mergeKLists(std::vector<ListNode*> lists) {
+        ListNode* head = new ListNode();
+        ListNode* current = head;
+
+        //step1. push all lists' first item into priority queue; smaller to be on the top.
+        auto cmp = [](ListNode* left, ListNode* right) { return (left->val) > (right->val); };
+        std::priority_queue<ListNode*, std::vector<ListNode*>, decltype(cmp)> q(cmp);
+        for (auto it = lists.cbegin(); it != lists.cend(); ++it) {
+            if (*it) q.push(*it);
+        }
+
+        //step2. pop(add) the smallest to our list, add smallest->next to the priority queue. 
+        while (!q.empty()) {
+            ListNode* smallest = q.top();
+            q.pop();
+            current->next = smallest;
+            current = current->next;
+            
+            if (smallest->next) {
+                smallest = smallest->next;
+                q.push(smallest);
+            }
+        }
+        return head->next;
+    }
+};
+void ldemo_q23();
 
 //56. Merge Intervals [Med]
 class Solution_q56_a {

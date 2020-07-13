@@ -95,6 +95,30 @@ void ldemo_q21()
     }
 }
 
+void ldemo_q23()
+{
+    Solution_q23 s;
+    std::vector<ListNode*> input;
+    ListNode* a5 = new ListNode(5);
+    ListNode* a4 = new ListNode(4, a5);
+    ListNode* a1 = new ListNode(1, a4);
+
+    ListNode* b4 = new ListNode(4);
+    ListNode* b3 = new ListNode(3, b4);
+    ListNode* b1 = new ListNode(1, b3);
+
+    ListNode* c6 = new ListNode(6);
+    ListNode* c2 = new ListNode(2, c6);
+    input.push_back(a1);
+    input.push_back(b1);
+    input.push_back(c2);
+    ListNode* res = s.mergeKLists(input);
+    while (res) {
+        std::cout << res->val << ",";
+        res = res->next;
+    }
+}
+
 void ldemo_q56() {
     Solution_q56_a q;
     std::vector<std::vector<int>> input = { {1,3},{2,6},{8,10},{15,18} };

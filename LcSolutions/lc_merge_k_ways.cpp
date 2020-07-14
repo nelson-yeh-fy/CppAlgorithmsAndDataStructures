@@ -23,7 +23,7 @@ void ldemo_q21()
 
 void ldemo_q23()
 {
-    Solution_q23 s;
+    Solution_q23_b s;
     std::vector<ListNode*> input;
     ListNode* a5 = new ListNode(5);
     ListNode* a4 = new ListNode(4, a5);

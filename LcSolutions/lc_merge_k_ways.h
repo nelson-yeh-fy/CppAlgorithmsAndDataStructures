@@ -32,8 +32,10 @@ public:
 };
 void ldemo_q21();
 
-//23. Merge k sorted list [Hard]
-class Solution_q23 {
+//23. Merge k sorted list [Hard] 
+class Solution_q23_a {
+    // using priority queue (min heap), Time:O(kLogN), Space:O(k), 
+    // better than std:min_elements 
 public:
     ListNode* mergeKLists(std::vector<ListNode*> lists) {
         ListNode* head = new ListNode();
@@ -59,6 +61,46 @@ public:
             }
         }
         return head->next;
+    }
+};
+class Solution_q23_b {
+    //Merge 2 list everytime, until there is only one left.
+public:
+    ListNode* merge2Lists(ListNode* a, ListNode* b) {
+        ListNode* head = new ListNode();
+        ListNode* current = head;
+        while (a && b) {
+            if (a->val <= b->val) {
+                current->next = a; 
+                a = a->next;
+            }
+            else {
+                current->next = b;
+                b = b->next;
+            }
+            current = current->next;
+        }
+        current->next = (a) ? a : b;
+        return head->next;
+    }
+
+    ListNode* mergeKLists(std::vector<ListNode*> lists) {
+        ListNode* head = new ListNode();
+        ListNode* current = head;
+
+        //step1. push all lists' first item into queue;
+        std::queue<ListNode*> q;
+        for (auto it = lists.cbegin(); it != lists.cend(); ++it) {
+            if (*it) q.push(*it);
+        }
+
+        while (q.size()>1) {
+            ListNode* a = q.front(); q.pop();
+            ListNode* b = q.front(); q.pop();
+            q.push(merge2Lists(a,b));
+        }
+        
+        return q.front()->next;
     }
 };
 void ldemo_q23();

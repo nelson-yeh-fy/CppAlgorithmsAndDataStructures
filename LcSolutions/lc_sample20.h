@@ -587,5 +587,30 @@ public:
 };
 void ldemo_q20();
 
+//24. Swap Nodes in Pairs [Med]
+class Solution_q24 {
+public:
+    ListNode* swapPairs(ListNode* head) {
 
+        ListNode* res = new ListNode();
+        ListNode* c = res;
+        c->next = head;
+        //step1. traverse the list, if current->next->next is not nullptr, we do swap
+        while (head) {
+            if (head->next) {
+                c->next = head->next;
+                c = c->next;
+                head->next = c->next;
+                c->next = head;
+                c = c->next;
+                head = head->next;
+            }
+            else {
+                break;
+            }
+        }
+        return res->next;
+    }
+};
+void ldemo_q24();
 #endif

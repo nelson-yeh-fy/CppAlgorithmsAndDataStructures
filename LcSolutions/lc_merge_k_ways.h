@@ -36,6 +36,7 @@ void ldemo_q21();
 class Solution_q23_a {
     // using priority queue (min heap), Time:O(kLogN), Space:O(k), 
     // better than std:min_elements 
+    //https://leetcode.com/problems/merge-k-sorted-lists/discuss/10527/Difference-between-Priority-Queue-and-Heap-and-C%2B%2B-implementation
 public:
     ListNode* mergeKLists(std::vector<ListNode*> lists) {
         ListNode* head = new ListNode();
@@ -100,7 +101,7 @@ public:
             q.push(merge2Lists(a,b));
         }
         
-        return q.front()->next;
+        return q.empty() ? nullptr : q.front();
     }
 };
 void ldemo_q23();

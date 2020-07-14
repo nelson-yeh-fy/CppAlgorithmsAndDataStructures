@@ -77,3 +77,17 @@ void ldemo_q20()
     std::cout << s.isValid(str);
 }
 
+void ldemo_q24()
+{
+    Solution_q24 s;
+    ListNode* a4 = new ListNode(4);
+    ListNode* a3 = new ListNode(3, a4);
+    ListNode* a2 = new ListNode(2, a3);
+    ListNode* a1 = new ListNode(1, a2);
+
+    ListNode* res = s.swapPairs(a1);
+    while (res) {
+        std::cout << res->val << ",";
+    }
+}
+

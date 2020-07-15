@@ -613,4 +613,37 @@ public:
     }
 };
 void ldemo_q24();
+//26. Remove Duplicates from Sorted Array [Easy]
+class Solution_q26 {
+public:
+    int removeDuplicates(std::vector<int>& nums) {
+        int duplicate = 0;
+        //step1. compare and increase duplicate count, make the "i-duplicate" node become the unique one.
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i - 1] == nums[i]) ++duplicate;
+            else nums[i - duplicate] = nums[i];
+        }
+        //step2. erase tail part to get a new array, or just leave it there.
+        //nums.erase(nums.end()-duplicate, nums.end());
+        //return nums.size();
+        return nums.size() - duplicate;
+    }
+    /*int removeDuplicates(vector<int>& nums) {
+        //pre-req:
+        if(nums.size() < 2) return nums.size();
+
+        //step1. traverse the array and put the unique one to the end, and only erase once at the end.
+        int org_size = nums.size();
+        for(int i=0; i<org_size; ++i){
+            int runner = i;
+            while(runner < org_size-1 && nums[i]==nums[runner+1])
+                ++runner;
+            nums.push_back(nums[runner]);
+            i = runner;
+        }
+        //step2. erase once
+        nums.erase(nums.begin(), nums.begin()+org_size);
+        return nums.size();
+    }*/
+};
 #endif

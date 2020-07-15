@@ -91,3 +91,9 @@ void ldemo_q24()
     }
 }
 
+void ldemo_q28()
+{
+    Solution_q28 s;
+    std::cout << s.strStr("abb", "abaaa");
+}
+

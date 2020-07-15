@@ -66,6 +66,16 @@ namespace {
         std::sort(res3.begin(), res3.end());
         EXPECT_EQ(exp3, res3);
     }
+    TEST(lc_q028_test, strStr) {
+        Solution_q28 s;
+        /*std::string s1 = "helloll";
+        std::string s2 = "ell";
+        std::cout << s.strStr(s1, s2);*/
+        EXPECT_EQ(s.strStr("hello", "ell"), 1);
+        EXPECT_EQ(s.strStr("mississippi","issip"), 4);
+        EXPECT_EQ(s.strStr("abb", "abaaa"), -1);
+        EXPECT_EQ(s.strStr("", ""), 0);
+    }
     TEST(lc_q056_test, mergeIntervals) {
         Solution_q56_a q;
         std::vector<std::vector<int>> in1 = { {1,3},{2,6},{8,10},{15,18} };

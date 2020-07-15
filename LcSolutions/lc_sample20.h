@@ -646,4 +646,19 @@ public:
         return nums.size();
     }*/
 };
+//27. Remove Element [Easy]
+class Solution_q27 {
+public:
+    int removeElement(std::vector<int>& nums, int val) {
+        int slow = 0, fast = 0;
+        while (fast < nums.size()) {
+            if (nums[fast] != val) {
+                nums[slow] = nums[fast];
+                ++slow;
+            }
+            ++fast;
+        }
+        return slow;
+    }
+};
 #endif

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../LcSolutions/lc_sample20.h"
+#include "../LcSolutions/lc_zothers.h"
 #include "../LcSolutions/lc_two_pointers.h"
 namespace {
     TEST(TwoPointers, lc_q005_Longest_Palindromic_Substring) {

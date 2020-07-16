@@ -1,5 +1,5 @@
-#ifndef LE_SAMPLE_20_H
-#define LE_SAMPLE_20_H
+#ifndef LE_ZOTHERS_H
+#define LE_ZOTHERS_H
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -81,11 +81,11 @@ public:
                 }
                 candidate1.insert(std::make_pair(nums[i], i));
             }
-            else if (nums[i] > target / 2 && nums[i] <= target+std::abs(min)) {
+            else if (nums[i] > target / 2 && nums[i] <= target + std::abs(min)) {
 
                 //this for special case like {3,3} => target 6
                 auto find = candidate2.find(nums[i]);
-                if(find!=candidate2.end()){
+                if (find != candidate2.end()) {
                     if (find->first + nums[i] == target) {
                         return std::vector<int> {find->second, static_cast<int>(i)};
                     }
@@ -109,12 +109,12 @@ class Solution_q1_c {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
         std::unordered_map<int, int> hashmap; //[KEY]: data,  [VALUE]: the index of this value
-        
-        for (auto it = nums.cbegin(); it != nums.cend(); ++it){
+
+        for (auto it = nums.cbegin(); it != nums.cend(); ++it) {
 
             int x = target - *it;
             auto find = hashmap.find(x);
-            if (find!= hashmap.cend()) {
+            if (find != hashmap.cend()) {
                 return std::vector<int>{find->second, static_cast<int>(it - nums.cbegin())};
             }
             else {
@@ -176,7 +176,7 @@ public:
         size_t maxLen = 0; //the longest substring length
         size_t i = 0, j = 0, n = s.size(), ans = 0;
 
-        while (i < n && j < n){
+        while (i < n && j < n) {
             if (uset.find(s[j]) == uset.end()) //If the character does not in the set
             {
                 uset.insert(s[j++]); //Insert the character in set and update the j counter
@@ -201,7 +201,7 @@ public:
 
         std::vector<int> newSorted;
         auto i = nums1.cbegin(), j = nums2.cbegin();
-        while (i != nums1.cend() ||  j != nums2.cend())
+        while (i != nums1.cend() || j != nums2.cend())
         {
             if (i == nums1.cend()) {
                 newSorted.push_back(*(j++));
@@ -220,10 +220,10 @@ public:
         size_t size = newSorted.size();
         double median = 0;
         if (size % 2 == 1) {
-            median = newSorted[(size/2)];
+            median = newSorted[(size / 2)];
         }
         else if (size % 2 == 0) {
-            median = newSorted[(size/2)- 1] + newSorted[size/2];
+            median = newSorted[(size / 2) - 1] + newSorted[size / 2];
             median /= 2;
         }
 
@@ -262,7 +262,7 @@ public:
             median = findNth(nums1, (size / 2));
         }
         else if (size % 2 == 0) {
-            median = findNth(nums1, (size /2)- (__int64)1) + findNth(nums1, (size / 2));
+            median = findNth(nums1, (size / 2) - (__int64)1) + findNth(nums1, (size / 2));
             median /= 2;
         }
         return median;
@@ -338,7 +338,7 @@ public:
         int result = 0;
         bool neg = x < 0 ? true : false;
         x = abs(x);
-            
+
         while (x > 0) {
             rev.push(x % 10);
             x = x / 10;
@@ -347,7 +347,7 @@ public:
         int i = rev.size();
         while (i > 0) {
             result += rev.front() * pow(10, --i);
-            rev.pop(); 
+            rev.pop();
         }
 
         result = neg ? result * -1 : result;
@@ -363,12 +363,12 @@ public:
 class Solution_q7_b {
 public:
     int reverse(int x) {
-        
+
         long long rev = 0;
         while (x) {
             int checkOverflow = rev;
             rev = rev * 10 + x % 10;
-            if (checkOverflow != rev / 10) 
+            if (checkOverflow != rev / 10)
                 return 0;
             x = x / 10;
         }
@@ -399,7 +399,8 @@ public:
             }
             if (c < 48 || c > 57) {
                 break;
-            }else {
+            }
+            else {
                 result = result * 10 + (c - 48);
             }
         }
@@ -445,7 +446,7 @@ public:
             return false;
 
         int rev = 0;
-        int base = INT32_MAX/10;
+        int base = INT32_MAX / 10;
 
         do {
             if ((rev > base) || (rev == base && x % 10 > base % 10))

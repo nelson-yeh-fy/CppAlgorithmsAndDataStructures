@@ -2,12 +2,12 @@
 //
 
 #include <iostream>
-#include "lc_sample20.h"
 #include "lc_two_pointers.h"
 #include "lc_slow_fast_pointers.h"
 #include "lc_merge_k_ways.h"
-#include "lc_BFS.h"
 #include "lc_DFS.h"
+#include "lc_BFS.h"
+#include "lc_zothers.h"
 
 using namespace std;
 

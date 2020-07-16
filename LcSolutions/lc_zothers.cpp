@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lc_sample20.h"
+#include "lc_zothers.h"
 #include "ds.h"
 using namespace std;
 
@@ -27,7 +27,7 @@ void ldemo_q3() {
     std::cout << q4.findMedianSortedArrays(n1, n2);
 }
 
-void ldemo_q4(){
+void ldemo_q4() {
     Solution_q4_b q4;
     std::list<int> n1 = { 1,3 };
     std::list<int> n2 = { 2,4 };

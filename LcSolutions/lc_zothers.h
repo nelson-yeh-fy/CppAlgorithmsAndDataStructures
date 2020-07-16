@@ -663,28 +663,4 @@ public:
     }
 };
 
-//28. Implement strStr() [Easy]
-class Solution_q28 {
-public:
-    int strStr(std::string haystack, std::string needle) {
-        //pre-req:
-        int m = haystack.size();
-        int n = needle.size();
-        if (n == 0) return 0;
-        if (m == 0 || m < n) return -1;
-
-        //step1. traverse the string, check needle string
-        for (int i = 0; i < m - n + 1; ++i) {
-            //step2. check needle string
-            for (int j = 0; j < n; ++j) {
-                if (haystack[i + j] == needle[j] && j == n - 1)
-                    return i;
-                else if (haystack[i + j] != needle[j])
-                    break;
-            }
-        }
-        return -1;
-    }
-};
-void ldemo_q28();
 #endif

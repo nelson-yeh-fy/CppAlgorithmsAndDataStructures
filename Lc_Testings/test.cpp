@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "../LcSolutions/lc_zothers.h"
 #include "../LcSolutions/lc_two_pointers.h"
+#include "../LcSolutions/lc_sliding_window.h"
 #include "../LcSolutions/lc_merge_k_ways.h"
 
 namespace {
@@ -67,7 +68,7 @@ namespace {
         EXPECT_EQ(exp3, res3);
     }
     TEST(lc_q028_test, strStr) {
-        Solution_q28 s;
+        Solution_q28_b s;
         /*std::string s1 = "helloll";
         std::string s2 = "ell";
         std::cout << s.strStr(s1, s2);*/

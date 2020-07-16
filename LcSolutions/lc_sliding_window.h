@@ -2,6 +2,7 @@
 #define LE_SLIDING_WINDOW_H
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 //28. Implement strStr() [Easy]
 class Solution_q28_a {
@@ -29,7 +30,8 @@ public:
 };
 
 class Solution_q28_b {
-    //KMP
+    //KMP: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
+    //https://www.youtube.com/watch?v=BXCEFAzhxGY
 public:
     std::vector<int> computeLPS(std::string pat) {
         int n = pat.size();
@@ -60,7 +62,6 @@ public:
         int m = haystack.size();
         int n = pat.size();
         if (n == 0) return 0;
-        if (m == 0 || m < n) return -1;
 
         std::vector<int> lps = computeLPS(pat);
         int i = 0, j = 0;
@@ -84,7 +85,54 @@ public:
                     j = lps[j - 1];
             }
         }
+        return -1;
     }
 };
 void ldemo_q28();
+
+//459. Repeated Substring Pattern [Easy]: Using KMP
+class Solution_q459 {
+public:
+    //Computer LPS using KMP
+    std::vector<int> computeLPS(std::string s) {
+        std::vector<int> lps(s.size(), 0);
+        int len = 0, i = 1;
+        while (i < s.size()) {
+            if (s[len] == s[i]) {
+                lps[i++] = ++len;
+            }
+            else {
+                if (len) {
+                    len = lps[len - 1];
+                }
+                else {
+                    lps[i] = 0;
+                    ++i;
+                }
+            }
+        }
+        return lps;
+    }
+    bool repeatedSubstringPattern(std::string s) {
+        std::vector<int> lps = computeLPS(s);
+
+        int i = 0;
+        for (i; i < lps.size(); ++i) {
+            if (lps[i] == 1) break;
+        }
+
+        int j = 1;
+        while (i < lps.size()) {
+            if (lps[i] == j) {
+                ++i;
+                ++j;
+             }
+            else {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+void ldemo_q459();
 #endif

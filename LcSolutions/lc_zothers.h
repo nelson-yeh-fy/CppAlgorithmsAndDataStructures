@@ -663,4 +663,11 @@ public:
     }
 };
 
+//796. Rotate String [Easy]
+class Solution_796 {
+public:
+    bool rotateString(std::string A, std::string B) {
+        return (A.size() == B.size() && (B.append(B)).find(A) != std::string::npos);
+    }
+};
 #endif

@@ -126,4 +126,67 @@ public:
     }
 };
 void ldemo_q459();
+
+//686. Repeated String Match [Easy]
+class Solution_q686 {
+public:
+    std::vector<int> computeLPS(std::string s) {
+        int n = s.size();
+        std::vector<int> lps(n, 0);
+        int len = 0, i = 1;
+        while (i < n) {
+            if (s[len] == s[i]) {
+                lps[i++] = ++len;
+            }
+            else if (len) {
+                len = lps[len - 1];
+            }
+            else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+        return lps;
+    }
+    bool KMP(std::string txt, std::string pat) {
+        int m = txt.size();
+        int n = pat.size();
+        std::vector<int> lps = computeLPS(pat);
+        int i = 0, j = 0;
+        while (i < m) {
+            if (txt[i] == pat[j]) {
+                ++i; ++j;
+            }
+            if (j == n)
+                return true;
+
+            if (i < m && txt[i] != pat[j]) {
+                if (j) {
+                    j = lps[j - 1];
+                }
+                else {
+                    i++;
+                }
+            }
+        }
+        return false;
+    }
+    int repeatedStringMatch(std::string A, std::string B) {
+        if (A.size() == 0 && B.size() == 0) return 1;
+        if (A.size() == 0) return -1;
+
+        std::string sb = A;
+        while (sb.size() < B.size())
+            sb.append(A);
+
+        if (KMP(sb, B))
+            return sb.size() / A.size();
+
+        sb.append(A);
+        if (KMP(sb, B))
+            return sb.size() / A.size();
+        else
+            return -1;
+    }
+};
 #endif

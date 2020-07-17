@@ -13,7 +13,7 @@ void ldemo_q28()
 void ldemo_q459()
 {
     Solution_q459 s;
-    std::cout << s.repeatedSubstringPattern("aba");
+    //std::cout << s.repeatedSubstringPattern("aba");
     //std::cout << s.repeatedSubstringPattern("abab");
-    //std::cout << s.repeatedSubstringPattern("abcabcabcabc");
+    std::cout << s.repeatedSubstringPattern("abcabckabcabck");
 }

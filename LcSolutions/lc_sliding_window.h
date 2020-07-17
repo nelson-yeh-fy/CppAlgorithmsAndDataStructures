@@ -80,7 +80,7 @@ public:
             if (i < m && haystack[i] != pat[j]) { // mismatch after j matches 
                 // Do not match lps[0..lps[j-1]] characters, they will match anyway 
                 if (j == 0)
-                    i = i + 1;
+                    i++;
                 else
                     j = lps[j - 1];
             }
@@ -115,23 +115,14 @@ public:
     }
     bool repeatedSubstringPattern(std::string s) {
         std::vector<int> lps = computeLPS(s);
-
-        int i = 0;
-        for (i; i < lps.size(); ++i) {
-            if (lps[i] == 1) break;
-        }
-
-        int j = 1;
-        while (i < lps.size()) {
-            if (lps[i] == j) {
-                ++i;
-                ++j;
-             }
-            else {
-                return false;
-            }
-        }
-        return true;
+        int n = s.size();
+        int val = lps[n - 1];
+        //check lps[] if the last entry is not zero, 
+        //and val % s.size()-val == 0, means it repreats
+        if (val > 0 && val % (n - val) == 0)
+            return true;
+        else
+            return false;
     }
 };
 void ldemo_q459();

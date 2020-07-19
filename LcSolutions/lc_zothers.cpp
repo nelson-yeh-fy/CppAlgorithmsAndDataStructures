@@ -91,4 +91,21 @@ void ldemo_q24()
     }
 }
 
+void ldemo_q30() {
+    Solution_q30 s;
+    std::string str = "barfoothefoobarman";
+    std::vector<std::string> words = { "foo","bar" };
+
+    str = "wordgoodgoodgoodbestword";
+    words = { "word", "good", "best", "word" };
+
+    str = "lingmindraboofooowingdingbarrwingmonkeypoundcake";
+    words = { "fooo", "barr", "wing", "ding", "wing" };
+    std::vector<int> res = s.findSubstring(str, words);
+
+    for (auto& n : res) {
+        std::cout << n << ",";
+    }
+}
+
 

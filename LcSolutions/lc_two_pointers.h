@@ -365,6 +365,8 @@ public:
     }
 };
 //b starts from far left, use lc_q5_technique, this one works well (can use KMP as well)
+
+//KMP: check this https://leetcode.com/problems/shortest-palindrome/discuss/60113/Clean-KMP-solution-with-super-detailed-explanation
 class Solution_q214_b {
 public:
     std::string shortestPalindrome(std::string s) {

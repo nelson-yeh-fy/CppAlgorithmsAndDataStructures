@@ -663,6 +663,40 @@ public:
     }
 };
 
+//30. Substring with Concatenation of All Words [Hard]
+class Solution_q30 {
+public:
+    std::vector<int> findSubstring(std::string s, std::vector<std::string>& words) {
+        //pre-req: all items in words have the same length
+        if (words.empty()) return {};
+
+        //step1: put all words into a hashmap
+        int num = words.size(), len = words[0].size();
+        std::vector<int> res;
+        std::unordered_map<std::string, int> map;
+        for (std::string word : words)
+            map[word]++;
+
+        //step2: traverse s, each time take one substring to compare.
+        for (int i = 0; i < s.size() - num * len + 1; ++i) {
+            std::unordered_map<std::string, int> seen;
+            int j = 0;
+            for (; j < num; j = j + len) {
+                std::string str = s.substr(i + j, len);
+                if (map.find(str) != map.cend()) {
+                    seen[str]++;
+                    if (seen[str] > map[str])
+                        break;
+                }
+                else break;
+            }
+            if (j == num) res.push_back(i);
+        }
+        return res;
+    }
+};
+void ldemo_q30();
+
 //796. Rotate String [Easy]
 class Solution_796 {
 public:

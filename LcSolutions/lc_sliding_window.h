@@ -2,6 +2,8 @@
 #define LE_SLIDING_WINDOW_H
 #include <iostream>
 #include <vector>
+#include <unordered_set>
+#include <unordered_map>
 #include <algorithm>
 
 //28. Implement strStr() [Easy]
@@ -89,6 +91,8 @@ public:
     }
 };
 void ldemo_q28();
+
+//KMP for q214: check this https://leetcode.com/problems/shortest-palindrome/discuss/60113/Clean-KMP-solution-with-super-detailed-explanation
 
 //459. Repeated Substring Pattern [Easy]: Using KMP
 class Solution_q459 {

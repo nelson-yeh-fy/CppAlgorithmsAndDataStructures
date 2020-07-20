@@ -91,6 +91,22 @@ void ldemo_q24()
     }
 }
 
+void ldemo_q25()
+{
+    Solution_q25_b s;
+    ListNode* a5 = new ListNode(5);
+    ListNode* a4 = new ListNode(4, a5);
+    ListNode* a3 = new ListNode(3, a4);
+    ListNode* a2 = new ListNode(2, a3);
+    ListNode* a1 = new ListNode(1, a2);
+
+    ListNode* res = s.reverseKGroup(a1, 5);
+    while (res) {
+        std::cout << res->val << ",";
+        res = res->next;
+    }
+}
+
 void ldemo_q30() {
     Solution_q30 s;
     std::string str = "barfoothefoobarman";

@@ -614,6 +614,78 @@ public:
     }
 };
 void ldemo_q24();
+
+//25. Reverse Nodes in k-Group [Hard]
+class Solution_q25 {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        //pre-req:
+        if (k < 2) return head;
+        //step1: create stack to store nodes, and pop them, rewire them when k is meet.
+        std::stack<ListNode*> s; //Stack: reverse list.
+        std::queue<ListNode*> q; //Queue: record each head and tail of reversed sub-list
+        ListNode* remaining = head;
+        while (head) {
+            if (s.size() == 0) remaining = head;
+            //if (head->next == nullptr) remaining->next = nullptr;
+            s.push(head);
+            head = head->next;
+            if (s.size() == k) {
+                q.push(s.top());
+                while (!s.empty()) {
+                    ListNode* tmp = s.top(); s.pop();
+                    if (s.empty()) {
+                        q.push(tmp); tmp->next = nullptr;
+                    }
+                    else tmp->next = s.top();
+                }
+            }
+        }
+        if (q.empty()) return remaining;
+
+        //step2: connect all sub-lists.
+        ListNode* res = q.front(); //the first one is the new head;
+        if(q.back() != remaining)
+            q.back()->next = remaining; //concate the remaining notes.
+        while (q.size() > 1) {
+            q.pop();
+            ListNode* n = q.front(); q.pop();
+            if (!q.empty()) n->next = q.front();
+        }
+        return res;
+    }
+};
+class Solution_q25_b {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        //pre-req:
+        if (!head || k < 1) return head;
+
+        int num = 0;
+        ListNode* prehead = new ListNode(-1);
+        prehead->next = head;
+        ListNode* pre = prehead, * cur = head, * nex;
+        while (cur) {
+            num++;
+            cur = cur->next;
+        }
+        while (num >= k) {
+            cur = pre->next;
+            nex = cur->next;
+            for (int i = 1; i < k; ++i) {
+                cur->next = nex->next;
+                nex->next = pre->next;
+                pre->next = nex;
+                nex = cur->next;
+            }
+            pre = cur;
+            num -= k;
+        }
+        return prehead->next;
+    }
+};
+void ldemo_q25();
+
 //26. Remove Duplicates from Sorted Array [Easy]
 class Solution_q26 {
 public:

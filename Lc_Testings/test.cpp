@@ -77,6 +77,12 @@ namespace {
         EXPECT_EQ(s.strStr("abb", "abaaa"), -1);
         EXPECT_EQ(s.strStr("", ""), 0);
     }
+    TEST(lc_q031_test, next_permutation) {
+        Solution_q31 s;
+        std::vector<int> num1{ 1,2,3,4 };
+        std::vector<int> res1{ 1, 2, 4, 3 };
+        EXPECT_EQ(s.nextPermutation(num1), res1);
+    }
     TEST(lc_q032_test, longestValidParentheses) {
         Solution_q32_b s;
         EXPECT_EQ(s.longestValidParentheses(""), 0);

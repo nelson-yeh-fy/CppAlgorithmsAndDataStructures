@@ -30,7 +30,8 @@ int main()
 	//ldemo_q25();
 	//ldemo_q28();
 	//ldemo_q30();
-	ldemo_q32();
+	ldemo_q31();
+	//ldemo_q32();
 	//ldemo_q56();
 	//ldemo_q98();
 	//ldemo_q214();

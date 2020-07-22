@@ -123,7 +123,14 @@ void ldemo_q30() {
         std::cout << n << ",";
     }
 }
-
+void ldemo_q31() {
+    Solution_q31 s;
+    std::vector<int> nums{ 1, 2, 4, 9, 6 };
+    s.nextPermutation(nums);
+    for (auto i : nums) {
+        std::cout << i << ",";
+    }
+}
 void ldemo_q32() {
     Solution_q32_b s;
     //std::cout << s.longestValidParentheses("") << std::endl;

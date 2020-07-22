@@ -124,4 +124,10 @@ void ldemo_q30() {
     }
 }
 
+void ldemo_q32() {
+    Solution_q32_b s;
+    //std::cout << s.longestValidParentheses("") << std::endl;
+    std::cout << s.longestValidParentheses("()()())") << std::endl;
+    //std::cout << s.longestValidParentheses("()(()") << std::endl;
+}
 

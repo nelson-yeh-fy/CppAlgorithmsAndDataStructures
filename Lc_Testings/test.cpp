@@ -77,6 +77,15 @@ namespace {
         EXPECT_EQ(s.strStr("abb", "abaaa"), -1);
         EXPECT_EQ(s.strStr("", ""), 0);
     }
+    TEST(lc_q032_test, longestValidParentheses) {
+        Solution_q32_b s;
+        EXPECT_EQ(s.longestValidParentheses(""), 0);
+        EXPECT_EQ(s.longestValidParentheses("(()"), 2);
+        EXPECT_EQ(s.longestValidParentheses(")()())"), 4);
+        EXPECT_EQ(s.longestValidParentheses("()()())"), 6);
+        EXPECT_EQ(s.longestValidParentheses(")()())()"), 4);
+        EXPECT_EQ(s.longestValidParentheses("()(()"), 2);
+    }
     TEST(lc_q056_test, mergeIntervals) {
         Solution_q56_a q;
         std::vector<std::vector<int>> in1 = { {1,3},{2,6},{8,10},{15,18} };

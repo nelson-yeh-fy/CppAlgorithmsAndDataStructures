@@ -769,6 +769,77 @@ public:
 };
 void ldemo_q30();
 
+//32. Longest Valid Parentheses [Hard]
+class Solution_q32_a {
+public:
+    int longestValidParentheses(std::string s) {
+        std::vector<std::vector<int>> par, res;
+        std::stack<int> c;
+        //step1. find all parentheses, record their start and end index.
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '(')
+                c.push(i);
+            else if (s[i] == ')' && !c.empty()) {
+                par.push_back({ c.top(), i });
+                c.pop();
+            }
+        }
+        if (par.empty()) return 0;
+
+        //step2. sort it,
+        std::sort(par.begin(), par.end(), [](std::vector<int> a, std::vector<int> b) { return a[0] < b[0]; });
+
+        int max = 0;
+        //step3. merge overlapping/adjacent parentheses
+        res.push_back(par[0]);
+        for (auto it = par.begin()+1; it != par.end(); ++it) {
+            if (res.back()[1] > (*it)[0]) {
+                //keep res.back() since its range is bigger
+            }
+            else if (res.back()[1] == (*it)[0] - 1) {
+                res.back()[1] = (*it)[1]; //merge them together
+            }
+            else {
+                res.push_back(*it); //add a new parentheses
+            }
+            max = std::max(max, res.back()[1] - res.back()[0] + 1);
+        }
+        return std::max(max, res.back()[1] - res.back()[0] + 1);
+    }
+};
+class Solution_q32_b {
+public:
+    int longestValidParentheses(std::string s) {
+        int n = s.length();
+        int max_len = 0;
+        std::stack<int> indices;
+        // You can imagine there is a ) at index -1 position
+        // i.e. s[-1] = ')'
+        indices.push(-1);
+        for (int i = 0; i < n; i++) {
+            if (s[i] == '(') indices.push(i);
+            else {
+                // if there is a match (i.e. "()"), then we can pop the stack
+                // and update the max length by (i - indices.top())
+                // (because the string in (indices.top(), i] is a valid parenthese)
+                // else if there isn't a match (i.e. "))"), then we can substitute
+                // the top of the stack by the latest one
+                // To sum up, no matter "()" or "))", we all need to pop the stack
+                indices.pop();
+
+                // if the stack is empty, it means a "))" occurs
+                if (indices.empty()) indices.push(i);
+                // a "()" occurs
+                else {
+                    max_len = std::max(max_len, i - indices.top());
+                }
+            }
+        }
+        return max_len;
+    }
+};
+void ldemo_q32();
+
 //796. Rotate String [Easy]
 class Solution_796 {
 public:

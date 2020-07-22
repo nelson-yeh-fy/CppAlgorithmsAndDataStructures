@@ -27,9 +27,10 @@ int main()
 	//ldemo_q18();
 	//ldemo_q22();
 	//ldemo_q23();
-	ldemo_q25();
+	//ldemo_q25();
 	//ldemo_q28();
 	//ldemo_q30();
+	ldemo_q32();
 	//ldemo_q56();
 	//ldemo_q98();
 	//ldemo_q214();

@@ -861,24 +861,31 @@ public:
     int BS(std::vector<int>& nums, int l, int r, int target) {
         if (target == nums[l]) return l;
         if (target == nums[r]) return r;
-        if (target == nums[l + (r - l) / 2]) return l + (r - l) / 2;
-        if (r == l) return -1;
+        int mid = l + (r - l) / 2;
+        if (target == nums[mid]) return mid;
+        if (l == r) return -1;
 
-        if (target > nums[l] && target <= nums[l + (r - l) / 2]) {
-            return BS(nums, l, l + (r - l) / 2, target);
+        //pivot is not in the left halves, and target falls into the left halves.
+        if (nums[l] <= nums[mid] && nums[l] <= target && target <= nums[mid]) {
+            return BS(nums, l, mid, target);
         }
-        else if (target <= nums[l + (r - l) / 2]) {
-            return BS(nums, l, l + (r - l) / 2, target);
+        //pivot is not in the left halves, but target is in the right halves.
+        else if (nums[l] <= nums[mid] && nums[mid + 1] >= target && target <= nums[r]) {
+            return BS(nums, mid + 1, r, target);
+        }
+        //pivot is not in the right halves, and target falls into the right halves.
+        else if (nums[mid + 1] <= nums[r] && nums[mid + 1] <= target && target <= nums[r]) {
+            return BS(nums, mid + 1, r, target);
+        }
+        //pivot is not in the right halves, but target is in the left halves.
+        else if (nums[mid + 1] <= nums[r] && nums[l] >= target && target <= nums[mid]) {
+            return BS(nums, l, mid, target);
         }
         else {
-            return BS(nums, l + (r - l) / 2 + 1, r, target);
+            return -1;
         }
     }
     int search(std::vector<int>& nums, int target) {
-        if (nums.empty()) return -1;
-        //step1: because we don't know where the pivot is, let's try a binary search like approach
-        //e.g.: if target < nums[i] && target < nums[nums.size()/2], target must be in the right halves
-        //e.g.: if target > nums[i] && target < nums[nums.size()/2], target must be in the left halves.
         return BS(nums, 0, nums.size() - 1, target);
     }
 };

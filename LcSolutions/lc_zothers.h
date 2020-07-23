@@ -535,7 +535,7 @@ public:
     }
 };
 //17. Letter Combinations of a Phone Number [Med]
-class Solution_q17_a {
+class Solution_q17 {
 public:
     std::vector<std::string> letterCombinations(std::string digits) {
 
@@ -719,21 +719,6 @@ public:
         return nums.size();
     }*/
 };
-//27. Remove Element [Easy]
-class Solution_q27 {
-public:
-    int removeElement(std::vector<int>& nums, int val) {
-        int slow = 0, fast = 0;
-        while (fast < nums.size()) {
-            if (nums[fast] != val) {
-                nums[slow] = nums[fast];
-                ++slow;
-            }
-            ++fast;
-        }
-        return slow;
-    }
-};
 
 //30. Substring with Concatenation of All Words [Hard]
 class Solution_q30 {
@@ -869,6 +854,34 @@ public:
     }
 };
 void ldemo_q32();
+
+//33. Search in Rotated Sorted Array [Med]
+class Solution_q33 {
+public:
+    int BS(std::vector<int>& nums, int l, int r, int target) {
+        if (target == nums[l]) return l;
+        if (target == nums[r]) return r;
+        if (target == nums[l + (r - l) / 2]) return l + (r - l) / 2;
+        if (r == l) return -1;
+
+        if (target > nums[l] && target <= nums[l + (r - l) / 2]) {
+            return BS(nums, l, l + (r - l) / 2, target);
+        }
+        else if (target <= nums[l + (r - l) / 2]) {
+            return BS(nums, l, l + (r - l) / 2, target);
+        }
+        else {
+            return BS(nums, l + (r - l) / 2 + 1, r, target);
+        }
+    }
+    int search(std::vector<int>& nums, int target) {
+        if (nums.empty()) return -1;
+        //step1: because we don't know where the pivot is, let's try a binary search like approach
+        //e.g.: if target < nums[i] && target < nums[nums.size()/2], target must be in the right halves
+        //e.g.: if target > nums[i] && target < nums[nums.size()/2], target must be in the left halves.
+        return BS(nums, 0, nums.size() - 1, target);
+    }
+};
 
 //796. Rotate String [Easy]
 class Solution_796 {

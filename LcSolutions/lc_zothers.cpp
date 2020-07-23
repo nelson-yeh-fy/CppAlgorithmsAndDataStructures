@@ -63,7 +63,7 @@ void ldemo_q9() {
 }
 
 void ldemo_q17() {
-    Solution_q17_a s;
+    Solution_q17 s;
     std::vector<std::string> words = s.letterCombinations("23");
     for (const string& word : words) {
         cout << "{" << word << "},";

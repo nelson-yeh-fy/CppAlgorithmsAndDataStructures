@@ -80,8 +80,23 @@ namespace {
     TEST(lc_q031_test, next_permutation) {
         Solution_q31 s;
         std::vector<int> num1{ 1,2,3,4 };
-        std::vector<int> res1{ 1, 2, 4, 3 };
+        std::vector<int> res1{ 1,2,4,3 };
         EXPECT_EQ(s.nextPermutation(num1), res1);
+        std::vector<int> num2{ 1,2,3 };
+        std::vector<int> res2{ 1,3,2 };
+        EXPECT_EQ(s.nextPermutation(num2), res2);
+        std::vector<int> num3{ 1 };
+        std::vector<int> res3{ 1 };
+        EXPECT_EQ(s.nextPermutation(num3), res3);
+        std::vector<int> num4{ 3,2,1 };
+        std::vector<int> res4{ 1,2,3 };
+        EXPECT_EQ(s.nextPermutation(num4), res4);
+        std::vector<int> num5{ 5,1,1 };
+        std::vector<int> res5{ 1,1,5 };
+        EXPECT_EQ(s.nextPermutation(num5), res5);
+        std::vector<int> num6{ 1,3,2 };
+        std::vector<int> res6{ 2,1,3 };
+        EXPECT_EQ(s.nextPermutation(num6), res6);
     }
     TEST(lc_q032_test, longestValidParentheses) {
         Solution_q32_b s;

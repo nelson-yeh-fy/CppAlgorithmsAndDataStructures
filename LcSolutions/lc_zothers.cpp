@@ -125,7 +125,7 @@ void ldemo_q30() {
 }
 void ldemo_q31() {
     Solution_q31 s;
-    std::vector<int> nums{ 1, 2, 4, 9, 6 };
+    std::vector<int> nums{ 1 };
     s.nextPermutation(nums);
     for (auto i : nums) {
         std::cout << i << ",";

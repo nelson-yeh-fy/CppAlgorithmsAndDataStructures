@@ -858,22 +858,26 @@ void ldemo_q32();
 //33. Search in Rotated Sorted Array [Med]
 class Solution_q33 {
 public:
+    //nums[0] > target && nums[0] > nums[mid], or nums[0] <= target && nums[0] <= nums[mid]
+    //means target and nums[mid] are in the same side (in terms of separting from pivot)
+    //https://leetcode.com/problems/search-in-rotated-sorted-array/discuss/14435/Clever-idea-making-it-simple
+    //https://leetcode.wang/leetCode-33-Search-in-Rotated-Sorted-Array.html
     int search(std::vector<int>& nums, int target) {
-        //if (nums.empty()) return -1;
-        int lo = 0, hi = nums.size() - 1;
+        int lo = 0, hi = nums.size();
         while (lo < hi) {
             int mid = (lo + hi) / 2;
-            //if (target == nums[mid]) return mid;
+            double num = (nums[mid] < nums[0]) == (target < nums[0])
+                ? nums[mid]
+                : target < nums[0] ? -INFINITY : INFINITY;
 
-            if (nums[0] <= target < nums[mid] || target < nums[mid] < nums[0] ||
-                nums[mid] < nums[0] <= target) {
-                hi = mid; //go to left halves
-            }
-            else {
-                lo = mid + 1; //go to right halves
-            }
+            if (num < target)
+                lo = mid + 1;
+            else if (num > target)
+                hi = mid;
+            else
+                return mid;
         }
-        return lo == hi && nums[lo] == target ? lo : -1;
+        return -1;
     }
 };
 void ldemo_q33();

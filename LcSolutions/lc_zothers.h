@@ -858,37 +858,25 @@ void ldemo_q32();
 //33. Search in Rotated Sorted Array [Med]
 class Solution_q33 {
 public:
-    int BS(std::vector<int>& nums, int l, int r, int target) {
-        if (target == nums[l]) return l;
-        if (target == nums[r]) return r;
-        int mid = l + (r - l) / 2;
-        if (target == nums[mid]) return mid;
-        if (l == r) return -1;
-
-        //pivot is not in the left halves, and target falls into the left halves.
-        if (nums[l] <= nums[mid] && nums[l] <= target && target <= nums[mid]) {
-            return BS(nums, l, mid, target);
-        }
-        //pivot is not in the left halves, but target is in the right halves.
-        else if (nums[l] <= nums[mid] && nums[mid + 1] >= target && target <= nums[r]) {
-            return BS(nums, mid + 1, r, target);
-        }
-        //pivot is not in the right halves, and target falls into the right halves.
-        else if (nums[mid + 1] <= nums[r] && nums[mid + 1] <= target && target <= nums[r]) {
-            return BS(nums, mid + 1, r, target);
-        }
-        //pivot is not in the right halves, but target is in the left halves.
-        else if (nums[mid + 1] <= nums[r] && nums[l] >= target && target <= nums[mid]) {
-            return BS(nums, l, mid, target);
-        }
-        else {
-            return -1;
-        }
-    }
     int search(std::vector<int>& nums, int target) {
-        return BS(nums, 0, nums.size() - 1, target);
+        //if (nums.empty()) return -1;
+        int lo = 0, hi = nums.size() - 1;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            //if (target == nums[mid]) return mid;
+
+            if (nums[0] <= target < nums[mid] || target < nums[mid] < nums[0] ||
+                nums[mid] < nums[0] <= target) {
+                hi = mid; //go to left halves
+            }
+            else {
+                lo = mid + 1; //go to right halves
+            }
+        }
+        return lo == hi && nums[lo] == target ? lo : -1;
     }
 };
+void ldemo_q33();
 
 //796. Rotate String [Easy]
 class Solution_796 {

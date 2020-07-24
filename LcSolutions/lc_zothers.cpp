@@ -138,3 +138,10 @@ void ldemo_q32() {
     //std::cout << s.longestValidParentheses("()(()") << std::endl;
 }
 
+void ldemo_q33()
+{
+    Solution_q33 s;
+    std::vector<int> num{ 3,4,5,0,2 };
+    std::cout << s.search(num, 4);
+}
+

@@ -107,7 +107,7 @@ namespace {
         EXPECT_EQ(s.longestValidParentheses(")()())()"), 4);
         EXPECT_EQ(s.longestValidParentheses("()(()"), 2);
     }
-    TEST(Others, lc_q033_search) {
+    TEST(Others, lc_q033_search_in_Rotated_Sorted_Array) {
         Solution_q33 s;
         std::vector<int> num1{ 4,5,6,7,0,1,2 };
         EXPECT_EQ(s.search(num1, 0), 4);
@@ -126,6 +126,20 @@ namespace {
         EXPECT_EQ(s.search(num2, 4), 4);
         EXPECT_EQ(s.search(num2, 5), 0);
         EXPECT_EQ(s.search(num2, 6), -1);
+        std::vector<int> num4{ 4,5,6,7,8,1,2,3 };
+        EXPECT_EQ(s.search(num4, 0), -1);
+        EXPECT_EQ(s.search(num4, 4), 0);
+        EXPECT_EQ(s.search(num4, 5), 1);
+        EXPECT_EQ(s.search(num4, 6), 2);
+        EXPECT_EQ(s.search(num4, 7), 3);
+        EXPECT_EQ(s.search(num4, 8), 4);
+        EXPECT_EQ(s.search(num4, 1), 5);
+        EXPECT_EQ(s.search(num4, 2), 6);
+        EXPECT_EQ(s.search(num4, 3), 7);
+        std::vector<int> num5{ };
+        EXPECT_EQ(s.search(num5, 0), -1);
+        std::vector<int> num6{ 1 };
+        EXPECT_EQ(s.search(num6, 0), -1);
     }
     TEST(Others, lc_q056_mergeIntervals) {
         Solution_q56_a q;

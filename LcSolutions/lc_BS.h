@@ -84,4 +84,25 @@ public:
         return { seed_l, seed_r };
     }
 };
+//278. First Bad Version [Easy] (find lower bound)
+class Solution {
+public:
+    bool isBadVersion(int version) {
+        return true; //fake here, leetcode has real api.
+    }
+    int firstBadVersion(int n) {
+        //Use BS to find the first bad version, get the lower bound
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2; //(lo+hi)/2 also works in normal case, but overflow when int is not enough (e.g.: 2126753390 + 2126753390)
+            if (isBadVersion(mid)) {
+                hi = mid;
+            }
+            else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
+    }
+};
 #endif

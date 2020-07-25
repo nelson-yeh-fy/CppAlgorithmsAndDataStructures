@@ -108,7 +108,7 @@ namespace {
         EXPECT_EQ(s.longestValidParentheses("()(()"), 2);
     }
     TEST(Others, lc_q033_search_in_Rotated_Sorted_Array) {
-        Solution_q33 s;
+        Solution_q33_b s;
         std::vector<int> num1{ 4,5,6,7,0,1,2 };
         EXPECT_EQ(s.search(num1, 0), 4);
         EXPECT_EQ(s.search(num1, 1), 5);

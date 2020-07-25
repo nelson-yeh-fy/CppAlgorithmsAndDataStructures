@@ -18,25 +18,7 @@
     <ClCompile Include="LcSolutions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lc_two_pointers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_BFS.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_slow_fast_pointers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_DFS.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_merge_k_ways.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_zothers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="lc_sliding_window.cpp">
+    <ClCompile Include="LcSolutions_exps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -147,14 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LcSolutions_exps.cpp" />
     <ClCompile Include="LcSolutions.cpp" />
-    <ClCompile Include="lc_BFS.cpp" />
-    <ClCompile Include="lc_DFS.cpp" />
-    <ClCompile Include="lc_merge_k_ways.cpp" />
-    <ClCompile Include="lc_sliding_window.cpp" />
-    <ClCompile Include="lc_zothers.cpp" />
-    <ClCompile Include="lc_slow_fast_pointers.cpp" />
-    <ClCompile Include="lc_two_pointers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ds.h" />

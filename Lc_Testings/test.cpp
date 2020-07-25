@@ -1,8 +1,12 @@
 #include "pch.h"
-#include "../LcSolutions/lc_zothers.h"
+#include "../LcSolutions/lc_BFS.h"
+#include "../LcSolutions/lc_BS.h"
+#include "../LcSolutions/lc_DFS.h"
 #include "../LcSolutions/lc_two_pointers.h"
 #include "../LcSolutions/lc_sliding_window.h"
+#include "../LcSolutions/lc_slow_fast_pointers.h"
 #include "../LcSolutions/lc_merge_k_ways.h"
+#include "../LcSolutions/lc_zothers.h"
 
 namespace {
     TEST(Others, lc_q007_ReverseInteger) {

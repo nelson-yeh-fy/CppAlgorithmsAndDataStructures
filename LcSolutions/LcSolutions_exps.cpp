@@ -1,5 +1,6 @@
 #include <iostream>
 #include "lc_BFS.h"
+#include "lc_BS.h"
 #include "lc_DFS.h"
 #include "lc_two_pointers.h"
 #include "lc_sliding_window.h"

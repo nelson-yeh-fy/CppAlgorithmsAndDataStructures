@@ -84,7 +84,20 @@ public:
         return { seed_l, seed_r };
     }
 };
-//35. Search Insert Position [Easy]
+
+//to-do:
+//62. Unique Paths [Med]
+//658. Find K Closest Elements [Med]
+//718. Maximum Length of Repeated Subarray [Med]
+//782. Transform to Chessboard [Hard]
+
+
+
+
+/*
+ * Below questions are too easy, the only takeaway is to find the lower bound.
+ */
+//35. Search Insert Position [Easy] (find lower bound)
 class Solution_q35 {
 public:
     int searchInsert(std::vector<int>& nums, int target) {
@@ -123,4 +136,30 @@ public:
         return lo;
     }
 };
+
+//374. Guess Number Higher or Lower [Easy]
+class Solution_q374 {
+public:
+    int guess(int) {
+        return 0; //fake API, leetcode has working API.
+    }
+    int guessNumber(int n) {
+        int lo = 1, hi = n;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            switch (guess(mid)) {
+            case 0:
+                return mid;
+            case -1:
+                hi = mid - 1;
+                break;
+            case 1:
+                lo = mid + 1;
+                break;
+            }
+        }
+        return (lo <= n) ? lo : n;
+    }
+};
+//375. Guess Number Higher or Lower II [Med]: requirement not clear, pass this one.
 #endif

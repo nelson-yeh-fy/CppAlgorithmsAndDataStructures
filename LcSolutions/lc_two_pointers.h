@@ -326,7 +326,9 @@ public:
     }
 };
 void ldemo_q18();
+
 //214. Shortest Palindrome [Hard]
+
 //a starts from far right, but will take O(N*N) time worse case for "aaaaaaaa...aaa"
 class Solution_q214_a { 
 public:

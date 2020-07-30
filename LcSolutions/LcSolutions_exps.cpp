@@ -6,6 +6,7 @@
 #include "lc_sliding_window.h"
 #include "lc_slow_fast_pointers.h"
 #include "lc_merge_k_ways.h"
+#include "lc_pattern_matching.h"
 #include "lc_zothers.h"
 #include "ds.h"
 

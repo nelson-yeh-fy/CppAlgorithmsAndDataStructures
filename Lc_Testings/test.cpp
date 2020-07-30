@@ -6,6 +6,7 @@
 #include "../LcSolutions/lc_sliding_window.h"
 #include "../LcSolutions/lc_slow_fast_pointers.h"
 #include "../LcSolutions/lc_merge_k_ways.h"
+#include "../LcSolutions/lc_pattern_matching.h"
 #include "../LcSolutions/lc_zothers.h"
 
 namespace {

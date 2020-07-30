@@ -146,54 +146,6 @@ public:
 };
 void ldemo_q1();
 
-//3. Longest Substring Without Repeating Characters [Med]
-
-//looks correct, but somehow leetcode test "pwwkew" shows 4 (expected:3)
-class Solution_q3_a {
-public:
-    int lengthOfLongestSubstring(std::string s) {
-
-        std::unordered_set<char> uset;
-        int maxLen = 0; //the longest substring length
-
-        for (auto it = s.cbegin(); it != s.cend(); ++it) { //traverse characters in the string
-            auto find = uset.find(*it);
-            if (find != uset.cend()) { //found
-                uset.erase(uset.cbegin(), ++find);
-            }
-            uset.insert(*it);
-            maxLen = std::max(maxLen, static_cast<int>(uset.size()));
-        }
-        return maxLen;
-    }
-};
-//basically the same with q3_a, but don't know why leetcode doesn't take q3_a.
-class Solution_q3_b {
-public:
-    size_t lengthOfLongestSubstring(std::string s) {
-
-        std::unordered_set<char> uset;
-        size_t maxLen = 0; //the longest substring length
-        size_t i = 0, j = 0, n = s.size(), ans = 0;
-
-        while (i < n && j < n) {
-            if (uset.find(s[j]) == uset.end()) //If the character does not in the set
-            {
-                uset.insert(s[j++]); //Insert the character in set and update the j counter
-                maxLen = std::max(maxLen, j - i); //Check if the new distance is longer than the current answer
-            }
-            else
-            {
-                uset.erase(s[i++]);
-                /*If character does exist in the set, ie. it is a repeated character,
-                we update the left side counter i, and continue with the checking for substring. */
-            }
-        }
-        return maxLen;
-    }
-};
-void ldemo_q3();
-
 //4. Median of Two Sorted Arrays [Hard]
 class Solution_q4_a {
 public:

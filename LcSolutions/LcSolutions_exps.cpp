@@ -35,6 +35,18 @@ void ldemo_q3() {
 	std::vector<int> n2 = { 2,4 };
 	std::cout << q4.findMedianSortedArrays(n1, n2);
 }
+void ldemo_q438()
+{
+	Solution_q438 s;
+	std::string str = "cbaebabacd", p = "abc";
+	str = "abab", p = "ab";
+	str = "baa", p = "aa";
+	std::vector<int> res = s.findAnagrams(str, p);
+
+	for (auto in : res) {
+		std::cout << in << ",";
+	}
+}
 void ldemo_q4() {
 	Solution_q4_b q4;
 	std::list<int> n1 = { 1,3 };

@@ -31,10 +31,42 @@ public:
 };
 void ldemo_q3();
 
+//438. Find All Anagrams in a String [Med]
+class Solution_q438 {
+public:
+    std::vector<int> findAnagrams(std::string s, std::string p) {
+        if (s.size() < p.size()) return {};
+        std::vector<char> sv(26, 0), pv(26, 0);
+        std::vector<int> res;
+        int sn = s.size(), pn = p.size();
+        //fill sv and pv, vector to record char counts.
+        for (int i = 0; i < pn; ++i) {
+            ++sv[s[i] - 'a'];
+            ++pv[p[i] - 'a'];
+        }
+        //if sv==pv, means regardless the order they're the same (anagram)
+        //this takes O(26)/O(1) to compare
+        if (sv == pv) res.push_back(0);
+
+        //here window is moving from left to right across the string. 
+        //window size is p.size(), so s.size()-p.size() moves are made 
+        for (int i = p.size(); i < sn; ++i) {
+            //sliding window extend one char to the right.
+            ++sv[s[i] - 'a'];
+            //sliding window remove one char from the left.
+            --sv[s[i - p.size()] - 'a'];
+            //since both vectors are of fixed size 26. Total complexity O(n)*O(1) = O(n)
+            if (sv == pv) res.push_back(i - p.size() + 1);
+        }
+        return res;
+    }
+};
+void ldemo_q438();
+
 //to-do:
 //209. Minimum Size Subarray Sum
 
-//28. Implement strStr() [Easy]
+//28. Implement strStr() [Easy] => check KMP algorithm instead.
 class Solution_q28_a {
     //Naive solution
 public:

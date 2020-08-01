@@ -63,8 +63,29 @@ public:
 };
 void ldemo_q438();
 
-//to-do:
 //209. Minimum Size Subarray Sum
+class Solution_q209 {
+public:
+    int minSubArrayLen(int s, std::vector<int>& nums) {
+        //pre-req:
+        if (nums.empty()) return {};
+        int sum = 0, count = 0, min = INT32_MAX;
+        int l = 0, n = nums.size();
+
+        //step1: traverse nums, and keep adding it to Sum, O(N)
+        for (int r = 0; r < n; ++r) {
+            sum += nums[r];
+            ++count;
+            //check if sum > s, slide the window from l to r, try to minimize. O(N)
+            while (sum >= s) {
+                min = std::min(min, count);
+                sum -= nums[l++];
+                --count;
+            }
+        }
+        return (min == INT32_MAX) ? 0 : min;
+    }
+};
 
 //28. Implement strStr() [Easy] => check KMP algorithm instead.
 class Solution_q28_a {

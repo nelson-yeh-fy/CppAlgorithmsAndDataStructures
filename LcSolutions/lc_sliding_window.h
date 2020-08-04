@@ -87,6 +87,100 @@ public:
     }
 };
 
+//76. Minimum Window Substring [Hard]
+class Solution_q76_a {
+public:
+    bool specialCompare(std::vector<int>& sv, std::vector<int>& pv) {
+        if (sv.size() < pv.size()) return false;
+        //if any of sv's count is smaller than pv's count, 
+        //means it doesn't cover all chars in pv, return false;
+        int pn = pv.size();
+        for (int i = 0; i < pn; ++i) {
+            if (sv[i] < pv[i])
+                return false;
+        }
+        return true;
+    }
+    std::string minWindow(std::string s, std::string p) {
+        //pre-req:
+        if (s.size() < p.size()) return "";
+        int sn = s.size(), pn = p.size();
+        std::string res, min_res = s;
+
+        //step1: assume s,p only contain a-z here. build vector to store its count.
+        std::vector<int> sv(58, 0), pv(58, 0);
+        for (int i = 0; i < pn; ++i) {
+            ++sv[s[i] - 'A'];
+            ++pv[p[i] - 'A'];
+        }
+        if (sv == pv) return(s.substr(0, pn));
+
+        //step2: traverse s, find windows fulfill the condition.
+        for (int l = 0, r = pn; r < sn; ++r) {
+            //sliding window extend one char to the right.
+            ++sv[s[r] - 'A'];
+            //since both vectors are of fixed size 58. Total complexity O(n)*O(1) = O(n)
+            //if sv covers all pv chars, we try to shrink the window:
+            if (specialCompare(sv, pv)) {
+                do {
+                    res = s.substr(l, r - l + 1);
+                    min_res = (min_res.size() < res.size()) ? min_res : res;
+                    //sliding window remove one char from the left.
+                    --sv[s[l] - 'A'];
+                    ++l;
+                } while (l < sn && sv[s[l - 1] - 'A'] >= pv[s[l - 1] - 'A']);
+            }
+            /*while (specialCompare(sv, pv)) {
+                res = s.substr(l, r - l + 1);
+                min_res = (min_res.size() < res.size()) ? min_res : res;
+                if(min_res.size() == p.size()) return min_res;
+                //sliding window remove one char from the left.
+                --sv[s[l] - 'A'];
+                ++l;
+            }*/
+        }
+        return res.empty() ? "" : min_res;
+    }
+};
+class Solution_q76_b {
+public:
+    std::string minWindow(std::string s, std::string t) {
+        if (s.size() == 0 || t.size() == 0) return "";
+        int sn = s.size(), tn = t.size();
+        std::vector<int> tv(128, 0);
+
+        //step1: count chars in string t, get total chars count
+        int required = t.size();
+        for (int i = 0; i < tn; ++i) ++tv[t[i]];
+
+        //step2: compare chars in s and t, decrease remaining count if matches.
+        int min = INT32_MAX;
+        int l = 0, lslide = 0, r = 0;
+        while (l < sn && r < sn + 1) {
+            if (required > 0) {
+                if (r == sn) break;
+                //decrease one, if the count is still >=0, means it was required
+                --tv[s[r]];
+                if (tv[s[r]] >= 0) --required;
+                ++r;
+            }
+            else {
+                if (r - lslide < min) {
+                    l = lslide;
+                    min = r - l;
+                }
+                //increase one, if the count becomes > 0, 
+                //means we s[l] is required but we slided and removed it.
+                ++tv[s[lslide]];
+                if (tv[s[lslide]] > 0) ++required;
+                ++lslide;
+            }
+        }
+        return (min == INT32_MAX) ? "" : s.substr(l, min);
+    }
+};
+void ldemo_q76();
+
 //28. Implement strStr() [Easy] => check KMP algorithm instead.
 class Solution_q28_a {
     //Naive solution

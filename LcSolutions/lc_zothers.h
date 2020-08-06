@@ -12,6 +12,28 @@
 
 //Classical
 
+//283. Move Zeroes [Easy] Classic question to present the thinking process.
+class Solution_q283 {
+public:
+    void moveZeroes(std::vector<int>& nums) {
+        int slow = 0, fast = 0, n = nums.size();
+        //step1. find the first '0' for the slow_ptr
+        while (slow < n && nums[slow] != 0) ++slow;
+
+        //step2. move all non-zero val to left.
+        fast = slow + 1;
+        while (fast < n) {
+            if (nums[fast] != 0) {
+                nums[slow++] = nums[fast];
+            }
+            ++fast;
+        }
+
+        //step3. fill zero to the tail.
+        while (slow < n) nums[slow++] = 0;
+    }
+};
+
 //121. Best Time to Buy and Sell Stock [Easy]
 class Solution_q121 {
 public:
@@ -34,26 +56,27 @@ public:
     }
 };
 
-
-//283. Move Zeroes [Easy] Classic question to present the thinking process.
-class Solution_q283 {
+//122. Best Time to Buy and Sell Stock II [Easy]
+class Solution_q122 {
 public:
-    void moveZeroes(std::vector<int>& nums) {
-        int slow = 0, fast = 0, n = nums.size();
-        //step1. find the first '0' for the slow_ptr
-        while (slow < n && nums[slow] != 0) ++slow;
-
-        //step2. move all non-zero val to left.
-        fast = slow + 1;
-        while (fast < n) {
-            if (nums[fast] != 0) {
-                nums[slow++] = nums[fast];
+    int maxProfit(std::vector<int>& prices) {
+        int maxProfit = 0, n = prices.size();
+        int min = INT32_MAX, totalProfit = 0;
+        //step1. Traverse the prices, preserves the min price we've seen.
+        for (int i = 0; i < n + 1; ++i) {
+            if (i == n) {
+                totalProfit += maxProfit;
+                return totalProfit;
             }
-            ++fast;
+            if (min >= prices[i]) { //if smaller price is found, which is a buy point.
+                min = prices[i];
+                totalProfit += maxProfit;
+                maxProfit = 0;
+            }
+            else {
+                maxProfit = std::max(maxProfit, prices[i] - min);
+            }
         }
-
-        //step3. fill zero to the tail.
-        while (slow < n) nums[slow++] = 0;
     }
 };
 

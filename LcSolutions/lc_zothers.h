@@ -10,6 +10,55 @@
 #include <stack>
 #include "ds.h"
 
+//Classical
+
+//121. Best Time to Buy and Sell Stock [Easy]
+class Solution_q121 {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        int maxProfit = 0, n = prices.size();
+        int min = INT32_MAX, profit = 0;
+        //step1. Traverse the prices, preserves the min price we've seen.
+        for (int i = 0; i < n; ++i) {
+            int c = prices[i];
+            if (min >= c) {   //if smaller price is found, record it.
+                min = c;
+            }
+            else {
+                //calculate profit.
+                profit = c - min;
+                maxProfit = std::max(maxProfit, profit);
+            }
+        }
+        return maxProfit;
+    }
+};
+
+
+//283. Move Zeroes [Easy] Classic question to present the thinking process.
+class Solution_q283 {
+public:
+    void moveZeroes(std::vector<int>& nums) {
+        int slow = 0, fast = 0, n = nums.size();
+        //step1. find the first '0' for the slow_ptr
+        while (slow < n && nums[slow] != 0) ++slow;
+
+        //step2. move all non-zero val to left.
+        fast = slow + 1;
+        while (fast < n) {
+            if (nums[fast] != 0) {
+                nums[slow++] = nums[fast];
+            }
+            ++fast;
+        }
+
+        //step3. fill zero to the tail.
+        while (slow < n) nums[slow++] = 0;
+    }
+};
+
+//============================================
+
 //1. Two Sum [Easy]
 
 // This solution changes the original vector, doesn't fit leetcode's requirement.

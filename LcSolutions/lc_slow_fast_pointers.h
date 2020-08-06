@@ -145,25 +145,4 @@ public:
 };
 void ldemo_q31();
 
-//283. Move Zeroes [Easy] Classic question to present the thinking process.
-class Solution_q283 {
-public:
-    void moveZeroes(std::vector<int>& nums) {
-        int slow = 0, fast = 0, n = nums.size();
-        //step1. find the first '0' for the slow_ptr
-        while (slow < n && nums[slow] != 0) ++slow;
-
-        //step2. move all non-zero val to left.
-        fast = slow + 1;
-        while (fast < n) {
-            if (nums[fast] != 0) {
-                nums[slow++] = nums[fast];
-            }
-            ++fast;
-        }
-
-        //step3. fill zero to the tail.
-        while (slow < n) nums[slow++] = 0;
-    }
-};
 #endif

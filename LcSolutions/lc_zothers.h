@@ -38,18 +38,15 @@ public:
 class Solution_q121 {
 public:
     int maxProfit(std::vector<int>& prices) {
-        int maxProfit = 0, n = prices.size();
-        int min = INT32_MAX, profit = 0;
-        //step1. Traverse the prices, preserves the min price we've seen.
+        int maxProfit = 0, min = INT32_MAX, n = prices.size();
+        //Traverse the prices, preserves the min price we've seen.
         for (int i = 0; i < n; ++i) {
-            int c = prices[i];
-            if (min >= c) {   //if smaller price is found, record it.
-                min = c;
+            if (min >= prices[i]) {   //if smaller price is found, record it.
+                min = prices[i];
             }
             else {
                 //calculate profit.
-                profit = c - min;
-                maxProfit = std::max(maxProfit, profit);
+                maxProfit = std::max(maxProfit, prices[i] - min);
             }
         }
         return maxProfit;
@@ -57,29 +54,35 @@ public:
 };
 
 //122. Best Time to Buy and Sell Stock II [Easy]
-class Solution_q122 {
+class Solution_q122_a {
 public:
     int maxProfit(std::vector<int>& prices) {
-        int maxProfit = 0, n = prices.size();
-        int min = INT32_MAX, totalProfit = 0;
-        //step1. Traverse the prices, preserves the min price we've seen.
-        for (int i = 0; i < n + 1; ++i) {
-            if (i == n) {
-                totalProfit += maxProfit;
-                return totalProfit;
-            }
-            if (min >= prices[i]) { //if smaller price is found, which is a buy point.
-                min = prices[i];
-                totalProfit += maxProfit;
-                maxProfit = 0;
-            }
-            else {
-                maxProfit = std::max(maxProfit, prices[i] - min);
-            }
-        }
+        int ret = 0;
+        for (size_t p = 1; p < prices.size(); ++p)
+            ret += std::max(prices[p] - prices[p - 1], 0);
+        return ret;
     }
 };
-
+//my kindof naive solution.
+class Solution_q122_b {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        int maxProfit = 0, min = INT32_MAX, n = prices.size();
+        int total = 0;
+        //Traverse the prices, preserves the min price we've seen.
+        for (int i = 0; i < n; ++i) {
+            if (min >= prices[i]) {   //if smaller price is found, record it.
+                min = prices[i];
+            }
+            else {
+                //calculate profit, this is just a maxProfit for a period of time
+                maxProfit = std::max(maxProfit, prices[i] - min);
+                min = INT32_MAX;
+            }
+        }
+        return maxProfit;
+    }
+};
 //============================================
 
 //1. Two Sum [Easy]

@@ -83,6 +83,30 @@ public:
         return maxProfit;
     }
 };
+
+
+//123. Best Time to Buy and Sell Stock III [Hard]
+class Solution_q123 {
+public:
+    int maxProfit(std::vector<int>& prices) {
+        int buy1 = INT32_MAX, buy2 = INT32_MAX;
+        int maxProfit1 = 0, maxProfit2 = 0, n = prices.size();
+
+        for (int p : prices) {
+            //buy2 try to use current price - profit1, for example if we earn $100 so far
+            //today it's price is $300, we only need to "pay" additional $200 to buy it.
+            maxProfit2 = std::max(maxProfit2, p - buy2);
+            buy2 = std::min(buy2, p - maxProfit1);
+
+            //buy1 always records the minimun buy point.
+            //maxProfit1 is BY FAR the maximun profit.
+            maxProfit1 = std::max(maxProfit1, p - buy1);
+            buy1 = std::min(buy1, p);
+        }
+        return maxProfit2;
+    }
+};
+void ldemo_q123();
 //============================================
 
 //1. Two Sum [Easy]

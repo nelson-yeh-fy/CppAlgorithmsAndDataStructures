@@ -16,6 +16,13 @@ void print(ListNode* head) {
 		head = head->next;
 	}
 }
+void ldemo_q123()
+{
+	Solution_q123 s;
+	std::vector<int> prices { 3,3,5,0,0,3,1,4 };
+	prices = { 1,2,4,2,5,7,2,4,9,0};
+	std::cout << s.maxProfit(prices);
+}
 void ldemo_q1() {
 	Solution_q1_c s;
 	//vector<int> nums = { 23,5,2,1,8,12,16 };

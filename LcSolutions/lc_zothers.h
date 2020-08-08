@@ -38,18 +38,24 @@ public:
 class Solution_q121 {
 public:
     int maxProfit(std::vector<int>& prices) {
-        int maxProfit = 0, min = INT32_MAX, n = prices.size();
-        //Traverse the prices, preserves the min price we've seen.
-        for (int i = 0; i < n; ++i) {
-            if (min >= prices[i]) {   //if smaller price is found, record it.
-                min = prices[i];
-            }
-            else {
-                //calculate profit.
-                maxProfit = std::max(maxProfit, prices[i] - min);
-            }
+        int buy = INT32_MAX;
+        int maxProfit = 0, n = prices.size();
+        for (int p : prices) {
+            maxProfit = std::max(maxProfit, p - buy);
+            buy = std::min(buy, p);
         }
         return maxProfit;
+        /*int maxProfit = 0, buy = INT32_MAX, n = prices.size();
+        for(int i=0; i<n; ++i){
+            //Traverse the prices, preserves the min price we've seen.
+            if(buy >= prices[i]){   //if smaller price is found, record it.
+                buy = prices[i];
+            }else{
+                //calculate profit.
+                maxProfit = std::max(maxProfit, prices[i] - buy);
+            }
+        }
+        return maxProfit;*/
     }
 };
 
@@ -83,7 +89,6 @@ public:
         return maxProfit;
     }
 };
-
 
 //123. Best Time to Buy and Sell Stock III [Hard]
 class Solution_q123 {

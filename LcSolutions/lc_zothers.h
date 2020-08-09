@@ -90,28 +90,44 @@ public:
     }
 };
 
-//123. Best Time to Buy and Sell Stock III [Hard]
+//123. Best Time to Buy and Sell Stock III [Hard], DP
+
+//[MUST READ] https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/539127/Detailed-explanation-of-DP-solution-inspired-by-%40meng789987
 class Solution_q123 {
 public:
     int maxProfit(std::vector<int>& prices) {
-        int buy1 = INT32_MAX, buy2 = INT32_MAX;
-        int maxProfit1 = 0, maxProfit2 = 0, n = prices.size();
-
-        for (int p : prices) {
-            //buy2 try to use current price - profit1, for example if we earn $100 so far
-            //today it's price is $300, we only need to "pay" additional $200 to buy it.
-            maxProfit2 = std::max(maxProfit2, p - buy2);
-            buy2 = std::min(buy2, p - maxProfit1);
-
-            //buy1 always records the minimun buy point.
-            //maxProfit1 is BY FAR the maximun profit.
-            maxProfit1 = std::max(maxProfit1, p - buy1);
-            buy1 = std::min(buy1, p);
+        int k_trans = 2;
+        if (prices.empty()) return 0;
+        std::vector<int> min(k_trans + 1, prices[0]);
+        std::vector<int> dp(k_trans + 1, 0);
+        for (int i = 1; i < prices.size(); ++i) {
+            for (int k = 1; k <= k_trans; ++k) {
+                min[k] = std::min(min[k], prices[i] - dp[k - 1]);
+                dp[k] = std::max(dp[k], prices[i] - min[k]);
+            }
         }
-        return maxProfit2;
+        return dp[k_trans];
     }
 };
 void ldemo_q123();
+
+//188. Best Time to Buy and Sell Stock IV [Hard] 
+class Solution_q188 {
+public:
+int maxProfit(int k_trans, std::vector<int>& prices) {
+    if (prices.empty()) return 0;
+    std::vector<int> min(k_trans + 1, prices[0]);
+    std::vector<int> dp(k_trans + 1, 0);
+    for (int i = 1; i < prices.size(); ++i) {
+        for (int k = 1; k <= k_trans; ++k) {
+            min[k] = std::min(min[k], prices[i] - dp[k - 1]);
+            dp[k] = std::max(dp[k], prices[i] - min[k]);
+        }
+    }
+    return dp[k_trans];
+}
+};
 //============================================
 
 //1. Two Sum [Easy]

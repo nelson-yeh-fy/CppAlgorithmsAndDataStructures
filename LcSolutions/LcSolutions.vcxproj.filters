@@ -53,6 +53,9 @@
     <ClInclude Include="lc_pattern_matching.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="lc_DP.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

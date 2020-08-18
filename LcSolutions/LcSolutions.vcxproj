@@ -155,6 +155,7 @@
     <ClInclude Include="lc_BFS.h" />
     <ClInclude Include="lc_BS.h" />
     <ClInclude Include="lc_DFS.h" />
+    <ClInclude Include="lc_DP.h" />
     <ClInclude Include="lc_merge_k_ways.h" />
     <ClInclude Include="lc_pattern_matching.h" />
     <ClInclude Include="lc_sliding_window.h" />

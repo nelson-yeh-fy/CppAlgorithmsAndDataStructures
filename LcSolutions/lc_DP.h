@@ -175,11 +175,11 @@ public:
     //Recurrance relation: T[i] = std::max(T[i], T[i-2] + nums[i])
     //means either do nothing, or rob this house with i-2, make it not adjacent.
     int rob(std::vector<int>& nums) {
-        int T_i = 0, T_i_pre = 0;
+        int T_i = 0, T_i_prev2 = 0;
         for (const int& p : nums) {
-            int T_i_old = T_i;
-            T_i = std::max(T_i, T_i_pre + p);
-            T_i_pre = T_i_old; //make T_i_pre equals to i-2.
+            int T_i_prev1 = T_i;
+            T_i = std::max(T_i, T_i_prev2 + p);
+            T_i_prev2 = T_i_prev1; //make T_iprev2 equals to i-2.
         }
         return T_i;
     }
@@ -191,11 +191,11 @@ public:
     //Recurrance relation: T[i] = std::max(T[i], T[i-2] + nums[i])
     //means either do nothing, or rob this house with i-2, make it not adjacent.
     int rob(std::vector<int>& nums, int start, int end) {
-        int T_i = 0, T_i_pre = 0;
+        int T_i = 0, T_i_prev2 = 0;
         for (int i = start; i <= end; ++i) {
-            int T_i_old = T_i;
-            T_i = std::max(T_i, T_i_pre + nums[i]);
-            T_i_pre = T_i_old; //make T_i_pre equals to i-2.
+            int T_i_prev1 = T_i;
+            T_i = std::max(T_i, T_i_prev2 + nums[i]);
+            T_i_prev2 = T_i_prev1; //make T_iprev2 equals to i-2.
         }
         return T_i;
     }

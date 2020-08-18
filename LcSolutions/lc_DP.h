@@ -116,7 +116,6 @@ public:
     //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfitForLargeK(std::vector<int>& prices) {
         int T_i0 = 0, T_i1 = INT32_MIN;
-
         for (const int& p : prices) {
             T_i0 = std::max(T_i0, T_i1 + p);
             T_i1 = std::max(T_i1, T_i0 - p);
@@ -144,7 +143,6 @@ public:
     //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfit(std::vector<int>& prices, int fee) {
         long T_i0 = 0, T_i1 = INT32_MIN;
-
         for (const int& p : prices) {
             T_i0 = std::max(T_i0, T_i1 + p - fee);
             T_i1 = std::max(T_i1, T_i0 - p);
@@ -156,23 +154,17 @@ public:
 //309. Best Time to Buy and Sell Stock with Cooldown [Med]
 class Solution_q309 {
 public:
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfit(std::vector<int>& prices) {
-        if (prices.size() == 0) return 0;
-        //initialize dp[k transacations][prices size]
-        int** dp = new int* [3];
-        for (int i = 0; i < 3; ++i)
-            dp[i] = new int[prices.size()];
-
-        for (int k = 1; k <= 2; k++) {
-            for (int i = 1; i < prices.size(); i++) {
-                int min = prices[0];
-                for (int j = 2; j <= i; j++)
-                    min = std::min(min, prices[j] - dp[k - 1][j - 2]);
-                dp[k][i] = std::max(dp[k][i - 1], prices[i] - min);
-            }
+        int T_i0 = 0, T_i1 = INT32_MIN;
+        int T_i0_pre = 0;
+        for (const int& p : prices) {
+            int T_i0_old = T_i0;
+            T_i0 = std::max(T_i0, T_i1 + p);
+            T_i1 = std::max(T_i1, T_i0_pre - p);
+            T_i0_pre = T_i0_old;
         }
-
-        return dp[2][prices.size() - 1];
+        return T_i0;
     }
 };
 
@@ -190,6 +182,28 @@ public:
             T_i_pre = T_i_old; //make T_i_pre equals to i-2.
         }
         return T_i;
+    }
+};
+
+class Solution_q213 {
+public:
+    //T (MaxProfit), i-th house to rob, 
+    //Recurrance relation: T[i] = std::max(T[i], T[i-2] + nums[i])
+    //means either do nothing, or rob this house with i-2, make it not adjacent.
+    int rob(std::vector<int>& nums, int start, int end) {
+        int T_i = 0, T_i_pre = 0;
+        for (int i = start; i <= end; ++i) {
+            int T_i_old = T_i;
+            T_i = std::max(T_i, T_i_pre + nums[i]);
+            T_i_pre = T_i_old; //make T_i_pre equals to i-2.
+        }
+        return T_i;
+    }
+    //separate this problem to rob [0..n-2] & [1..n-1]
+    int rob(std::vector<int>& nums) {
+        int n = nums.size();
+        if (n < 2) return n ? nums[0] : 0;
+        return std::max(rob(nums, 0, n - 2), rob(nums, 1, n - 1));
     }
 };
 

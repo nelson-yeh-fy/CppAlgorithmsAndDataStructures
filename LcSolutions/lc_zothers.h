@@ -37,7 +37,17 @@ public:
 //121. Best Time to Buy and Sell Stock [Easy]
 class Solution_q121 {
 public:
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfit(std::vector<int>& prices) {
+        int T_i10 = 0, T_i11 = INT32_MIN;
+
+        for (const int& p : prices) {
+            T_i10 = std::max(T_i10, T_i11 + p);
+            T_i11 = std::max(T_i11, -p);
+        }
+        return T_i10;
+    }
+    /*int maxProfit(std::vector<int>& prices) {
         int buy = INT32_MAX;
         int maxProfit = 0, n = prices.size();
         for (int p : prices) {
@@ -45,48 +55,21 @@ public:
             buy = std::min(buy, p);
         }
         return maxProfit;
-        /*int maxProfit = 0, buy = INT32_MAX, n = prices.size();
-        for(int i=0; i<n; ++i){
-            //Traverse the prices, preserves the min price we've seen.
-            if(buy >= prices[i]){   //if smaller price is found, record it.
-                buy = prices[i];
-            }else{
-                //calculate profit.
-                maxProfit = std::max(maxProfit, prices[i] - buy);
-            }
-        }
-        return maxProfit;*/
-    }
+    }*/
 };
 
 //122. Best Time to Buy and Sell Stock II [Easy]
-class Solution_q122_a {
+class Solution_q122 {
 public:
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfit(std::vector<int>& prices) {
-        int ret = 0;
-        for (size_t p = 1; p < prices.size(); ++p)
-            ret += std::max(prices[p] - prices[p - 1], 0);
-        return ret;
-    }
-};
-//my kindof naive solution.
-class Solution_q122_b {
-public:
-    int maxProfit(std::vector<int>& prices) {
-        int maxProfit = 0, min = INT32_MAX, n = prices.size();
-        int total = 0;
-        //Traverse the prices, preserves the min price we've seen.
-        for (int i = 0; i < n; ++i) {
-            if (min >= prices[i]) {   //if smaller price is found, record it.
-                min = prices[i];
-            }
-            else {
-                //calculate profit, this is just a maxProfit for a period of time
-                maxProfit = std::max(maxProfit, prices[i] - min);
-                min = INT32_MAX;
-            }
+        int T_i0 = 0, T_i1 = INT32_MIN;
+
+        for (const int& p : prices) {
+            T_i0 = std::max(T_i0, T_i1 + p);
+            T_i1 = std::max(T_i1, T_i0 - p);
         }
-        return maxProfit;
+        return T_i0;
     }
 };
 
@@ -94,7 +77,22 @@ public:
 
 //[MUST READ] https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
 //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/539127/Detailed-explanation-of-DP-solution-inspired-by-%40meng789987
-class Solution_q123 {
+class Solution_q123_a {
+public:
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
+    int maxProfit(std::vector<int>& prices) {
+        const int K = 2;
+        std::vector<int> T_i0(K + 1, 0), T_i1(K + 1, INT32_MIN);
+        for (const int& p : prices) {
+            for (int i = 2; i > 0; --i) {
+                T_i0[i] = std::max(T_i0[i], T_i1[i] + p);
+                T_i1[i] = std::max(T_i1[i], T_i0[i - 1] - p);
+            }
+        }
+        return T_i0[K];
+    }
+};
+class Solution_q123_b {
 public:
     int maxProfit(std::vector<int>& prices) {
         int k_trans = 2;
@@ -115,53 +113,43 @@ void ldemo_q123();
 //188. Best Time to Buy and Sell Stock IV [Hard] 
 class Solution_q188 {
 public:
-int maxProfit(int k_trans, std::vector<int>& prices) {
-    if (prices.empty()) return 0;
-    std::vector<int> min(k_trans + 1, prices[0]);
-    std::vector<int> dp(k_trans + 1, 0);
-    for (int i = 1; i < prices.size(); ++i) {
-        for (int k = 1; k <= k_trans; ++k) {
-            min[k] = std::min(min[k], prices[i] - dp[k - 1]);
-            dp[k] = std::max(dp[k], prices[i] - min[k]);
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
+    int maxProfitForLargeK(std::vector<int>& prices) {
+        int T_i0 = 0, T_i1 = INT32_MIN;
+
+        for (const int& p : prices) {
+            T_i0 = std::max(T_i0, T_i1 + p);
+            T_i1 = std::max(T_i1, T_i0 - p);
         }
+        return T_i0;
     }
-    return dp[k_trans];
-}
+
+    int maxProfit(int K, std::vector<int>& prices) {
+        if (K >= prices.size() / 2) return maxProfitForLargeK(prices);
+
+        std::vector<int> T_i0(K + 1, 0), T_i1(K + 1, INT32_MIN);
+        for (const int& p : prices) {
+            for (int i = K; i > 0; --i) {
+                T_i0[i] = std::max(T_i0[i], T_i1[i] + p);
+                T_i1[i] = std::max(T_i1[i], T_i0[i - 1] - p);
+            }
+        }
+        return T_i0[K];
+    }
 };
 
 //714. Best Time to Buy and Sell Stock with Transaction Fee [Med]
 class Solution_q714 {
 public:
-    //Q122 technique (This saves time is there are K-inifinty transacations)
-    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems
-    int maxProfitWithFee(std::vector<int>& prices, int fee) {
-        int T_ik0 = 0, T_ik1 = INT32_MIN;
-        for (int price : prices) {
-            int T_ik0_old = T_ik0;
-            T_ik0 = std::max(T_ik0, T_ik1 + price);
-            T_ik1 = std::max(T_ik1, T_ik0_old - price - fee);
-        }
-        return T_ik0;
-    }
-    //Same with Q123 DP solution. 
-    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
-    int maxProfitWithFee(std::vector<int> p, int k_trans, int fee) {
-        int n = p.size();
-        if (n == 0) return 0;
-        if (k_trans >= n / 2) return maxProfitWithFee(p, fee);
-
-        std::vector<int> min(k_trans + 1, p[0]);
-        std::vector<int> dp(k_trans + 1, 0);
-        for (int i = 1; i < n; ++i) {
-            for (int k = 1; k <= k_trans; ++k) {
-                min[k] = std::min(min[k], p[i] - dp[k - 1]);
-                dp[k] = std::max(dp[k], p[i] - min[k] - fee);
-            }
-        }
-        return dp[k_trans - 1];
-    }
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems
     int maxProfit(std::vector<int>& prices, int fee) {
-        return maxProfitWithFee(prices, prices.size(), fee);
+        long T_i0 = 0, T_i1 = INT32_MIN;
+
+        for (const int& p : prices) {
+            T_i0 = std::max(T_i0, T_i1 + p - fee);
+            T_i1 = std::max(T_i1, T_i0 - p);
+        }
+        return T_i0;
     }
 };
 
@@ -187,6 +175,24 @@ public:
         return dp[2][prices.size() - 1];
     }
 };
+
+//198. House Robber [Easu] DP, the same with Stock series.
+class Solution_q198 {
+public:
+    //T (MaxProfit), i-th house to rob, 
+    //Recurrance relation: T[i] = std::max(T[i], T[i-2] + nums[i])
+    //means either do nothing, or rob this house with i-2, make it not adjacent.
+    int rob(std::vector<int>& nums) {
+        int T_i = 0, T_i_pre = 0;
+        for (const int& p : nums) {
+            int T_i_old = T_i;
+            T_i = std::max(T_i, T_i_pre + p);
+            T_i_pre = T_i_old; //make T_i_pre equals to i-2.
+        }
+        return T_i;
+    }
+};
+
 //============================================
 
 //1. Two Sum [Easy]

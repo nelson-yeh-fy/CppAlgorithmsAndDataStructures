@@ -185,6 +185,7 @@ public:
     }
 };
 
+//213. House Robber II [Med]
 class Solution_q213 {
 public:
     //T (MaxProfit), i-th house to rob, 
@@ -206,5 +207,48 @@ public:
         return std::max(rob(nums, 0, n - 2), rob(nums, 1, n - 1));
     }
 };
+
+//337. House Robber III [Med]
+class Solution_q337 {
+public:
+    //https://leetcode.com/problems/house-robber-iii/discuss/79330/Step-by-step-tackling-of-the-problem
+    int rob(TreeNode* root, std::unordered_map<TreeNode*, int>& map) {
+        if (!root) return 0;
+        int val = 0;
+        if (map.count(root) > 0) return map[root];
+
+        if (root->left)
+            val += rob(root->left->left, map) + rob(root->left->right, map);
+        if (root->right)
+            val += rob(root->right->left, map) + rob(root->right->right, map);
+
+        val = std::max(root->val + val, //either rob root level, and root->child->child level,
+            rob(root->left, map) + rob(root->right, map)); //or only rob root->child level.
+        map[root] = val;
+        return val;
+    }
+    int rob(TreeNode* root) {
+        std::unordered_map<TreeNode*, int> map;
+        return rob(root, map);
+    }
+};
+
+/* This solution I misunderstood the requirement, seems only pick one direction/route at most.
+class Solution {
+public:
+    int rob(TreeNode* root, int T_i, int T_i_prev2){
+        if(!root) return T_i;
+
+        int T_i_prev1 = T_i;
+        T_i = std::max(T_i, T_i_prev2 + root->val);
+        T_i_prev2 = T_i_prev1;
+        return rob(root->left, T_i, T_i_prev2) + rob(root->right, T_i, T_i_prev2);
+    }
+    int rob(TreeNode* root) {
+        int T_i = 0, T_i_prev2 = 0;
+        return rob(root, T_i, T_i_prev2);
+    }
+};
+*/
 
 #endif

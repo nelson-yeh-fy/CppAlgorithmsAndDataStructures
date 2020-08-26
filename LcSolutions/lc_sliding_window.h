@@ -6,6 +6,74 @@
 #include <unordered_map>
 #include <algorithm>
 
+//560. Subarray Sum Equals K [Med]
+class Solution_q560 {
+public:
+public:
+    //https://leetcode.com/problems/subarray-sum-equals-k/discuss/134689/Three-Approaches-With-Explanation
+    int subarraySum(std::vector<int>& nums, int k) {
+        int ret = 0, sum = 0;
+        std::unordered_map<int, int> map;
+        map[0]++;
+
+        for (int i = 0; i < nums.size(); ++i) {
+            //Calculate presum until ith element
+            sum += nums[i];
+
+            if (map[sum - k])
+                ret += map[sum - k];
+
+            //Record presum's frequency, e.g.: 
+            //if i-th equals to 0, means we can find many more subarrays fulfill reqs.
+            //if i-th is nagative (which makes sliding window doesn't work), means [i-x..i+x] may form more subarrays fulfill reqs 
+            map[sum]++;
+        }
+        return ret;
+    }
+
+    //Reference
+    //Using Presum, this one takes O(N^2) but fail leetcode time limit.
+    int subarraySum_Presum(std::vector<int>& nums, int k) {
+        int ret = 0, sum = 0;
+        //step1. Record the prefix sum
+        for (int i = 1; i < nums.size(); ++i)
+            nums[i] += nums[i - 1];
+
+        //step2. traverse nums, if prefix sum equals to k, ++ret
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] == k)
+                ++ret;
+
+            //step3. if nums[j] equals nums[i] , or if nums[j+X] equals to 0, ++ret
+            for (int j = i + 1; j < nums.size(); ++j) {
+                if (nums[j] - nums[i] == k)
+                    ++ret;
+            }
+        }
+        return ret;
+    }
+
+    //Sliding window doesn't work for this because of negative value
+    int subarraySum_failed(std::vector<int>& nums, int k) {
+        int ret = 0, sum = nums[0], l = 0, r = 0;
+        while (l <= r && r < nums.size()) {
+            if (sum < k) {
+                sum += nums[r++];
+            }
+            else if (sum > k) {
+                sum -= nums[l++];
+            }
+            else {
+                ++ret;
+                sum -= nums[l++];
+                sum += nums[r++];
+            }
+        }
+        return ret;
+    }
+};
+void ldemo_q560();
+
 //3. Longest Substring Without Repeating Characters [Med]
 class Solution_q3 {
 public:

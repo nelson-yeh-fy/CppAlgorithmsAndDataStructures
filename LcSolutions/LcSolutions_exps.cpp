@@ -37,6 +37,12 @@ void ldemo_q1() {
 
 	std::vector<int> indices = s.twoSum(nums, target);
 }
+void ldemo_q560()
+{
+	Solution_q560 s;
+	std::vector<int> nums = { 1 };
+	std::cout << s.subarraySum(nums, 0);
+}
 void ldemo_q3() {
 	Solution_q4_a q4;
 	std::vector<int> n1 = { 1,3 };

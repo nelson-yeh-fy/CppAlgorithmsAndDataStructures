@@ -10,6 +10,26 @@
 #include "../LcSolutions/lc_zothers.h"
 
 namespace {
+
+    TEST(SlidingWindow, lc_q560_SubarraySumEqualsK) {
+        Solution_q560 s;
+        std::vector<int> nums1 = { 1 };
+        EXPECT_EQ(s.subarraySum(nums1, 0), 0);
+        EXPECT_EQ(s.subarraySum(nums1, 2), 0);
+        std::vector<int> nums2 = { 1,1,1 };
+        EXPECT_EQ(s.subarraySum(nums2, 0), 0);
+        EXPECT_EQ(s.subarraySum(nums2, 2), 2);
+        std::vector<int> nums3 = { 1,1,2 };
+        EXPECT_EQ(s.subarraySum(nums3, 0), 0);
+        EXPECT_EQ(s.subarraySum(nums3, 2), 2);
+        std::vector<int> nums4 = { 1,1,2,1,1 };
+        EXPECT_EQ(s.subarraySum(nums4, 0), 0);
+        EXPECT_EQ(s.subarraySum(nums4, 2), 3);
+        std::vector<int> nums5 = { 1,1,3,1,1 };
+        EXPECT_EQ(s.subarraySum(nums5, 0), 0);
+        EXPECT_EQ(s.subarraySum(nums5, 2), 2);
+    }
+
     TEST(Others, lc_q007_ReverseInteger) {
         Solution_q7_b q;
         EXPECT_EQ(q.reverse(123), 321);

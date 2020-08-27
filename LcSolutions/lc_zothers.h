@@ -787,4 +787,21 @@ public:
         return (A.size() == B.size() && (B.append(B)).find(A) != std::string::npos);
     }
 };
+
+//953. Verifying an Alien Dictionary [Easy]
+class Solution_q953 {
+public:
+    bool isAlienSorted(std::vector<std::string>& words, std::string order) {
+        int map[26];
+        for (int i = 0; i < order.size(); ++i) {
+            map[order[i] - 'a'] = i;
+        }
+        for (std::string& word : words) {
+            for (char& c : word) {
+                c = map[c - 'a'];
+            }
+        }
+        return std::is_sorted(words.begin(), words.end());
+    }
+};
 #endif

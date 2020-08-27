@@ -82,6 +82,16 @@ void ldemo_q4() {
 	std::list<int> n2 = { 2,4 };
 	std::cout << q4.findMedianSortedArrays(n1, n2);
 }
+void ldemo_q680()
+{
+	Solution_q680 s;
+	std::string str = "aba";
+	str = "abca";
+	str = "abbb";
+	str = "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga";
+	str = "cupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupucu";
+	std::cout << s.validPalindrome(str);
+}
 void ldemo_q5() {
 	Solution_q5_d q;
 	std::string s = "babad";

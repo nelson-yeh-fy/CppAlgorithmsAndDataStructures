@@ -286,6 +286,15 @@ void ldemo_q32() {
 	//std::cout << s.longestValidParentheses("()(()") << std::endl;
 }
 
+void ldemo_q269()
+{
+	std::vector<std::string> words = { "wrt","wrf","er","ett","rftt" };
+	words = {"z","x","z" };
+
+	Solution_q269 s;
+	std::cout << s.alienOrder(words);
+}
+
 void ldemo_q33()
 {
 	Solution_q33_b s;

@@ -6,6 +6,29 @@
 #include <unordered_map>
 #include <unordered_set>
 
+//680. Valid Palindrome II [Med]
+class Solution_q680 {
+public:
+    bool validPalindrome(std::string& s, size_t l, size_t r) {
+        while (l < r && s[l] == s[r]) {
+            ++l; --r;
+        }
+        return (l >= r) ? true : false;
+    }
+    bool validPalindrome(std::string& s) {
+        size_t l = 0, r = s.size() - 1;
+        while (l < r) {
+            if (s[l++] != s[r--]) {
+                bool b1 = validPalindrome(s, l, r + 1); //two chances here. b1,b2
+                bool b2 = validPalindrome(s, l - 1, r);
+                return b1 || b2;
+            }
+        }
+        return true;
+    }
+};
+void ldemo_q680();
+
 //5. Longest Palindromic Substring  [Med]
 
 //Incorrect, failed at "cc","ccc","cccc","ccccc"

@@ -649,4 +649,63 @@ public:
         return (A.size() == B.size() && (B.append(B)).find(A) != std::string::npos);
     }
 };
+
+//953. Verifying an Alien Dictionary [Easy]
+class Solution_q953 {
+public:
+    bool isAlienSorted(std::vector<std::string>& words, std::string order) {
+        int map[26];
+        for (int i = 0; i < order.size(); ++i) {
+            map[order[i] - 'a'] = i;
+        }
+        for (std::string& word : words) {
+            for (char& c : word) {
+                c = map[c - 'a'];
+            }
+        }
+        return std::is_sorted(words.begin(), words.end());
+    }
+};
+
+class Node {
+public:
+    char c;
+    Node* next;
+    Node(char ch) : c(ch), next(nullptr) {};
+};
+
+//269. Alien Dictionary [Hard]
+class Solution_q269 {
+public:
+    void topologicalSortUtil(std::vector<std::string>& words, int idx, std::stack<char> sorted, std::unordered_set<char> visited) {
+
+        // Mark the current node as visited. 
+        visited.insert(idx);
+
+        // Recur for all the vertices adjacent to this vertex 
+        for (size_t c = 0; c < words[idx].size(); ++c) {
+            if (visited.count(c) == 0)
+                topologicalSortUtil(words, c, sorted, visited);
+        }
+
+        // Push current vertex to stack which stores result 
+        sorted.push(words[idx]);
+        
+        return;
+    }
+    std::string alienOrder(std::vector<std::string>& words) {
+        if (words.empty()) return "";
+        std::stack<char> sorted;
+        std::unordered_set<char> visited;
+
+        //each of word represents a graph (adjacent list), we need to do topological sort by them
+        for (size_t i = 0; i < words.size(); ++i) {
+            if(visited.count(i) == 0)
+                topologicalSortUtil(words, i, sorted, visited);
+        }
+        return "";
+    }
+};
+void ldemo_q269();
+
 #endif

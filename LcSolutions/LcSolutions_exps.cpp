@@ -82,6 +82,16 @@ void ldemo_q4() {
 	std::list<int> n2 = { 2,4 };
 	std::cout << q4.findMedianSortedArrays(n1, n2);
 }
+void ldemo_q680()
+{
+	Solution_q680 s;
+	std::string str = "aba";
+	str = "abca";
+	str = "abbb";
+	str = "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga";
+	str = "cupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupucu";
+	std::cout << s.validPalindrome(str);
+}
 void ldemo_q5() {
 	Solution_q5_d q;
 	std::string s = "babad";
@@ -274,6 +284,15 @@ void ldemo_q32() {
 	//std::cout << s.longestValidParentheses("") << std::endl;
 	std::cout << s.longestValidParentheses("()()())") << std::endl;
 	//std::cout << s.longestValidParentheses("()(()") << std::endl;
+}
+
+void ldemo_q269()
+{
+	std::vector<std::string> words = { "wrt","wrf","er","ett","rftt" };
+	words = {"z","x","z" };
+
+	Solution_q269 s;
+	std::cout << s.alienOrder(words);
 }
 
 void ldemo_q33()

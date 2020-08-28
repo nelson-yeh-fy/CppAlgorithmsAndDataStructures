@@ -48,7 +48,8 @@ int main()
 	//ldemo_q305();
 	//ldemo_q438();
 	//ldemo_q459();
-	ldemo_q560();
+	//ldemo_q560();
+	ldemo_q680();
 	//ldemo_q994();
 }
 

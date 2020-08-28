@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Graph">
+      <UniqueIdentifier>{1ab998ff-470d-449d-844f-cee3f31b4d62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LcSolutions.cpp">
@@ -26,13 +29,7 @@
     <ClInclude Include="lc_two_pointers.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="lc_BFS.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="lc_slow_fast_pointers.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="lc_DFS.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ds.h">
@@ -47,14 +44,23 @@
     <ClInclude Include="lc_sliding_window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="lc_BS.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="lc_pattern_matching.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="lc_TopologicalSort.h">
+      <Filter>Source Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_BFS.h">
+      <Filter>Source Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_BS.h">
+      <Filter>Source Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="lc_DFS.h">
+      <Filter>Source Files\Graph</Filter>
+    </ClInclude>
     <ClInclude Include="lc_DP.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

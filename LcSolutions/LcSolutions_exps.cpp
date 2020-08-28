@@ -3,6 +3,7 @@
 #include "lc_BS.h"
 #include "lc_DFS.h"
 #include "lc_DP.h"
+#include "lc_TopologicalSort.h"
 #include "lc_two_pointers.h"
 #include "lc_sliding_window.h"
 #include "lc_slow_fast_pointers.h"
@@ -289,7 +290,7 @@ void ldemo_q32() {
 void ldemo_q269()
 {
 	std::vector<std::string> words = { "wrt","wrf","er","ett","rftt" };
-	words = {"z","x","z" };
+	//words = {"z","x","z" };
 
 	Solution_q269 s;
 	std::cout << s.alienOrder(words);

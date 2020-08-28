@@ -5,6 +5,7 @@
 #include "lc_BS.h"
 #include "lc_DFS.h"
 #include "lc_DP.h"
+#include "lc_TopologicalSort.h"
 #include "lc_two_pointers.h"
 #include "lc_sliding_window.h"
 #include "lc_slow_fast_pointers.h"
@@ -45,11 +46,12 @@ int main()
 	//ldemo_q200();
 	//ldemo_q125();
 	//ldemo_q259();
+	ldemo_q269();
 	//ldemo_q305();
 	//ldemo_q438();
 	//ldemo_q459();
 	//ldemo_q560();
-	ldemo_q680();
+	//ldemo_q680();
 	//ldemo_q994();
 }
 

@@ -159,6 +159,7 @@
     <ClInclude Include="lc_merge_k_ways.h" />
     <ClInclude Include="lc_pattern_matching.h" />
     <ClInclude Include="lc_sliding_window.h" />
+    <ClInclude Include="lc_TopologicalSort.h" />
     <ClInclude Include="lc_zothers.h" />
     <ClInclude Include="lc_slow_fast_pointers.h" />
     <ClInclude Include="lc_two_pointers.h" />

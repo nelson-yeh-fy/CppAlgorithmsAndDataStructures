@@ -290,7 +290,8 @@ void ldemo_q32() {
 void ldemo_q269()
 {
 	std::vector<std::string> words = { "wrt","wrf","er","ett","rftt" };
-	//words = {"z","x","z" };
+	words = { "z","x","z" };
+	words = {"qb", "qts", "qs", "qa", "s"};
 
 	Solution_q269 s;
 	std::cout << s.alienOrder(words);

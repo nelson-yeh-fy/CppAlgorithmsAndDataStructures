@@ -11,6 +11,7 @@
 #include "lc_pattern_matching.h"
 #include "lc_zothers.h"
 #include "ds.h"
+using namespace std;
 
 void print(ListNode* head) {
 	while (head) {
@@ -295,6 +296,13 @@ void ldemo_q269()
 
 	Solution_q269 s;
 	std::cout << s.alienOrder(words);
+}
+
+void ldemo_q207()
+{
+	vector<vector<int>> preqs = { {1,0}, {0,1} };
+	Solution_q207 s;
+	std::cout << s.canFinish(2, preqs);
 }
 
 void ldemo_q33()

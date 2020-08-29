@@ -74,4 +74,47 @@ public:
 };
 void ldemo_q269();
 
+//207. Course Schedule [Med]
+class Solution_q207 {
+public:
+    unordered_map<int, list<int>*> adj;
+    unordered_map<int, int> visited;
+
+    // step3. during the topological sort, we check if there is any cylic condition.
+    bool topologicalSort(int i) {
+        visited[i] = 1; // 1: visisting
+        for (auto it = adj[i]->cbegin(); it != adj[i]->cend(); ++it) {
+            if (visited[*it] == 1)
+                return false; //cylic condition, dead lock
+            if (visited[*it] == 0)
+                if (!topologicalSort(*it))
+                    return false;
+        }
+        visited[i] = 2;
+        return true;
+    }
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // step1. transform prerequisites into edges
+        for (vector<int>& r : prerequisites) {
+            if (visited.count(r[0]) == 0) {
+                visited[r[0]] = 0;
+                adj[r[0]] = new list<int>;
+            }
+            if (visited.count(r[1]) == 0) {
+                visited[r[1]] = 0;
+                adj[r[1]] = new list<int>;
+            }
+            adj[r[0]]->push_back(r[1]);
+        }
+
+        // step2. take all the unique keys to do topological sort
+        for (auto kv : visited) {
+            if (visited[kv.first] == 0) {
+                if (!topologicalSort(kv.first)) return false;
+            }
+        }
+        return true;
+    }
+};
+void ldemo_q207();
 #endif

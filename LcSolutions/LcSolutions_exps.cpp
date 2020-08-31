@@ -305,6 +305,15 @@ void ldemo_q207()
 	std::cout << s.canFinish(2, preqs);
 }
 
+void ldemo_q210()
+{
+	vector<vector<int>> preqs = { {1,0} };
+	Solution_q210 s;
+	vector<int> ret = s.findOrder(2, preqs);
+	for (auto i : ret)
+		cout << i << ",";
+}
+
 void ldemo_q33()
 {
 	Solution_q33_b s;

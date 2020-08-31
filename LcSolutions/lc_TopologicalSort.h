@@ -117,4 +117,74 @@ public:
     }
 };
 void ldemo_q207();
+
+//210. Course Schedule II [Med] //Using BFS with indegree
+class Solution_q210 {
+public:
+    vector<int> findOrder(int n, vector<vector<int>>& prerequisites) {
+        // step0. initialize adjacent list, and indegree for doing bfs topological sort
+        vector<vector<int>> adj(n, vector<int>());
+        vector<int> indegree(n, 0);
+
+        // step1. fill adj lists, r[1]: key, r[0]: to vertex node
+        for (vector<int>& r : prerequisites) {
+            adj[r[1]].push_back(r[0]);
+            ++indegree[r[0]];
+        }
+
+        // step2. for every unique keys, do topological sort.
+        queue<int> q; vector<int> sorted;
+        for (int i = 0; i < n; ++i) {
+            if (indegree[i] == 0) q.push(i);
+        }
+
+        while (!q.empty()) {
+            int cur = q.front(); q.pop(); --n; sorted.push_back(cur);
+            for (int next : adj[cur]) {
+                if (--indegree[next] == 0) q.push(next);
+            }
+        }
+        if (n != 0) return {};
+        return sorted;
+    }
+};
+
+class Solution_q210_dfs {
+public:
+    unordered_map<int, list<int>*> adj;
+    unordered_map<int, int> visited;
+    vector<int> sorted;
+    bool topologicalSort(int i) {
+        visited[i] = 1; //1: visiting
+        for (auto it = adj[i]->cbegin(); it != adj[i]->cend(); ++it) {
+            if (visited[*it] == 1) return false; //cylic
+            if (visited[*it] == 0)
+                if (!topologicalSort(*it)) return false;
+        }
+        visited[i] = 2;
+        sorted.push_back(i);
+        return true;
+    }
+
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        // step0. initialize adjacent list, and visited map for doing dfs
+        for (int i = 0; i < numCourses; ++i) {
+            visited[i] == 0;
+            adj[i] = new list<int>;
+        }
+        // step1. fill adj lists
+        for (vector<int>& r : prerequisites) {
+            adj[r[1]]->push_back(r[0]);
+        }
+
+        // step2. for every unique keys, do topological sort.
+        for (auto kv : visited) {
+            if (visited[kv.first] == 0)
+                if (!topologicalSort(kv.first)) return {};
+        }
+        std::reverse(sorted.begin(), sorted.end());
+        return sorted;
+    }
+};
+void ldemo_q210();
 #endif

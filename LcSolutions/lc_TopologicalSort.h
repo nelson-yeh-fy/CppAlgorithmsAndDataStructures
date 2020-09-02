@@ -9,7 +9,55 @@
 using namespace std;
 
 //269. Alien Dictionary [Hard]
+
 class Solution_q269 {
+public:
+    string alienOrder(vector<string>& words) {
+        // Step 0: Initialize adjacent list and the indegree
+        unordered_map<char, vector<int>> adj;
+        unordered_map<char, int> indegree;
+        for (string word : words) {
+            for (char c : word) {
+                adj[c] = vector<int>();
+                indegree[c] = 0;
+            }
+        }
+
+        // Step 1: Find all edges, e.g.: w(w-'a')->e, e(e-'a')->r
+        for (int i = 0; i < words.size() - 1; ++i) {
+            string w1 = words[i];
+            string w2 = words[i + 1];
+
+            // check if w2 is a prefix of w1, this should bring error.
+            if (w1.size() > w2.size() && w1.rfind(w2, 0) == 0)
+                return "";
+
+            // initialize the adj list, pick the unique node->node relationship
+            for (int j = 0; j < min(w1.size(), w2.size()); ++j) {
+                if (w1[j] != w2[j]) {
+                    ++indegree[w2[j]];
+                    adj[w1[j]].push_back(w2[j]);
+                    break;
+                }
+            }
+        }
+
+        // Step 3. All unique characters need to be in topological sort
+        queue<char> q; string sorted;
+        for (auto v : indegree) {
+            if (v.second == 0) q.push(v.first);
+        }
+        while (!q.empty()) {
+            char cur = q.front(); q.pop(); sorted.push_back(cur);
+            for (auto next : adj[cur]) {
+                if (--indegree[next] == 0) q.push(next);
+            }
+        }
+        return (sorted.size() == indegree.size()) ? sorted : "";
+    }
+};
+
+class Solution_q269_dfs {
 public:
     unordered_map<char, list<char>*> adj;
     unordered_map<char, int> visited;
@@ -75,7 +123,38 @@ public:
 void ldemo_q269();
 
 //207. Course Schedule [Med]
+
 class Solution_q207 {
+public:
+    bool canFinish(int n, vector<vector<int>>& prerequisites) {
+        // step0. initialize adjacent list, and indegree for doing bfs
+        vector<vector<int>> adj(n, vector<int>());
+        vector<int> indegree(n, 0);
+
+        // step1. fill adj lists
+        for (vector<int>& r : prerequisites) {
+            adj[r[1]].push_back(r[0]);
+            indegree[r[0]]++;
+        }
+
+        // step2. take all the unique keys to do topological sort, start from indegree 0
+        queue<int> q;
+        for (int i = 0; i < n; ++i) {
+            if (indegree[i] == 0) q.push(i);
+        }
+
+        while (!q.empty()) {
+            int cur = q.front(); q.pop(); --n;
+            for (auto next : adj[cur]) {
+                if (--indegree[next] == 0) q.push(next);
+            }
+        }
+
+        return n == 0;
+    }
+};
+
+class Solution_q207_dfs {
 public:
     unordered_map<int, list<int>*> adj;
     unordered_map<int, int> visited;

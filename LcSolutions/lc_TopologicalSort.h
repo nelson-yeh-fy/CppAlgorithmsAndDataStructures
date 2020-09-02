@@ -271,58 +271,56 @@ void ldemo_q210();
 class Solution_q329 {
 public:
     int longestIncreasingPath(vector<vector<int>>& matrix) {
-        // Step 0. Initialize adjacent list and indegree.
-        unordered_map<int, vector<int>> adj;
-        unordered_map<int, int> indegree;
-        for (vector<int> m : matrix) {
-            for (auto i : m) {
-                if (indegree.count(i) == 0) {
-                    indegree[i] = 0;
-                    adj[i] = vector<int>();
-                }
-            }
-        }
+        if (matrix.empty()) return 0;
 
-        // Step 1. Build our adjacent list, 4-direction and only from small to big.
-        for (int i = 0; i < matrix.size(); ++i) {
-            for (int j = 0; j < matrix[i].size(); ++j) {
-                if (i > 0 && matrix[i][j] < matrix[i - 1][j]) {
-                    indegree[matrix[i - 1][j]]++;
-                    adj[matrix[i][j]].push_back(matrix[i - 1][j]);
-                }
-                if (i < matrix.size() - 1 && matrix[i][j] < matrix[i + 1][j]) {
-                    indegree[matrix[i + 1][j]]++;
-                    adj[matrix[i][j]].push_back(matrix[i + 1][j]);
-                }
-                if (j > 0 && matrix[i][j] < matrix[i][j - 1]) {
-                    indegree[matrix[i][j - 1]]++;
-                    adj[matrix[i][j]].push_back(matrix[i][j - 1]);
-                }
-                if (i < matrix[i].size() - 1 && matrix[i][j] < matrix[i][j + 1]) {
-                    indegree[matrix[i][j + 1]]++;
-                    adj[matrix[i][j]].push_back(matrix[i][j + 1]);
+        // Step 0. Initialize adjacent list and indegree.
+        int rows = matrix.size(), cols = matrix[0].size();
+        vector<vector<int>> indegree (rows, vector<int>(cols, 0));
+
+        // Step 1. Build our adjacent list (not really adj list in this case, 
+        // because when we do topological sort later, 
+        // we'll use indegree and 4 direction which way we can go (like an adjacent list)), 
+        // 4-direction and only from small to big.
+        vector<vector<int>> dirs = { {0,1}, {0,-1}, {1,0}, {-1,0} };
+        for (int x = 0; x < rows; ++x) {
+            for (int y = 0; y < cols; ++y) {
+                for (auto& dir : dirs) {
+                    int nx = x + dir[0];
+                    int ny = y + dir[1];
+                    if (nx >= 0 && nx < rows && ny >= 0 && ny < cols && 
+                        matrix[nx][ny] > matrix[x][y])
+                            indegree[nx][ny]++;
                 }
             }
         }
 
         // Step 2. For each of number, start from indegree == 0 and do topological sort.
-        queue<int> q;
-        for (auto v : indegree) {
-            if (v.second == 0) q.push(v.first);
-        }
-
-        // Step 3. Find the BFS layer count.
-        int layer = 0;
-        while (!q.empty()) {
-            int cur = q.front(); q.pop();
-            for (auto next : adj[cur]) {
-                if (--indegree[next] == 0) {
-                    q.push(next);
-                    layer++; cout << "c:" << next << endl;
-                }
+        queue<pair<int, int>> q;
+        for (int x = 0; x < rows; ++x) {
+            for (int y = 0; y < cols; ++y) {
+                if (indegree[x][y] == 0) q.push({ x, y });
             }
         }
-        return layer;
+
+        // Step 3. BFS and find the length.
+        int len = 0;
+        while (!q.empty()) {
+            int size = q.size();
+            while (size-- > 0) { // KEY:consume all nodes in cur layer and add next layer into queue
+                auto cur = q.front(); q.pop();
+                for (auto& dir : dirs) {
+                    int nx = cur.first + dir[0];
+                    int ny = cur.second + dir[1];
+                    if (nx >= 0 && nx < rows && ny >= 0 && ny < cols &&
+                        matrix[nx][ny] > matrix[cur.first][cur.second]) {
+                        if (--indegree[nx][ny] == 0)
+                            q.push({ nx, ny });
+                    }
+                }
+            }
+            ++len;
+        }
+        return len;
     }
 };
 #endif

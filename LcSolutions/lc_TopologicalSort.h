@@ -187,4 +187,63 @@ public:
     }
 };
 void ldemo_q210();
+
+//329. Longest Increasing Path in a Matrix [Hard]
+class Solution_q329 {
+public:
+    int longestIncreasingPath(vector<vector<int>>& matrix) {
+        // Step 0. Initialize adjacent list and indegree.
+        unordered_map<int, vector<int>> adj;
+        unordered_map<int, int> indegree;
+        for (vector<int> m : matrix) {
+            for (auto i : m) {
+                if (indegree.count(i) == 0) {
+                    indegree[i] = 0;
+                    adj[i] = vector<int>();
+                }
+            }
+        }
+
+        // Step 1. Build our adjacent list, 4-direction and only from small to big.
+        for (int i = 0; i < matrix.size(); ++i) {
+            for (int j = 0; j < matrix[i].size(); ++j) {
+                if (i > 0 && matrix[i][j] < matrix[i - 1][j]) {
+                    indegree[matrix[i - 1][j]]++;
+                    adj[matrix[i][j]].push_back(matrix[i - 1][j]);
+                }
+                if (i < matrix.size() - 1 && matrix[i][j] < matrix[i + 1][j]) {
+                    indegree[matrix[i + 1][j]]++;
+                    adj[matrix[i][j]].push_back(matrix[i + 1][j]);
+                }
+                if (j > 0 && matrix[i][j] < matrix[i][j - 1]) {
+                    indegree[matrix[i][j - 1]]++;
+                    adj[matrix[i][j]].push_back(matrix[i][j - 1]);
+                }
+                if (i < matrix[i].size() - 1 && matrix[i][j] < matrix[i][j + 1]) {
+                    indegree[matrix[i][j + 1]]++;
+                    adj[matrix[i][j]].push_back(matrix[i][j + 1]);
+                }
+            }
+        }
+
+        // Step 2. For each of number, start from indegree == 0 and do topological sort.
+        queue<int> q;
+        for (auto v : indegree) {
+            if (v.second == 0) q.push(v.first);
+        }
+
+        // Step 3. Find the BFS layer count.
+        int layer = 0;
+        while (!q.empty()) {
+            int cur = q.front(); q.pop();
+            for (auto next : adj[cur]) {
+                if (--indegree[next] == 0) {
+                    q.push(next);
+                    layer++; cout << "c:" << next << endl;
+                }
+            }
+        }
+        return layer;
+    }
+};
 #endif

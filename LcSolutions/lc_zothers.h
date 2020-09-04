@@ -9,7 +9,7 @@
 #include <queue>
 #include <stack>
 #include "ds.h"
-
+using namespace std;
 
 //4. Median of Two Sorted Arrays [Hard]
 class Solution_q4_a {
@@ -321,6 +321,31 @@ public:
             }
         }
         return result + table[s.back()];
+    }
+};
+
+//273. Integer to English Words [Hard]
+class Solution_q273 {
+public:
+    string X[10] = { "","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety" };
+    string I[20] = { "","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen" };
+
+    string util(unsigned int num) {
+        string ret;
+        if (num < 20)              ret = I[num % 20];
+        else if (num < 100)        ret = X[num / 10] + " " + util(num % 10);
+        else if (num < 1000)       ret = util(num / 100) + " Hundred " + util(num % 100);
+        else if (num < 1000000)    ret = util(num / 1000) + " Thousand " + util(num % 1000);
+        else if (num < 1000000000) ret = util(num / 1000000) + " Million " + util(num % 1000000);
+        else                      ret = util(num / 1000000000) + " Billion " + util(num % 1000000000);
+
+        size_t st = ret.find_last_not_of(" ");
+        return ret.substr(0, st + 1);
+    }
+
+    string numberToWords(unsigned int num) {
+        if (num == 0) return "Zero";
+        return util(num);
     }
 };
 //14. Longest Common Prefix [Easy]
@@ -666,5 +691,6 @@ public:
         return std::is_sorted(words.begin(), words.end());
     }
 };
+
 
 #endif

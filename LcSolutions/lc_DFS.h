@@ -4,7 +4,9 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <unordered_set>
 #include "ds.h"
+using namespace std;
 
 struct ValidBSTRange {
     TreeNode* node;
@@ -274,4 +276,83 @@ public:
     }
 };
 void ldemo_q305();
+
+//301. Remove Invalid Parentheses
+class Solution_q301 {
+public:
+    void dfs(string& s, size_t idx, int unpair, int l, int r, string path, unordered_set<string>& res) {
+        if (r < 0 || r < 0 || unpair < 0) // Eliminate unnecessary generations.
+            return;
+
+        if (idx == s.size()) {
+            if (l == 0 && r == 0 && unpair == 0) res.insert(path);
+            return;
+        }
+        else {
+            if (s[idx] == '(') {
+                //2 choices: one is is to add '(',')'; the other is not to add them
+                dfs(s, idx + 1, unpair + 1, l, r, path + s[idx], res);
+                dfs(s, idx + 1, unpair, l - 1, r, path, res);
+            }
+            else if (s[idx] == ')') {
+                dfs(s, idx + 1, unpair - 1, l, r, path + s[idx], res);
+                dfs(s, idx + 1, unpair, l, r - 1, path, res);
+            }
+            else { //for characters not '(' nor ')'
+                dfs(s, idx + 1, unpair, l, r, path + s[idx], res);
+            }
+        }
+        return;
+    }
+
+    vector<string> removeInvalidParentheses(string s) {
+        // Step 0. remove prefixing ')' and postfixing '(';
+        /*size_t p1 = s.find_first_not_of(')');
+        size_t p2 = s.find_last_not_of('(');
+        cout << "P1:" << p1 << ", P2:" << p2 << endl;
+        if(p1 > s.size() || p2 > s.size()) return {""};
+        s = s.substr(p1, p2-p1+1); cout << s; //s = s.substr(p1, (s.size()-p1)-(s.size()-p2)+1 );*/
+
+        // Step 1. count unclosing '(' and ')', so we know how many and what to remove.
+        int l = 0; // l: number of '(' to be removed 
+        int r = 0; // r: number of ')' to be removed
+        for (size_t i = 0; i < s.size(); i++) {
+            if (s[i] == '(') ++l;
+            else if (s[i] == ')' && l > 0) --l;
+            else if (s[i] == ')' && l == 0) ++r;
+        }
+
+        // Step 2. recursively generate parentheses,
+        // two choices: remove/not add '(' / ')', or append the characters.
+        unordered_set<string> set;
+        dfs(s, 0, 0, l, r, "", set);
+        return vector<string>(set.cbegin(), set.cend());
+    }
+};
+
+//199. Binary Tree Right Side View [Med]
+class Solution_q199 {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        if (!root) return {};
+        vector<int> res;
+        queue<TreeNode*> curlv, nextlv;
+        nextlv.push(root);
+
+        while (!nextlv.empty()) {
+            // Step 1. swap all items in nextlv into curlv, and then we process all items in curlv.
+            curlv.swap(nextlv);
+
+            // Step 2. add child items into nextlv, the last one will be the right most item
+            while (!curlv.empty()) {
+                TreeNode* tmp = curlv.front(); curlv.pop();
+                if (tmp->left)  nextlv.push(tmp->left);
+                if (tmp->right) nextlv.push(tmp->right);
+                if (curlv.empty()) res.push_back(tmp->val);
+            }
+        }
+        return res;
+    }
+};
+void ldemo_q199();
 #endif

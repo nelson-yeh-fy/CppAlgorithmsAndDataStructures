@@ -370,6 +370,23 @@ void ldemo_q305() {
 	for (auto it = res1.cbegin(); it != res1.cend(); ++it)
 		std::cout << *it << ",";
 }
+void ldemo_q199()
+{
+	Solution_q199 s;
+	TreeNode* n7 = new TreeNode(7, nullptr, nullptr);
+	TreeNode* n6 = new TreeNode(6, nullptr, nullptr);
+	TreeNode* n5 = new TreeNode(3, n6, n7);
+
+	TreeNode* n4 = new TreeNode(4, nullptr, nullptr);
+	TreeNode* n3 = new TreeNode(5, nullptr, n4);
+	TreeNode* n2 = new TreeNode(2, nullptr, n3);
+	TreeNode* n1 = new TreeNode(1, n2, n5);
+	vector<int> res = s.rightSideView(n1);
+	for (int& i : res) {
+		cout << i << ",";
+	}
+	return;
+}
 void ldemo_q259() {
 	Solution_q259_c q;
 	std::vector<int> nums = { -2, 0, 1, 3 };
